@@ -5,7 +5,6 @@ import history from "../../../services/history";
 import * as actions from "./actions";
 import * as types from "../types";
 
-// 🔐 LOGIN
 function* loginRequest({ payload }) {
   try {
     const { email, password, role, prevPath } = payload;
@@ -37,7 +36,6 @@ function* loginRequest({ payload }) {
   }
 }
 
-// 🔄 REHYDRATE
 function* persistRehydrate({ payload }) {
   const token = payload?.auth?.token;
   const user = payload?.auth?.user; // 🔥 precisa restaurar o user também
@@ -54,10 +52,30 @@ function* persistRehydrate({ payload }) {
   );
 }
 
-// 🧠 SAGA PRINCIPAL (🔥 ESSENCIAL 🔥)
+function* registerRequest({ payload }) {
+  try {
+    const { nome, email, password } = payload;
+
+    yield call(axios.post, "/users", {
+      nome,
+      email,
+      password,
+    });
+
+    toast.success("Usuário criado com sucesso");
+
+    yield put(actions.registerSuccess());
+  } catch (error) {
+    console.log(error.response?.data);
+    toast.error("Erro ao criar usuário");
+    yield put(actions.registerFailure());
+  }
+}
+
 export default function* authSaga() {
   yield all([
     takeLatest(types.LOGIN_REQUEST, loginRequest),
+    takeLatest(types.REGISTER_REQUEST, registerRequest),
     takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
   ]);
 }
