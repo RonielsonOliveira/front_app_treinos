@@ -38,6 +38,12 @@ export function registerRequest(payload) {
     payload,
   };
 }
+
+export function registerSuccess() {
+  return {
+    type: types.REGISTER_SUCCESS,
+  };
+}
 export function registerUpdatedSuccess(payload) {
   return {
     type: types.REGISTER_UPDATED_SUCCESS,
