@@ -1,0 +1,19 @@
+{
+  // 🧠 ESLint em tempo real
+  "eslint.enable": true,
+
+  // ⚙️ Usa o parser e plugins do seu projeto
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // 🧹 Corrige automaticamente erros que puder ao salvar
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ✨ Prettier formata ao salvar (seguindo o .prettierrc)
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 📄 Tipos de arquivos que o ESLint deve validar
+  "eslint.validate": ["javascript", "javascriptreact"]
+}
