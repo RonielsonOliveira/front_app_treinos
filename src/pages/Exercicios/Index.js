@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 export default function Exercicios() {
   const { exercicios, setExercicios, isLoading, setIsLoading } =
     useExercicios();
-
+  console.log(exercicios);
   const handleDelete = async (id) => {
     if (!window.confirm("Deseja realmente excluir este exercício?")) return;
 
