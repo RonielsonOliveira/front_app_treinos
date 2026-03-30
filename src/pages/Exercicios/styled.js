@@ -110,13 +110,30 @@ export const CardActions = styled.div`
 `;
 export const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
+
   width: 100%;
+  padding: 0 12px;
+
+  /* mobile (default) */
+  grid-template-columns: 1fr;
+
+  /* (celulares maiores) */
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* tablet */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* desktop */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   max-width: 1400px;
   margin: 0 auto;
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 `;

@@ -7,59 +7,74 @@ export const Title = styled.h1`
 `;
 
 export const Form = styled.form`
-  margin-top: 30px;
+  margin-top: 20px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+
+  width: 100%;
+  padding: 0 12px;
+
   input {
     width: 100%;
-    max-width: 400px;
-    height: 44px;
+    max-width: 100%;
+    height: 48px;
+
     padding: 0 12px;
+
     border: 1px solid #334155;
     border-radius: 8px;
+
     background: #1e293b;
     color: #f1f5f9;
-    transition: all 0.2s ease;
+
+    font-size: 16px;
 
     &::placeholder {
       color: #94a3b8;
     }
+
     &:focus {
       outline: none;
       border-color: ${primaryColor};
       box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
     }
   }
+
   button {
     width: 100%;
-    max-width: 400px;
-    height: 44px;
-    border: none;
+    max-width: 100%;
+    height: 48px;
+
     border-radius: 8px;
-    background-color: ${primaryColor};
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    &:hover {
-      filter: brightness(0.9);
-    }
+
     &:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
     }
   }
+
   label {
     width: 100%;
-    max-width: 400px;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    input,
+    button,
+    label {
+      max-width: 400px;
+    }
+
+    gap: 16px;
   }
 `;
 
 export const Select = styled.select`
   width: 100%;
-  max-width: 400px;
-  height: 44px;
+  max-width: 100%;
+  height: 48px;
 
   padding: 0 12px;
 
@@ -69,28 +84,35 @@ export const Select = styled.select`
   background: #1e293b;
   color: #f1f5f9;
 
+  font-size: 16px;
+
   appearance: none;
 
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:focus {
-    outline: none;
-    border-color: ${primaryColor};
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+  @media (min-width: 768px) {
+    max-width: 400px;
   }
 `;
 export const ExercicioGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
   width: 100%;
   margin-top: 20px;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
 `;
 export const CardFotos = styled.div`
   width: 100%;
-  height: 100%;
-  overflow: visible;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 
   .slick-slider,
   .slick-list,
@@ -104,7 +126,5 @@ export const CardFotos = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    display: block;
   }
 `;

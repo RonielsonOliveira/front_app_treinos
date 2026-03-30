@@ -15,14 +15,20 @@ export default createGlobalStyle`
     outline: none;
     box-sizing: border-box;
   }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     font-family: sans-serif;
     background:#0f172a;
-    color: ${primaryDarkColor}
-
+    color: ${primaryDarkColor};
   }
 
-  html, body, #root {
+  #root {
     height: 100%;
   }
 
@@ -60,12 +66,21 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  width: 80%;
+  width: 100%;
   min-height: 100%;
-  background: #0f172a;
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 4px;
 
-  box-sizing: border-box;
+  background: #0f172a;
+
+  margin: 0;
+
+  @media (min-width: 768px) {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 24px;
+    border-radius: 8px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
 `;
