@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Form, Title, Container } from "./styled";
+import { Form, Title } from "./styled";
+import { Container } from "../../styles/GlobalStyles";
+
 import Loading from "../../components/Loading";
 
 import useAluno from "../../hooks/useAluno";

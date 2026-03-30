@@ -12,7 +12,7 @@ export const ExercicioCheck = styled.label`
   border-radius: 8px;
 
   img {
-    width: 250px;
+    max-width: 250px;
     height: 250px;
   }
   &:hover {
@@ -25,7 +25,8 @@ export const Exercicio = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: ${primaryColor};
+  background-color: #1e293b;
+  border-radius: 8px;
   cursor: pointer;
 `;
 export const ExercicioInfoWrapper = styled.div`

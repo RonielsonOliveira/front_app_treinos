@@ -3,7 +3,7 @@ import { primaryColor, primaryDarkColor } from "../../config/colors.js";
 
 export const Nav = styled.nav`
   display: flex;
-  background: ${primaryColor};
+  background: #020617;
   flex-direction: row;
   padding: 20px;
   align-items: center;
@@ -15,7 +15,7 @@ export const Nav = styled.nav`
     display: flex;
     align-items: center;
     margin-right: 10px;
-    color: #fff;
+    color: #f1f5f9;
     font-weight: bold;
     text-decoration: none;
 
@@ -31,11 +31,18 @@ export const Nav = styled.nav`
     }
   }
 
-  .userLoggedWrapper,
+  .userLoggedWrapper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 160px;
+  }
+
   .userNoLoggedWrapper {
     padding: 10px;
     display: flex;
     align-items: center;
+    margin-right: 160px;
   }
 
   .menu {

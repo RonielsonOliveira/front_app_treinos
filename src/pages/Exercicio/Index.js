@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { get } from "lodash";
 
 import { Container } from "../../styles/GlobalStyles";
-import { Form, Title, FotosGrid } from "./styled";
+import { Form, Title, FotosGrid, UploadBox } from "./styled";
 
 import Loading from "../../components/Loading";
 import FotosPreview from "../../components/FotosPreview";
@@ -127,14 +127,16 @@ export default function Exercicio() {
           onChange={handleChange}
           placeholder="Número de repetições"
         />
-
-        <input
-          type="file"
-          accept="image/png, image/jpeg"
-          multiple
-          onChange={handleFotoChange}
-        />
-
+        <Title>Adicionar Imagens do Exercicio</Title>
+        <UploadBox>
+          <span>+</span>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            multiple
+            onChange={handleFotoChange}
+          />
+        </UploadBox>
         <FotosGrid>
           <FotosPreview fotos={fotos} novasFotos={novasFotos} />
         </FotosGrid>

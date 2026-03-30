@@ -38,6 +38,8 @@ export const Card = styled.div`
     box-shadow 0.25s ease;
 
   &:hover {
+    cursor: pointer;
+    background-color: #334155;
     transform: translateY(-1px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   }
@@ -71,7 +73,12 @@ export const CardInfo = styled.div`
   width: 100%;
   flex-direction: column;
   padding: 16px;
-  background-color: ${primaryColor};
+  background-color: #1e293b;
+  &:hover {
+    cursor: pointer;
+    background-color: #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
 
   h3 {
     color: white;

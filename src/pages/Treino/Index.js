@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Container } from "../../styles/GlobalStyles";
-import { Form, Title } from "./styled";
+import { ExercicioGrid, Form, Select, Title } from "./styled";
 
 import Loading from "../../components/Loading";
 import ExercicioCard from "../../components/ExercicioCard";
@@ -94,7 +94,7 @@ export default function Treino() {
 
         <label>Aluno</label>
 
-        <select value={alunoId} onChange={(e) => setAlunoId(e.target.value)}>
+        <Select value={alunoId} onChange={(e) => setAlunoId(e.target.value)}>
           <option value="">Sem aluno</option>
 
           {alunos.map((aluno) => (
@@ -102,11 +102,11 @@ export default function Treino() {
               {aluno.nome} {aluno.sobrenome}
             </option>
           ))}
-        </select>
+        </Select>
 
         <label>Exercícios</label>
 
-        <div className="exercicioGrid">
+        <ExercicioGrid>
           {exercicios.map((ex) => (
             <ExercicioCard
               key={ex.id}
@@ -115,7 +115,7 @@ export default function Treino() {
               onChange={() => toggleExercicio(ex.id)}
             />
           ))}
-        </div>
+        </ExercicioGrid>
 
         <button type="submit">Salvar</button>
       </Form>

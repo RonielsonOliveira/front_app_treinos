@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 import { isEmail } from "validator";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Container } from "../../styles/GlobalStyles";
 
-import { Form, Title, Container } from "./styled.js";
+import { Form, Title } from "./styled.js";
 import Loading from "../../components/Loading/index.js";
 import * as actions from "../../store/modules/auth/actions.js";
 
