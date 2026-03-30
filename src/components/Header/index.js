@@ -64,10 +64,12 @@ export default function Header() {
                     </Link>
                   </div>
                 ) : (
-                  <Link to="/me/treinos">
-                    <FaHome size={24} />
-                    <span>Ver treinos</span>
-                  </Link>
+                  <div className="menu">
+                    <Link to="/me/treinos">
+                      <FaHome size={24} />
+                      <span>Ver treinos</span>
+                    </Link>
+                  </div>
                 )}
               </div>
             </DesktopMenu>
