@@ -121,9 +121,19 @@ export default function Header() {
                 </Link>
               </>
             ) : (
-              <Link to="/me/treinos" onClick={() => setMenuOpen(false)}>
-                Inicio
-              </Link>
+              <>
+                {" "}
+                <div>
+                  {role == "user" ? (
+                    <div className="title-menu">Menu Professor</div>
+                  ) : (
+                    <div className="title-menu">Menu Aluno</div>
+                  )}
+                </div>
+                <Link to="/me/treinos" onClick={() => setMenuOpen(false)}>
+                  Inicio
+                </Link>
+              </>
             )}
           </>
         ) : (

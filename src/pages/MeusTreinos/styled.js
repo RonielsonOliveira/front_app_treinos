@@ -7,7 +7,7 @@ export const Title = styled.h1`
   align-items: center;
   padding: 2px;
   justify-content: center;
-
+  color: #fff;
   margin: 0 auto;
   font-size: 40px;
   font-family:
@@ -34,6 +34,7 @@ export const TreinoTitle = styled.div`
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
+
   h3 {
     padding: 4px;
     font-size: 24px;

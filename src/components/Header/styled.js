@@ -175,6 +175,10 @@ export const MobileMenu = styled.div`
     color: #fff;
     font-size: 18px;
   }
+  .title-menu {
+    margin-right: 10px;
+    color: white;
+  }
 
   @media (min-width: 769px) {
     display: none;

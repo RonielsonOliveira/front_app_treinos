@@ -1,27 +1,28 @@
 import React from "react";
-import { TreinoCard, TreinoTitle, Arrow } from "../../pages/MeusTreinos/styled";
-
 import ExercicioCard from "../ExercicioCard";
+
+import { Header, Info, Arrow, Content } from "./styled";
+import { Container } from "../../styles/GlobalStyles";
 
 export default function TreinoItem({ treino, isOpen, onToggle }) {
   return (
-    <div className="treinoItem">
-      <TreinoTitle onClick={() => onToggle(treino.id)}>
-        <div>
+    <Container>
+      <Header onClick={() => onToggle(treino.id)}>
+        <Info>
           <h3>{treino.nome}</h3>
           <span>{treino.descricao}</span>
-        </div>
+        </Info>
 
         <Arrow isOpen={isOpen}>▼</Arrow>
-      </TreinoTitle>
+      </Header>
 
       {isOpen && (
-        <TreinoCard>
+        <Content>
           {treino.Exercicios.map((ex) => (
             <ExercicioCard key={ex.id} exercicio={ex} />
           ))}
-        </TreinoCard>
+        </Content>
       )}
-    </div>
+    </Container>
   );
 }
