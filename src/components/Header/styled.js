@@ -5,7 +5,6 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 16px;
   background: #020617;
 
@@ -59,36 +58,12 @@ export const Nav = styled.nav`
     margin-right: 10px;
   }
 
-  span {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: ${primaryDarkColor};
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
+  label {
+    padding: 5px;
 
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
-  }
-
-  .span-left {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: ${primaryDarkColor};
-    padding: 5px 10px;
-    border-radius: 4px;
-    white-space: nowrap;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-5px);
-    transition: all 0.3s ease;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   @media (max-width: 768px) {
@@ -112,26 +87,49 @@ export const Nav = styled.nav`
 export const DesktopMenu = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  width: 100%;
 
   a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
     color: #f1f5f9;
     font-weight: bold;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
 
     &:hover {
       color: ${primaryColor};
     }
   }
 
-  @media (max-width: 768px) {
-    .menu {
-      display: none;
-    }
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-    .userLoggedWrapper {
-      flex: 1;
-      justify-content: flex-start;
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .userWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    label {
+      color: white;
+      font-weight: 600;
     }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 export const MobileMenuButton = styled.button`
@@ -160,6 +158,7 @@ export const MobileMenu = styled.div`
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
 
   transform: translateX(100%);
@@ -175,9 +174,36 @@ export const MobileMenu = styled.div`
     color: #fff;
     font-size: 18px;
   }
+  .options {
+    display: flex;
+
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin-bottom: 10px;
+    a {
+      padding: 5px;
+      font-size: 20px;
+      font-weight: 200;
+    }
+  }
+  .userNoLoggedWrapper {
+    display: flex;
+    flex-direction: column;
+    .online-status {
+    }
+    .status {
+      color: green;
+      font-weight: 600;
+    }
+  }
+
   .title-menu {
     margin-right: 10px;
+    text-align: center;
     color: white;
+    font-weight: 600;
   }
 
   @media (min-width: 769px) {

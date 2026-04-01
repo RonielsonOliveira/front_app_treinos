@@ -28,120 +28,146 @@ export default function Header() {
   return (
     <>
       <Nav>
-        <div className="left">
-          <MobileMenuButton onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
-          </MobileMenuButton>
-
-          {isLoggedIn && (
-            <DesktopMenu>
-              <div className="userLoggedWrapper">
-                {role == "user" ? (
+        <MobileMenuButton onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </MobileMenuButton>
+        <DesktopMenu>
+          {isLoggedIn ? (
+            <>
+              {role === "user" ? (
+                <>
                   <div className="menu">
-                    <div>
-                      {role == "user" ? (
-                        <div className="title-menu">Menu Professor</div>
-                      ) : (
-                        <div className="title-menu">Menu Aluno</div>
-                      )}
-                    </div>
                     <Link to="/">
                       <FaHome size={24} />
-                      <span>Inicio</span>
+                      <label>Inicio</label>
                     </Link>
+
                     <Link to="/exercicio">
                       <CgGym size={24} />
-                      <span>Adicionar Exercicio</span>
+                      <label>Adicionar Exercicio</label>
                     </Link>
 
                     <Link to="/treino">
                       <GiWeightLiftingUp size={24} />
-                      <span>Adicionar Treino</span>
+                      <label>Adicionar Treino</label>
                     </Link>
+
                     <Link to="/aluno">
                       <HiUserAdd size={24} />
-                      <span>Adicionar Aluno</span>
+                      <label>Adicionar Aluno</label>
                     </Link>
                   </div>
-                ) : (
-                  <div className="menu">
-                    <Link to="/me/treinos">
-                      <FaHome size={24} />
-                      <span>Ver treinos</span>
-                    </Link>
+
+                  <div className="right">
+                    <div className="userWrapper">
+                      <FaCircle size={16} color="#66ff33" />
+                      <label>Online</label>
+
+                      <Link to="/register">
+                        <FaUserAlt size={20} />
+                        <label>Editar dados</label>
+                      </Link>
+
+                      <Link onClick={handleLogout} to="#">
+                        <FaPowerOff size={20} />
+                        <label>Sair</label>
+                      </Link>
+                    </div>
                   </div>
-                )}
+                </>
+              ) : (
+                <div className="menu">
+                  <Link to="/me/treinos">
+                    <FaHome size={24} />
+                    <label>Ver treinos</label>
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="right">
+              <div className="userWrapper">
+                <Link to="/register">
+                  <FaUserAlt size={20} />
+                  <label>Criar Conta</label>
+                </Link>
               </div>
-            </DesktopMenu>
+            </div>
           )}
-        </div>
+        </DesktopMenu>
 
-        <div className="right">
-          <div className="userNoLoggedWrapper">
-            {isLoggedIn && (
-              <FaCircle className="online-status" size={24} color="#66ff33" />
-            )}
+        <MobileMenu className={menuOpen ? "open" : ""}>
+          {isLoggedIn ? (
+            <>
+              {role == "user" ? (
+                <>
+                  <div>
+                    {role == "user" ? (
+                      <div className="title-menu">Menu Professor</div>
+                    ) : (
+                      <div className="title-menu">Menu Aluno</div>
+                    )}
+                  </div>
+                  <div className="options">
+                    <Link to="/" onClick={() => setMenuOpen(false)}>
+                      Inicio
+                    </Link>
+                    <Link to="/exercicio" onClick={() => setMenuOpen(false)}>
+                      Exercicio
+                    </Link>
+                    <Link to="/treino" onClick={() => setMenuOpen(false)}>
+                      Treino
+                    </Link>
+                    <Link to="/aluno" onClick={() => setMenuOpen(false)}>
+                      Aluno
+                    </Link>
+                  </div>
+                  <div className="userNoLoggedWrapper">
+                    {isLoggedIn && (
+                      <>
+                        <label className="status">Online</label>
+                      </>
+                    )}
+                    <Link to="/register">
+                      <FaUserAlt size={24} />
+                      {isLoggedIn ? (
+                        <label>Editar dados</label>
+                      ) : (
+                        <label>Criar Conta</label>
+                      )}
+                    </Link>
 
-            <Link to="/register">
-              <FaUserAlt size={24} />
+                    {isLoggedIn && (
+                      <Link onClick={handleLogout} to="/logout">
+                        <FaPowerOff size={24} />
+                        <label>Sair</label>
+                      </Link>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <div>
+                    {role == "user" ? (
+                      <div className="title-menu">Menu Professor</div>
+                    ) : (
+                      <div className="title-menu">Menu Aluno</div>
+                    )}
+                  </div>
+                  <Link to="/me/treinos" onClick={() => setMenuOpen(false)}>
+                    Inicio
+                  </Link>
+                </>
+              )}
+            </>
+          ) : (
+            <Link to="/login" onClick={() => setMenuOpen(false)}>
+              Login
             </Link>
-
-            {isLoggedIn && (
-              <Link onClick={handleLogout} to="/logout">
-                <FaPowerOff size={24} />
-              </Link>
-            )}
-          </div>
-        </div>
+          )}
+        </MobileMenu>
       </Nav>
-
-      <MobileMenu className={menuOpen ? "open" : ""}>
-        {isLoggedIn ? (
-          <>
-            {role == "user" ? (
-              <>
-                <div>
-                  {role == "user" ? (
-                    <div className="title-menu">Menu Professor</div>
-                  ) : (
-                    <div className="title-menu">Menu Aluno</div>
-                  )}
-                </div>
-                <Link to="/" onClick={() => setMenuOpen(false)}>
-                  Inicio
-                </Link>
-                <Link to="/exercicio" onClick={() => setMenuOpen(false)}>
-                  Exercicio
-                </Link>
-                <Link to="/treino" onClick={() => setMenuOpen(false)}>
-                  Treino
-                </Link>
-                <Link to="/aluno" onClick={() => setMenuOpen(false)}>
-                  Aluno
-                </Link>
-              </>
-            ) : (
-              <>
-                {" "}
-                <div>
-                  {role == "user" ? (
-                    <div className="title-menu">Menu Professor</div>
-                  ) : (
-                    <div className="title-menu">Menu Aluno</div>
-                  )}
-                </div>
-                <Link to="/me/treinos" onClick={() => setMenuOpen(false)}>
-                  Inicio
-                </Link>
-              </>
-            )}
-          </>
-        ) : (
-          <Link to="/login" onClick={() => setMenuOpen(false)}>
-            Login
-          </Link>
-        )}
-      </MobileMenu>
     </>
   );
 }
