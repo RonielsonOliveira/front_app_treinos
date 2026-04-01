@@ -4,8 +4,7 @@ import { primaryColor } from "../../config/colors.js";
 export const Title = styled.h1`
   text-align: center;
   color: #f1f5f9;
-
-  font-size: 20px;
+  margin-top: 20px;
 
   @media (min-width: 768px) {
     font-size: 24px;
@@ -53,16 +52,12 @@ export const Form = styled.form`
   button {
     width: 100%;
     max-width: 400px;
-    height: 48px; /* melhor pra toque */
-
+    height: 48px;
     border: none;
     border-radius: 8px;
-
     background-color: ${primaryColor};
     color: #fff;
-
     font-weight: 600;
-
     transition: all 0.2s ease;
 
     &:active {
@@ -74,7 +69,6 @@ export const Form = styled.form`
     width: 100%;
     max-width: 400px;
   }
-
   @media (min-width: 768px) {
     gap: 16px;
   }
@@ -82,16 +76,12 @@ export const Form = styled.form`
 export const UploadBox = styled.label`
   height: 110px;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 2px dashed #334155;
   border-radius: 8px;
-
   background: #1e293b;
-
   transition: all 0.2s ease;
 
   span {
@@ -109,7 +99,6 @@ export const UploadBox = styled.label`
     &:hover {
       border-color: ${primaryColor};
       background: rgba(34, 197, 94, 0.1);
-
       span {
         color: ${primaryColor};
       }

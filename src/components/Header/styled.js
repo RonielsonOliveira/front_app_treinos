@@ -45,6 +45,13 @@ export const Nav = styled.nav`
   }
 
   .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .menu-aluno {
+    width: 100%;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
   }
@@ -184,7 +191,7 @@ export const MobileMenu = styled.div`
     margin-bottom: 10px;
     a {
       padding: 5px;
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 200;
     }
   }
@@ -202,6 +209,7 @@ export const MobileMenu = styled.div`
   .title-menu {
     margin-right: 10px;
     text-align: center;
+    font-size: 20px;
     color: white;
     font-weight: 600;
   }

@@ -4,6 +4,7 @@ import { primaryColor } from "../../config/colors.js";
 export const Title = styled.h1`
   text-align: center;
   color: #f1f5f9;
+  margin-top: 20px;
 `;
 
 export const Form = styled.form`
@@ -57,7 +58,10 @@ export const Form = styled.form`
 
   label {
     width: 100%;
+    text-align: center;
     max-width: 100%;
+    font-size: 20px;
+    color: white;
   }
 
   @media (min-width: 768px) {

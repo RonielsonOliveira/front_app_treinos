@@ -19,12 +19,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
-  const handleLogout = (e) => {
-    e.preventDefault();
-    navigate("/");
+  const handleLogout = () => {
     dispatch(actions.logout());
+    navigate("/");
   };
 
+  const onLogoutClick = () => {
+    handleLogout();
+    setMenuOpen(false);
+  };
   return (
     <>
       <Nav>
@@ -76,11 +79,20 @@ export default function Header() {
                   </div>
                 </>
               ) : (
-                <div className="menu">
+                <div className="menu-aluno">
                   <Link to="/me/treinos">
                     <FaHome size={24} />
                     <label>Ver treinos</label>
                   </Link>
+
+                  {isLoggedIn && (
+                    <div className="right">
+                      <Link onClick={onLogoutClick}>
+                        <FaPowerOff size={20} />
+                        <label>Sair</label>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               )}
             </>
@@ -101,12 +113,8 @@ export default function Header() {
             <>
               {role == "user" ? (
                 <>
-                  <div>
-                    {role == "user" ? (
-                      <div className="title-menu">Menu Professor</div>
-                    ) : (
-                      <div className="title-menu">Menu Aluno</div>
-                    )}
+                  <div className="title-menu">
+                    {role === "user" ? "Menu Professor" : "Menu Aluno"}
                   </div>
                   <div className="options">
                     <Link to="/" onClick={() => setMenuOpen(false)}>
@@ -128,7 +136,7 @@ export default function Header() {
                         <label className="status">Online</label>
                       </>
                     )}
-                    <Link to="/register">
+                    <Link to="/register" onClick={() => setMenuOpen(false)}>
                       <FaUserAlt size={24} />
                       {isLoggedIn ? (
                         <label>Editar dados</label>
@@ -138,8 +146,8 @@ export default function Header() {
                     </Link>
 
                     {isLoggedIn && (
-                      <Link onClick={handleLogout} to="/logout">
-                        <FaPowerOff size={24} />
+                      <Link onClick={onLogoutClick}>
+                        <FaPowerOff size={20} />
                         <label>Sair</label>
                       </Link>
                     )}
@@ -158,6 +166,12 @@ export default function Header() {
                   <Link to="/me/treinos" onClick={() => setMenuOpen(false)}>
                     Inicio
                   </Link>
+                  {isLoggedIn && (
+                    <Link onClick={onLogoutClick}>
+                      <FaPowerOff size={20} />
+                      <label>Sair</label>
+                    </Link>
+                  )}
                 </>
               )}
             </>

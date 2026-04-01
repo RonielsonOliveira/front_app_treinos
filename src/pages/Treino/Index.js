@@ -92,7 +92,7 @@ export default function Treino() {
           placeholder="Descrição"
         />
 
-        <label>Aluno</label>
+        <label>Selecione um aluno</label>
 
         <Select value={alunoId} onChange={(e) => setAlunoId(e.target.value)}>
           <option value="">Sem aluno</option>

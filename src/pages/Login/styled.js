@@ -19,6 +19,12 @@ export const Container = styled.section`
   margin: 20px auto;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
 `;
 
 export const LoginWrapper = styled.div`
@@ -36,6 +42,11 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 8px;
+    justify-content: center;
+  }
 
   input {
     margin-bottom: 20px;
@@ -45,6 +56,10 @@ export const Form = styled.form`
     padding: 0 10px;
     border-radius: 4px;
     border: 1px solid #ddd;
+    @media (max-width: 768px) {
+      width: 100%;
+      border-radius: 8px;
+    }
   }
   button {
     margin: 0 auto;
@@ -52,12 +67,20 @@ export const Form = styled.form`
     margin: 10px;
     border-radius: 8px;
     background-color: ${primaryColor};
+    @media (max-width: 768px) {
+      width: 70%;
+      border-radius: 8px;
+    }
   }
   select {
     padding: 0 10px;
     margin: 10px;
     width: 30%;
     cursor: pointer;
+    @media (max-width: 768px) {
+      width: 70%;
+      border-radius: 8px;
+    }
   }
 `;
 
@@ -72,8 +95,10 @@ export const ImageLogin = styled.div`
   img {
     width: 100%;
     border-radius: 50px 0 0 50px;
-
     max-height: 100%;
     object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
