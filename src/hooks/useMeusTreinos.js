@@ -9,7 +9,7 @@ export function useMeusTreinos() {
       try {
         setIsLoading(true);
         const { data } = await axios.get("/alunoPage/me/treinos");
-        console.log("Dados do backend:", data);
+
         setTreinos(data);
         setIsLoading(false);
       } catch {

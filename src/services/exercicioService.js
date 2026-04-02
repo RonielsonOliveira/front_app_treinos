@@ -19,7 +19,7 @@ export async function uploadFotos(exercicioId, fotos) {
   formData.append("exercicio_id", exercicioId);
 
   fotos.forEach((file) => {
-    formData.append("fotoexercicio", file);
+    formData.append("fotos", file);
   });
 
   await axios.post("/fotos", formData, {

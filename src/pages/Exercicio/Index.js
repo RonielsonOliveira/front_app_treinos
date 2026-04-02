@@ -26,8 +26,6 @@ export default function Exercicio() {
   const [form, setForm] = useState({
     nome: "",
     descricao: "",
-    numerodeSeries: "",
-    numerodeRepeticoes: "",
   });
 
   const [fotos, setFotos] = useState([]);
@@ -39,8 +37,6 @@ export default function Exercicio() {
     setForm({
       nome: exercicio.nome,
       descricao: exercicio.descricao,
-      numerodeSeries: exercicio.numerodeSeries,
-      numerodeRepeticoes: exercicio.numerodeRepeticoes,
     });
 
     setFotos(get(exercicio, "FotoExercicios", []));
@@ -110,22 +106,6 @@ export default function Exercicio() {
           value={form.descricao}
           onChange={handleChange}
           placeholder="Descrição"
-        />
-
-        <input
-          name="numerodeSeries"
-          type="number"
-          value={form.numerodeSeries}
-          onChange={handleChange}
-          placeholder="Número de séries"
-        />
-
-        <input
-          name="numerodeRepeticoes"
-          type="number"
-          value={form.numerodeRepeticoes}
-          onChange={handleChange}
-          placeholder="Número de repetições"
         />
         <Title>Adicionar Imagens do Exercicio</Title>
         <UploadBox>

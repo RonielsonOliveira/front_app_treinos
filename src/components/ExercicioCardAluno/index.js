@@ -13,12 +13,7 @@ import {
   ExercicioSeriesERepeticoes,
 } from "./styled";
 
-export default function ExercicioCard({
-  exercicio,
-  checked,
-  onChange,
-  children,
-}) {
+export default function ExercicioCard({ exercicio, checked, onChange }) {
   console.log(exercicio);
   return (
     <ExercicioCheck>
@@ -35,8 +30,10 @@ export default function ExercicioCard({
           <ExercicioInfoTitle>{exercicio.nome}</ExercicioInfoTitle>
 
           <ExercicioInfoDetails>{exercicio.descricao}</ExercicioInfoDetails>
-
-          {children}
+          <ExercicioSeriesERepeticoes>
+            {exercicio.TreinoExercicio?.numerodeSeries}x
+            {exercicio.TreinoExercicio?.numerodeRepeticoes}
+          </ExercicioSeriesERepeticoes>
 
           <Footer>
             <span></span>

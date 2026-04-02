@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -22,6 +22,10 @@ export default function Treino() {
   const [alunoId, setAlunoId] = useState("");
   const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
 
+  const exerciciosMap = useMemo(() => {
+    return Object.fromEntries(exerciciosSelecionados.map((e) => [e.id, e]));
+  }, [exerciciosSelecionados]);
+
   useEffect(() => {
     if (!treino) return;
 
@@ -29,13 +33,29 @@ export default function Treino() {
     setDescricao(treino.descricao);
     setAlunoId(treino.aluno_id || "");
 
-    const ids = treino.Exercicios?.map((ex) => Number(ex.id)) || [];
-    setExerciciosSelecionados(ids);
+    const exerciciosComSeries =
+      treino.Exercicios?.map((ex) => ({
+        id: ex.id,
+        numerodeSeries: ex.TreinoExercicio?.numerodeSeries ?? 3,
+        numerodeRepeticoes: ex.TreinoExercicio?.numerodeRepeticoes ?? 10,
+      })) || [];
+
+    setExerciciosSelecionados(exerciciosComSeries);
   }, [treino]);
 
   const toggleExercicio = (id) => {
+    setExerciciosSelecionados((prev) => {
+      if (prev.some((ex) => ex.id === id)) {
+        return prev.filter((ex) => ex.id !== id);
+      }
+
+      return [...prev, { id, numerodeSeries: 12, numerodeRepeticoes: 3 }];
+    });
+  };
+
+  const updateExercicio = (id, field, value) => {
     setExerciciosSelecionados((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.map((ex) => (ex.id === id ? { ...ex, [field]: Number(value) } : ex))
     );
   };
 
@@ -52,13 +72,26 @@ export default function Treino() {
       return;
     }
 
+    if (
+      exerciciosSelecionados.some(
+        (ex) => ex.numerodeSeries <= 0 || ex.numerodeRepeticoes <= 0
+      )
+    ) {
+      toast.error("Séries e repetições devem ser maiores que 0");
+      return;
+    }
+
     const payload = {
       nome,
       descricao,
       aluno_id: alunoId ? Number(alunoId) : null,
-      exercicios: exerciciosSelecionados,
+      exercicios: exerciciosSelecionados.map((ex) => ({
+        id: ex.id,
+        numerodeSeries: Number(ex.numerodeSeries),
+        numerodeRepeticoes: Number(ex.numerodeRepeticoes),
+      })),
     };
-
+    console.log("payload:", payload);
     try {
       if (id) {
         await updateTreino(id, payload);
@@ -68,7 +101,8 @@ export default function Treino() {
         toast.success("Treino criado!");
         navigate(`/treino/${data.id}/edit`);
       }
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Erro ao salvar treino");
     }
   };
@@ -107,14 +141,45 @@ export default function Treino() {
         <label>Exercícios</label>
 
         <ExercicioGrid>
-          {exercicios.map((ex) => (
-            <ExercicioCard
-              key={ex.id}
-              exercicio={ex}
-              checked={exerciciosSelecionados.includes(ex.id)}
-              onChange={() => toggleExercicio(ex.id)}
-            />
-          ))}
+          {exercicios.map((ex) => {
+            const selecionado = exerciciosMap[ex.id];
+
+            return (
+              <ExercicioCard
+                key={ex.id}
+                exercicio={ex}
+                checked={!!selecionado}
+                onChange={() => toggleExercicio(ex.id)}
+              >
+                {selecionado && (
+                  <>
+                    <label>Series</label>
+                    <input
+                      type="number"
+                      placeholder="Séries"
+                      value={selecionado.numerodeSeries} // dado do relacionamento
+                      onChange={(e) =>
+                        updateExercicio(ex.id, "numerodeSeries", e.target.value)
+                      }
+                    />
+                    <label>Repetições</label>
+                    <input
+                      type="number"
+                      placeholder="Repetições"
+                      value={selecionado.numerodeRepeticoes} // dado do relacionamento
+                      onChange={(e) =>
+                        updateExercicio(
+                          ex.id,
+                          "numerodeRepeticoes",
+                          e.target.value
+                        )
+                      }
+                    />
+                  </>
+                )}
+              </ExercicioCard>
+            );
+          })}
         </ExercicioGrid>
 
         <button type="submit">Salvar</button>

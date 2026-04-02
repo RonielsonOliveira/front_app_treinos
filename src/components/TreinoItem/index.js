@@ -1,5 +1,5 @@
 import React from "react";
-import ExercicioCard from "../ExercicioCard";
+import ExercicioCardAluno from "../ExercicioCardAluno";
 
 import { Header, Info, Arrow, Content } from "./styled";
 import { Container } from "../../styles/GlobalStyles";
@@ -19,7 +19,7 @@ export default function TreinoItem({ treino, isOpen, onToggle }) {
       {isOpen && (
         <Content>
           {treino.Exercicios.map((ex) => (
-            <ExercicioCard key={ex.id} exercicio={ex} />
+            <ExercicioCardAluno key={ex.id} exercicio={ex} />
           ))}
         </Content>
       )}
