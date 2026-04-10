@@ -53,7 +53,7 @@ export const TreinoTitle = styled.div`
 export const TreinoCard = styled.div`
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 420px));
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   width: 100%;
   padding: 12px;

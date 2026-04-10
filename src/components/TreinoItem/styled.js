@@ -15,7 +15,6 @@ export const Header = styled.div`
 
   transition: all 0.2s ease;
 
-  /* melhora toque no mobile */
   min-height: 60px;
 
   &:hover {
@@ -50,7 +49,7 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
 
-  max-width: 80%; /* evita quebrar layout com textos grandes */
+  max-width: 80%;
 
   h3 {
     white-space: nowrap;
@@ -88,8 +87,7 @@ export const Content = styled.div`
   border-radius: 10px;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 👈 2 por linha */
-  gap: 10px;
+  grid-template-columns: repeat(1, 1fr);
 
   animation: fadeIn 0.2s ease;
 
@@ -105,7 +103,7 @@ export const Content = styled.div`
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr); /* opcional: 3 no desktop */
+    grid-template-columns: repeat(3, 1fr);
     padding: 16px;
     gap: 12px;
   }

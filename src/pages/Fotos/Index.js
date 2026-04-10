@@ -2,7 +2,7 @@ import React from "react";
 import { get } from "lodash";
 import { Container } from "../../styles/GlobalStyles.js";
 import Loading from "../../components/Loading";
-import { Title, Form, FotosGrid } from "./styled.js"; // vamos usar um grid para múltiplas fotos
+import { Title, Form } from "./styled.js";
 import axios from "../../services/axios.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,16 +14,15 @@ export default function Fotos() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [isLoading, setIsLoading] = React.useState(false);
-  const [fotos, setFotos] = React.useState([]); // array de fotos
+  const [fotos, setFotos] = React.useState([]);
 
-  // Pega todas as fotos do exercício
   React.useEffect(() => {
     const getData = async () => {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/exercicios/${id}`);
         const fotosExercicios = get(data, "FotoExercicios", []);
-        setFotos(fotosExercicios.map((f) => f.url)); // pega apenas as URLs
+        setFotos(fotosExercicios.map((f) => f.url));
         setIsLoading(false);
       } catch (error) {
         toast.error("Erro ao obter imagens");
@@ -34,17 +33,16 @@ export default function Fotos() {
     getData();
   }, [id]);
 
-  // Faz upload de novas fotos
   const handleChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const fotoURL = URL.createObjectURL(file);
-    setFotos((prev) => [...prev, fotoURL]); // pré-visualização
+    setFotos((prev) => [...prev, fotoURL]);
 
     const formData = new FormData();
     formData.append("exercicio_id", id);
-    formData.append("foto", file); // qualquer nome funciona porque backend usa .any()
+    formData.append("foto", file);
 
     try {
       setIsLoading(true);
@@ -53,9 +51,9 @@ export default function Fotos() {
           "Content-Type": "multipart/form-data",
         },
       });
-      // Atualiza com a foto criada pelo backend (para garantir URL real)
+
       const novaFoto = get(data, "foto.url", fotoURL);
-      setFotos((prev) => [...prev.slice(0, -1), novaFoto]); // substitui a prévia pela real
+      setFotos((prev) => [...prev.slice(0, -1), novaFoto]);
       toast.success("Foto enviada com sucesso");
       setIsLoading(false);
     } catch (error) {

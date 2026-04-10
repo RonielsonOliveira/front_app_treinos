@@ -19,7 +19,7 @@ export const Form = styled.form`
 
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* 👈 melhor no mobile */
+  align-items: stretch;
   gap: 12px;
 
   input {

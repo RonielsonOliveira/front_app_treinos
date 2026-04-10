@@ -97,14 +97,7 @@ export default function Header() {
               )}
             </>
           ) : (
-            <div className="right">
-              <div className="userWrapper">
-                <Link to="/register">
-                  <FaUserAlt size={20} />
-                  <label>Criar Conta</label>
-                </Link>
-              </div>
-            </div>
+            <></>
           )}
         </DesktopMenu>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "../../styles/GlobalStyles";
 import Loading from "../../components/Loading";
-import { Title } from "./styled";
+import { Title, TreinoCard } from "./styled";
 
 import { useMeusTreinos } from "../../hooks/useMeusTreinos";
 import { useToggle } from "../../hooks/useToggle";
