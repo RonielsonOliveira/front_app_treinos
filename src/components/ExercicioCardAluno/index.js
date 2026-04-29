@@ -7,44 +7,27 @@ import {
   ImageWrapper,
   ExercicioInfoWrapper,
   ExercicioInfoTitle,
-  ExercicioInfoDetails,
   Footer,
   CheckboxWrapper,
-  ExercicioSeriesERepeticoes,
 } from "./styled";
 
-export default function ExercicioCard({ exercicio, checked, onChange }) {
-  console.log(exercicio);
+export default function ExercicioCardAluno({
+  exercicio,
+  checked,
+  onChange,
+  onClick,
+}) {
   return (
     <ExercicioCheck>
-      <Exercicio>
-        <ImageWrapper>
-          {exercicio.FotoExercicios?.[0] ? (
-            <img src={exercicio.FotoExercicios[0].url} alt={exercicio.nome} />
-          ) : (
-            <FaUserCircle size={80} />
-          )}
-        </ImageWrapper>
-
+      <Exercicio onClick={() => onClick(exercicio)}>
+        {" "}
+        {/* 👈 só aqui abre modal */}
         <ExercicioInfoWrapper>
-          <ExercicioInfoTitle>{exercicio.nome}</ExercicioInfoTitle>
-
-          <ExercicioInfoDetails>{exercicio.descricao}</ExercicioInfoDetails>
-          <ExercicioSeriesERepeticoes>
-            {exercicio.TreinoExercicio?.numerodeSeries}x
-            {exercicio.TreinoExercicio?.numerodeRepeticoes}
-          </ExercicioSeriesERepeticoes>
+          <ExercicioInfoTitle>{exercicio.descricao}</ExercicioInfoTitle>
 
           <Footer>
-            <span></span>
-
-            <CheckboxWrapper>
-              <input
-                className="checkbox"
-                type="checkbox"
-                checked={checked}
-                onChange={onChange}
-              />
+            <CheckboxWrapper onClick={(e) => e.stopPropagation()}>
+              <input type="checkbox" checked={checked} onChange={onChange} />
             </CheckboxWrapper>
           </Footer>
         </ExercicioInfoWrapper>

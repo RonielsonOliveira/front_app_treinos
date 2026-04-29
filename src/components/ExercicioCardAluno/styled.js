@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { primaryColor, primaryDarkColor } from "../../config/colors.js";
 
-export const ExercicioCheck = styled.label`
+export const ExercicioCheck = styled.div`
   display: block;
   width: 100%;
-
-  border-radius: 12px;
+  padding: 5px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
 
@@ -13,13 +13,8 @@ export const ExercicioCheck = styled.label`
     transform 0.15s ease,
     box-shadow 0.15s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-  }
-
   &:active {
-    transform: scale(0.98);
+    transform: scale(1.02);
   }
 `;
 
@@ -55,7 +50,9 @@ export const ImageWrapper = styled.div`
 
 export const ExercicioInfoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   padding: 12px;
   gap: 8px;
 `;

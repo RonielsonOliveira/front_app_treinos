@@ -86,8 +86,8 @@ export const Content = styled.div`
   background: #0f172a;
   border-radius: 10px;
 
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  flex-direction: column;
 
   animation: fadeIn 0.2s ease;
 

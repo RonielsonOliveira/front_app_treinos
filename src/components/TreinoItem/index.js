@@ -1,10 +1,17 @@
 import React from "react";
 import ExercicioCardAluno from "../ExercicioCardAluno";
 
-import { Header, Info, Arrow, Content } from "./styled";
+import { Header, Info, Arrow, Content, ExerciciosWrapper } from "./styled";
 import { Container } from "../../styles/GlobalStyles";
 
-export default function TreinoItem({ treino, isOpen, onToggle }) {
+export default function TreinoItem({
+  treino,
+  isOpen,
+  onToggle,
+  onSelectExercicio,
+  checkedExercicios = {},
+  onCheck,
+}) {
   return (
     <Container>
       <Header onClick={() => onToggle(treino.id)}>
@@ -19,7 +26,13 @@ export default function TreinoItem({ treino, isOpen, onToggle }) {
       {isOpen && (
         <Content>
           {treino.Exercicios.map((ex) => (
-            <ExercicioCardAluno key={ex.id} exercicio={ex} />
+            <ExercicioCardAluno
+              key={ex.id}
+              exercicio={ex}
+              checked={checkedExercicios[ex.id] || false} // 👈 estado
+              onChange={() => onCheck(ex.id, treino)} // 👈 ação do checkbox
+              onClick={() => onSelectExercicio(ex)} // 👈 modal
+            />
           ))}
         </Content>
       )}
