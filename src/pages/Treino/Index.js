@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Container } from "../../styles/GlobalStyles";
@@ -14,12 +14,18 @@ import { createTreino, updateTreino } from "../../services/treinoService";
 export default function Treino() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const location = useLocation();
+  const alunoOrigem = location.state?.alunoId;
+  const [alunoId, setAlunoId] = useState(alunoOrigem || "");
 
   const { exercicios, alunos, treino, isLoading } = useTreinoData(id);
+  const alunoSelecionado = alunos.find(
+    (aluno) => Number(aluno.id) === Number(alunoId)
+  );
 
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [alunoId, setAlunoId] = useState("");
+
   const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
 
   const exerciciosMap = useMemo(() => {
@@ -95,11 +101,24 @@ export default function Treino() {
     try {
       if (id) {
         await updateTreino(id, payload);
+
         toast.success("Treino atualizado!");
+
+        if (alunoOrigem) {
+          navigate(`/alunos/${alunoOrigem}/treinos`);
+        } else {
+          navigate("/treinos");
+        }
       } else {
         const data = await createTreino(payload);
+
         toast.success("Treino criado!");
-        navigate(`/treino/${data.id}/edit`);
+
+        if (alunoOrigem) {
+          navigate(`/alunos/${alunoOrigem}/treinos`);
+        } else {
+          navigate(`/treino/${data.id}/edit`);
+        }
       }
     } catch (err) {
       console.error(err);
@@ -111,7 +130,15 @@ export default function Treino() {
     <Container>
       <Loading isLoading={isLoading} />
 
-      <Title>{id ? "Editar treino" : "Novo treino"}</Title>
+      <Title>
+        {id
+          ? alunoSelecionado
+            ? `Editar treino de ${alunoSelecionado.nome}`
+            : "Editar treino"
+          : alunoSelecionado
+            ? `Novo treino de ${alunoSelecionado.nome}`
+            : "Novo treino"}
+      </Title>
 
       <Form onSubmit={handleSubmit}>
         <input
@@ -126,17 +153,24 @@ export default function Treino() {
           placeholder="Descrição"
         />
 
-        <label>Selecione um aluno</label>
+        {!alunoOrigem && (
+          <>
+            <label>Selecione um aluno</label>
 
-        <Select value={alunoId} onChange={(e) => setAlunoId(e.target.value)}>
-          <option value="">Sem aluno</option>
+            <Select
+              value={alunoId}
+              onChange={(e) => setAlunoId(e.target.value)}
+            >
+              <option value="">Sem aluno</option>
 
-          {alunos.map((aluno) => (
-            <option key={aluno.id} value={aluno.id}>
-              {aluno.nome} {aluno.sobrenome}
-            </option>
-          ))}
-        </Select>
+              {alunos.map((aluno) => (
+                <option key={aluno.id} value={aluno.id}>
+                  {aluno.nome} {aluno.sobrenome}
+                </option>
+              ))}
+            </Select>
+          </>
+        )}
 
         <label>Exercícios</label>
 

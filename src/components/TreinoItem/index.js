@@ -29,9 +29,9 @@ export default function TreinoItem({
             <ExercicioCardAluno
               key={ex.id}
               exercicio={ex}
-              checked={checkedExercicios[ex.id] || false} // 👈 estado
-              onChange={() => onCheck(ex.id, treino)} // 👈 ação do checkbox
-              onClick={() => onSelectExercicio(ex)} // 👈 modal
+              checked={checkedExercicios[ex.id] || false}
+              onChange={() => onCheck(ex.id, treino)} 
+              onClick={() => onSelectExercicio(ex)}
             />
           ))}
         </Content>

@@ -54,7 +54,10 @@ export default function Header() {
                       <GiWeightLiftingUp size={24} />
                       <label>Adicionar Treino</label>
                     </Link>
-
+                    <Link to="/exercicios">
+                      <GiWeightLiftingUp size={24} />
+                      <label>Gerenciar Exercicios</label>
+                    </Link>
                     <Link to="/aluno">
                       <HiUserAdd size={24} />
                       <label>Adicionar Aluno</label>

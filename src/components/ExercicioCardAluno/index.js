@@ -21,7 +21,7 @@ export default function ExercicioCardAluno({
     <ExercicioCheck>
       <Exercicio onClick={() => onClick(exercicio)}>
         {" "}
-        {/* 👈 só aqui abre modal */}
+        {/* aqui abre modal */}
         <ExercicioInfoWrapper>
           <ExercicioInfoTitle>{exercicio.descricao}</ExercicioInfoTitle>
 

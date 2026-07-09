@@ -8,3 +8,7 @@ export async function createTreino(payload) {
 export async function updateTreino(id, payload) {
   await axios.put(`/treinos/${id}`, payload);
 }
+export const deleteTreino = async (id) => {
+  const { data } = await axios.delete(`/treinos/${id}`);
+  return data;
+};

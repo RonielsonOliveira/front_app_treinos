@@ -8,7 +8,7 @@ export function useMeusTreinos() {
     async function loadTreinos() {
       try {
         setIsLoading(true);
-        const { data } = await axios.get("/alunoPage/me/treinos");
+        const { data } = await axios.get("/me/treinos");
 
         setTreinos(data);
         setIsLoading(false);

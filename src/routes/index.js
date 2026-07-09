@@ -16,22 +16,25 @@ import AlunoTreinos from "../pages/MeusTreinos/Index.js";
 
 import Fotos from "../pages/Fotos/Index.js";
 import Page404 from "../pages/Page404/index.js";
+import Alunos from "../pages/Alunos/index.js";
+import TreinosAluno from "../pages/TreinoAlunos/Index.js";
 
 export default function AppRoutes() {
   return (
     <Routes>
       {/* HOME */}
-      <Route
-        exact
-        path="/"
-        element={<MyRoute component={Exercicios} isClosed />}
-      />
+      <Route exact path="/" element={<MyRoute component={Alunos} isClosed />} />
 
       {/* EXERCÍCIOS */}
       <Route
         exact
         path="/exercicio"
         element={<MyRoute component={Exercicio} isClosed />}
+      />
+      <Route
+        exact
+        path="/exercicios"
+        element={<MyRoute component={Exercicios} isClosed />}
       />
       <Route
         exact
@@ -44,6 +47,10 @@ export default function AppRoutes() {
         exact
         path="/treinos"
         element={<MyRoute component={Treinos} isClosed />}
+      />
+      <Route
+        path="/alunos/:alunoId/treinos"
+        element={<MyRoute component={TreinosAluno} isClosed />}
       />
       <Route
         exact
