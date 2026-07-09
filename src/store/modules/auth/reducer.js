@@ -21,7 +21,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        isAuthenticated: true, // ✅ UM NOME SÓ
+        isAuthenticated: true,
         token: action.payload.token,
         user: action.payload.user,
         role: action.payload.role,

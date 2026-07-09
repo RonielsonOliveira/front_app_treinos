@@ -18,12 +18,13 @@ import Fotos from "../pages/Fotos/Index.js";
 import Page404 from "../pages/Page404/index.js";
 import Alunos from "../pages/Alunos/index.js";
 import TreinosAluno from "../pages/TreinoAlunos/Index.js";
+import Home from "../pages/Home/index.js";
 
 export default function AppRoutes() {
   return (
     <Routes>
       {/* HOME */}
-      <Route exact path="/" element={<MyRoute component={Alunos} isClosed />} />
+      <Route path="/" element={<MyRoute component={Home} isClosed />} />
 
       {/* EXERCÍCIOS */}
       <Route
@@ -67,6 +68,11 @@ export default function AppRoutes() {
         exact
         path="/aluno"
         element={<MyRoute component={Aluno} isClosed />}
+      />
+      <Route
+        exact
+        path="/alunos"
+        element={<MyRoute component={Alunos} isClosed />}
       />
       <Route
         exact

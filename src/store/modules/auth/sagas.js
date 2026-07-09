@@ -28,7 +28,6 @@ function* loginRequest({ payload }) {
     axios.defaults.headers.Authorization = token;
 
     toast.success("Login realizado com sucesso");
-    history.push(prevPath || "/");
   } catch (error) {
     console.log(error.response?.data);
     toast.error("Usuário ou senha inválidos");
@@ -38,7 +37,7 @@ function* loginRequest({ payload }) {
 
 function* persistRehydrate({ payload }) {
   const token = payload?.auth?.token;
-  const user = payload?.auth?.user; // 🔥 precisa restaurar o user também
+  const user = payload?.auth?.user;
   if (!token || !user) return;
 
   axios.defaults.headers.Authorization = token;

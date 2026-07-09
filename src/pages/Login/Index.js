@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { isEmail } from "validator";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,25 +12,18 @@ import Imagem from "../../utils/Img/professor.jpg";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const roleFromStore = useSelector((state) => state.auth.role);
-  const isLoading = useSelector((state) => state.auth.isLoading);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [role, setRole] = React.useState("user");
-
-  React.useEffect(() => {
+  const navigate = useNavigate();
+  useEffect(() => {
     if (isLoggedIn) {
-      if (roleFromStore === "user") {
-        navigate("/"); // página para professor
-      } else if (roleFromStore === "aluno") {
-        navigate("/me/treinos"); // página para aluno
-      }
+      navigate("/");
     }
-  }, [isLoggedIn, navigate, dispatch, roleFromStore]);
-
+  }, [isLoggedIn, navigate]);
   function handleSubmit(e) {
     e.preventDefault();
 
