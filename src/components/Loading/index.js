@@ -3,16 +3,14 @@ import PropTypes from "prop-types";
 import { Container } from "./styled";
 
 export default function Loading({ isLoading }) {
-  if (!isLoading) {
-    return <></>;
-  } else {
-    return (
-      <Container>
-        <div />
-        <span>Carregando...</span>
-      </Container>
-    );
-  }
+  console.log("Loading render:", isLoading);
+  if (!isLoading) return null;
+
+  return (
+    <Container>
+      <span>Carregando...</span>
+    </Container>
+  );
 }
 
 Loading.defaultProps = {
