@@ -47,26 +47,6 @@ export default function TreinosAluno() {
     });
   };
 
-  const excluirTreino = async (id) => {
-    const confirmar = window.confirm(
-      "Tem certeza que deseja excluir este treino?"
-    );
-
-    if (!confirmar) return;
-
-    try {
-      await deleteTreino(id);
-
-      setTreinos((treinosAntigos) =>
-        treinosAntigos.filter((treino) => treino.id !== id)
-      );
-
-      toast.success("Treino excluído com sucesso!");
-    } catch (err) {
-      console.error(err);
-      toast.error("Erro ao excluir treino.");
-    }
-  };
   useEffect(() => {
     async function carregar() {
       try {
@@ -87,7 +67,6 @@ export default function TreinosAluno() {
 
       <S.Header>
         <S.Title>Treinos do Aluno</S.Title>
-
         <S.NewButton onClick={novoTreino}>+ Novo Treino</S.NewButton>
       </S.Header>
       {treinos.length === 0 && <p>Esse aluno ainda não possui treinos.</p>}

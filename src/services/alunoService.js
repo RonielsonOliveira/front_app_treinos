@@ -13,3 +13,6 @@ export async function createAluno(payload) {
 export async function updateAluno(id, payload) {
   await axios.put(`/alunos/${id}`, payload);
 }
+export function deleteAluno(id) {
+  return axios.delete(`/alunos/${id}`);
+}

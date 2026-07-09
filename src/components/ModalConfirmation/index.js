@@ -1,14 +1,34 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 
 export default function ModalConfirmacao({
   open,
   titulo,
   mensagem,
-  onConfirm,
   onCancel,
+  onConfirm,
 }) {
+  const [tempo, setTempo] = useState(5);
+
+  useEffect(() => {
+    if (!open) return;
+
+    setTempo(10);
+
+    const timer = setInterval(() => {
+      setTempo((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [open]);
+
   if (!open) return null;
 
   return (
@@ -21,7 +41,9 @@ export default function ModalConfirmacao({
         <S.Actions>
           <S.CancelButton onClick={onCancel}>Cancelar</S.CancelButton>
 
-          <S.DeleteButton onClick={onConfirm}>Excluir</S.DeleteButton>
+          <S.DeleteButton disabled={tempo > 0} onClick={onConfirm}>
+            {tempo > 0 ? `Confirmar (${tempo}s)` : "Confirmar"}
+          </S.DeleteButton>
         </S.Actions>
       </S.Container>
     </S.Overlay>

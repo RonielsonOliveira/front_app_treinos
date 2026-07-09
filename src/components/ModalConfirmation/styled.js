@@ -52,7 +52,6 @@ export const CancelButton = styled.button`
 
   cursor: pointer;
 `;
-
 export const DeleteButton = styled.button`
   padding: 10px 18px;
 
@@ -66,7 +65,15 @@ export const DeleteButton = styled.button`
 
   cursor: pointer;
 
+  transition: 0.2s;
+
   &:hover {
     background: #c62828;
+  }
+
+  &:disabled {
+    background: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 `;
