@@ -1,135 +1,220 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { primaryColor, infoColor } from "../../config/colors";
 
 export const Title = styled.h1`
-  display: flex;
-  align-items: center;
-  padding: 2px;
-  justify-content: center;
-  color: #fff;
-  margin: 0 auto;
-  font-size: 40px;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  text-align: center;
+  color: #f8fafc;
+  font-size: 34px;
+  margin: 20px 0 35px;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
+
 export const TreinoTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 4px;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  background-color: aliceblue;
-  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 22px;
+
+  background: #1e293b;
+
+  border: 1px solid #334155;
+  border-radius: 14px;
+
   cursor: pointer;
-  transition: 0.2s;
+
+  transition: 0.25s;
 
   h3 {
-    padding: 4px;
-    font-size: 24px;
+    color: white;
+    font-size: 22px;
+    margin: 0;
   }
+
   span {
-    padding: 4px;
-    font-size: 16px;
-    font-weight: 400;
+    color: #cbd5e1;
+    font-size: 14px;
     font-style: italic;
   }
+
   &:hover {
-    background: ${infoColor};
+    background: #273449;
+    border-color: ${primaryColor};
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 8px;
+
+    text-align: center;
+
+    h3 {
+      font-size: 20px;
+    }
   }
 `;
 
 export const TreinoCard = styled.div`
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 24px;
+
+  margin-top: 24px;
+
   width: 100%;
-  padding: 12px;
-`;
-export const Card = styled.div`
-  width: 100%;
-  min-height: 420px;
-  padding: 16px;
-  border-radius: 10px;
-  background: ${primaryColor};
-  color: white;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  transition: transform 0.2s ease;
-
-  &:hover {
-    background: ${infoColor};
-    cursor: pointer;
-  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
 
-export const Details = styled.div`
+export const Card = styled.div`
+  background: #1e293b;
+
+  border: 1px solid #334155;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  padding: 12px;
-  border-radius: 8px;
+  transition: 0.25s;
 
-  strong {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
 
-  li {
-    list-style: none;
-    margin-bottom: 6px;
-    font-size: 15px;
+  &:hover {
+    transform: translateY(-4px);
+
+    border-color: ${primaryColor};
+
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
   }
 `;
-export const ImageSlider = styled.div`
-  width: 80%;
-  height: 260px;
-  margin: 0 auto;
-  border-radius: 8px;
 
-  .slick-slide {
-    display: flex;
-    justify-content: center;
+export const ImageSlider = styled.div`
+  width: 100%;
+  height: 250px;
+
+  background: #0f172a;
+
+  .slick-slider,
+  .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide > div {
+    height: 250px;
   }
+
+  img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+  }
+
+  .slick-prev {
+    left: 10px;
+    z-index: 5;
+  }
+
+  .slick-next {
+    right: 10px;
+    z-index: 5;
+  }
+
   .slick-prev:before,
   .slick-next:before {
     color: white;
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .slick-dots li button:before {
     color: white;
   }
 
-  img {
-    width: 100%;
-    height: 260px;
-    object-fit: fill;
-    border-radius: 8px;
+  @media (max-width: 768px) {
+    height: 220px;
+
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
+      height: 220px;
+    }
+
+    img {
+      height: 220px;
+    }
   }
 `;
+
+export const Details = styled.div`
+  padding: 22px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  flex: 1;
+
+  strong {
+    color: white;
+
+    font-size: 22px;
+
+    border-bottom: 1px solid #334155;
+
+    padding-bottom: 10px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+
+    padding: 10px 14px;
+
+    margin-bottom: 10px;
+
+    background: #0f172a;
+
+    border-radius: 10px;
+
+    color: #e2e8f0;
+
+    font-size: 15px;
+
+    border-left: 4px solid ${primaryColor};
+
+    transition: 0.2s;
+
+    &:hover {
+      background: #162133;
+      transform: translateX(4px);
+    }
+  }
+`;
+
 export const Arrow = styled.span`
-  font-size: 20px;
+  color: ${primaryColor};
+
+  font-size: 24px;
+
   transition: transform 0.3s ease;
 
   transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0deg)")};

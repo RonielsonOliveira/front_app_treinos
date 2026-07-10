@@ -27,12 +27,16 @@ export function ExercicioModal({ exercicio, onClose }) {
           <Description>{exercicio.descricao}</Description>
 
           <ExercicioDados>
-            <label>Numero De Series</label>
-            {exercicio.TreinoExercicio?.numerodeSeries}
-            <label>Numero De Repeticoes</label>
-            {exercicio.TreinoExercicio?.numerodeRepeticoes}
-          </ExercicioDados>
+            <div className="item">
+              <label>Séries</label>
+              <span> {exercicio.TreinoExercicio?.numerodeSeries}</span>
+            </div>
 
+            <div className="item">
+              <label>Repetições</label>
+              <span> {exercicio.TreinoExercicio?.numerodeRepeticoes}</span>
+            </div>
+          </ExercicioDados>
           <button onClick={onClose}>Fechar</button>
         </ExercicioInfo>
       </ModalContent>
