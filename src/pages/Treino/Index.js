@@ -10,6 +10,8 @@ import ExercicioCard from "../../components/ExercicioCard";
 
 import useTreinoData from "../../hooks/useTreinoData";
 import { createTreino, updateTreino } from "../../services/treinoService";
+import ModalExercicio from "../../components/ModalExercicio";
+import ExercicioListItem from "../../components/ExercicioListItem";
 
 export default function Treino() {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ export default function Treino() {
   const location = useLocation();
   const alunoOrigem = location.state?.alunoId;
   const [alunoId, setAlunoId] = useState(alunoOrigem || "");
-
+  const [busca, setBusca] = useState("");
   const { exercicios, alunos, treino, isLoading } = useTreinoData(id);
   const alunoSelecionado = alunos.find(
     (aluno) => Number(aluno.id) === Number(alunoId)
@@ -25,13 +27,38 @@ export default function Treino() {
 
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
+  const [exercicioAtual, setExercicioAtual] = useState(null);
+
+  const [series, setSeries] = useState(3);
+
+  const [repeticoes, setRepeticoes] = useState(12);
   const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
+  const removerExercicio = () => {
+    setExerciciosSelecionados((prev) =>
+      prev.filter((e) => e.id !== exercicioAtual.id)
+    );
 
+    setModalOpen(false);
+  };
+  const removerAcentos = (texto) =>
+    texto
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
   const exerciciosMap = useMemo(() => {
     return Object.fromEntries(exerciciosSelecionados.map((e) => [e.id, e]));
   }, [exerciciosSelecionados]);
+  const exerciciosFiltrados = useMemo(() => {
+    if (!busca.trim()) return exercicios;
 
+    const buscaNormalizada = removerAcentos(busca);
+
+    return exercicios.filter((ex) =>
+      removerAcentos(ex.descricao).includes(buscaNormalizada)
+    );
+  }, [busca, exercicios]);
   useEffect(() => {
     if (!treino) return;
 
@@ -49,14 +76,44 @@ export default function Treino() {
     setExerciciosSelecionados(exerciciosComSeries);
   }, [treino]);
 
-  const toggleExercicio = (id) => {
+  const abrirModal = (exercicio) => {
+    const existente = exerciciosSelecionados.find((e) => e.id === exercicio.id);
+
+    setExercicioAtual(exercicio);
+
+    setSeries(existente?.numerodeSeries || 3);
+
+    setRepeticoes(existente?.numerodeRepeticoes || 12);
+
+    setModalOpen(true);
+  };
+  const confirmarExercicio = () => {
     setExerciciosSelecionados((prev) => {
-      if (prev.some((ex) => ex.id === id)) {
-        return prev.filter((ex) => ex.id !== id);
+      const existe = prev.find((e) => e.id === exercicioAtual.id);
+
+      if (existe) {
+        return prev.map((e) =>
+          e.id === exercicioAtual.id
+            ? {
+                ...e,
+                numerodeSeries: Number(series),
+                numerodeRepeticoes: Number(repeticoes),
+              }
+            : e
+        );
       }
 
-      return [...prev, { id, numerodeSeries: 12, numerodeRepeticoes: 3 }];
+      return [
+        ...prev,
+        {
+          id: exercicioAtual.id,
+          numerodeSeries: Number(series),
+          numerodeRepeticoes: Number(repeticoes),
+        },
+      ];
     });
+
+    setModalOpen(false);
   };
 
   const updateExercicio = (id, field, value) => {
@@ -171,53 +228,42 @@ export default function Treino() {
             </Select>
           </>
         )}
+        <label htmlFor="buscar">Buscar exercício</label>
 
+        <input
+          id="buscar"
+          type="text"
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+          placeholder="Digite o nome do exercício..."
+        />
         <label>Exercícios</label>
 
-        <ExercicioGrid>
-          {exercicios.map((ex) => {
-            const selecionado = exerciciosMap[ex.id];
-
-            return (
-              <ExercicioCard
-                key={ex.id}
-                exercicio={ex}
-                checked={!!selecionado}
-                onChange={() => toggleExercicio(ex.id)}
-              >
-                {selecionado && (
-                  <>
-                    <label>Series</label>
-                    <input
-                      type="number"
-                      placeholder="Séries"
-                      value={selecionado.numerodeSeries} // dado do relacionamento
-                      onChange={(e) =>
-                        updateExercicio(ex.id, "numerodeSeries", e.target.value)
-                      }
-                    />
-                    <label>Repetições</label>
-                    <input
-                      type="number"
-                      placeholder="Repetições"
-                      value={selecionado.numerodeRepeticoes} // dado do relacionamento
-                      onChange={(e) =>
-                        updateExercicio(
-                          ex.id,
-                          "numerodeRepeticoes",
-                          e.target.value
-                        )
-                      }
-                    />
-                  </>
-                )}
-              </ExercicioCard>
-            );
-          })}
-        </ExercicioGrid>
+        <div>
+          {exerciciosFiltrados.map((ex) => (
+            <ExercicioListItem
+              key={ex.id}
+              exercicio={ex}
+              selecionado={!!exerciciosMap[ex.id]}
+              onClick={() => abrirModal(ex)}
+            />
+          ))}
+        </div>
 
         <button type="submit">Salvar</button>
       </Form>
+      <ModalExercicio
+        open={modalOpen}
+        exercicio={exercicioAtual}
+        series={series}
+        repeticoes={repeticoes}
+        selecionado={!!exerciciosMap[exercicioAtual?.id]}
+        onSeriesChange={setSeries}
+        onRepeticoesChange={setRepeticoes}
+        onCancel={() => setModalOpen(false)}
+        onConfirm={confirmarExercicio}
+        onRemove={removerExercicio}
+      />
     </Container>
   );
 }

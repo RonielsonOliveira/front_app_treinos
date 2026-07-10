@@ -180,7 +180,7 @@ export default function Aluno() {
             />
           </div>
 
-          <div className="field full">
+          <div className="field">
             <label htmlFor="password">
               {id ? "Nova senha (opcional)" : "Senha"}
             </label>
