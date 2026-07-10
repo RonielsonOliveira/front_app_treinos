@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import * as S from "./styled";
 import { Container } from "../../styles/GlobalStyles";
 import { ExercicioGrid, Form, Select, Title } from "./styled";
 
@@ -197,61 +197,91 @@ export default function Treino() {
             : "Novo treino"}
       </Title>
 
-      <Form onSubmit={handleSubmit}>
-        <input
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          placeholder="Nome do treino"
-        />
+      <S.Form onSubmit={handleSubmit}>
+        <S.Section>
+          <S.SectionTitle>Informações do treino</S.SectionTitle>
 
-        <input
-          value={descricao}
-          onChange={(e) => setDescricao(e.target.value)}
-          placeholder="Descrição"
-        />
+          <S.Fields>
+            <S.Field>
+              <label>Nome do treino</label>
 
-        {!alunoOrigem && (
-          <>
-            <label>Selecione um aluno</label>
+              <input
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                placeholder="Ex.: Treino A"
+              />
+            </S.Field>
 
-            <Select
-              value={alunoId}
-              onChange={(e) => setAlunoId(e.target.value)}
-            >
-              <option value="">Sem aluno</option>
+            <S.Field>
+              <label>Descrição</label>
 
-              {alunos.map((aluno) => (
-                <option key={aluno.id} value={aluno.id}>
-                  {aluno.nome} {aluno.sobrenome}
-                </option>
-              ))}
-            </Select>
-          </>
-        )}
-        <label htmlFor="buscar">Buscar exercício</label>
+              <input
+                value={descricao}
+                onChange={(e) => setDescricao(e.target.value)}
+                placeholder="Descrição"
+              />
+            </S.Field>
 
-        <input
-          id="buscar"
-          type="text"
-          value={busca}
-          onChange={(e) => setBusca(e.target.value)}
-          placeholder="Digite o nome do exercício..."
-        />
-        <label>Exercícios</label>
+            {!alunoOrigem && (
+              <S.Field className="full">
+                <label>Aluno</label>
 
-        <div>
-          {exerciciosFiltrados.map((ex) => (
-            <ExercicioListItem
-              key={ex.id}
-              exercicio={ex}
-              selecionado={!!exerciciosMap[ex.id]}
-              onClick={() => abrirModal(ex)}
-            />
-          ))}
-        </div>
+                <S.Select
+                  value={alunoId}
+                  onChange={(e) => setAlunoId(e.target.value)}
+                >
+                  <option value="">Selecione um aluno</option>
 
-        <button type="submit">Salvar</button>
-      </Form>
+                  {alunos.map((aluno) => (
+                    <option key={aluno.id} value={aluno.id}>
+                      {aluno.nome} {aluno.sobrenome}
+                    </option>
+                  ))}
+                </S.Select>
+              </S.Field>
+            )}
+          </S.Fields>
+        </S.Section>
+
+        <S.Section>
+          <S.SectionTitle>Exercícios</S.SectionTitle>
+
+          <S.Search
+            id="buscar"
+            type="text"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            placeholder="Buscar exercício..."
+          />
+
+          <S.ExercicioGrid>
+            {exerciciosFiltrados.map((ex) => (
+              <ExercicioListItem
+                key={ex.id}
+                exercicio={ex}
+                selecionado={!!exerciciosMap[ex.id]}
+                onClick={() => abrirModal(ex)}
+              />
+            ))}
+
+            {exerciciosFiltrados.length === 0 && (
+              <p
+                style={{
+                  color: "#94a3b8",
+                  textAlign: "center",
+                  padding: "20px",
+                }}
+              >
+                Nenhum exercício encontrado.
+              </p>
+            )}
+          </S.ExercicioGrid>
+        </S.Section>
+
+        <S.SaveButton type="submit">
+          {id ? "Salvar alterações" : "Criar treino"}
+        </S.SaveButton>
+      </S.Form>
       <ModalExercicio
         open={modalOpen}
         exercicio={exercicioAtual}

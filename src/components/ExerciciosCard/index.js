@@ -37,13 +37,17 @@ export default function ExercicioCard({ exercicio, onDelete }) {
         <h3>{exercicio.nome}</h3>
         <p>{exercicio.descricao}</p>
 
-        <p>
-          <strong>Séries:</strong> {exercicio.numerodeSeries}
-        </p>
+        {exercicio.numerodeSeries > 0 && (
+          <p>
+            <strong>Séries:</strong> {exercicio.numerodeSeries}
+          </p>
+        )}
 
-        <p>
-          <strong>Repetições:</strong> {exercicio.numerodeRepeticoes}
-        </p>
+        {exercicio.numerodeRepeticoes > 0 && (
+          <p>
+            <strong>Repetições:</strong> {exercicio.numerodeRepeticoes}
+          </p>
+        )}
 
         <CardActions>
           <Link to={`/exercicio/${exercicio.id}/edit`}>

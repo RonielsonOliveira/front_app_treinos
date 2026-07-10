@@ -136,6 +136,7 @@ export default function Aluno() {
               id="email"
               name="email"
               type="email"
+              autoComplete="new-email"
               value={form.email}
               onChange={handleChange}
               placeholder="Email"
@@ -188,6 +189,7 @@ export default function Aluno() {
             <input
               id="password"
               name="password"
+              autoComplete="new-password"
               type="password"
               value={form.password}
               onChange={handleChange}

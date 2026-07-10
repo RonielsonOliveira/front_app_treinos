@@ -3,55 +3,109 @@ import { Link } from "react-router-dom";
 import { primaryColor } from "../../config/colors";
 
 export const Header = styled.div`
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto 40px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.h1`
-  margin-left: 20px;
-  color: white;
-  margin: 0 auto;
+  color: #f8fafc;
+  font-size: 34px;
+  font-weight: 700;
+
+  flex: 1;
   text-align: center;
+
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const NovoAluno = styled(Link)`
-  display: block;
-  color: #fff;
-  background-color: ${primaryColor};
-  width: 140px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 180px;
+  height: 48px;
+
+  border-radius: 10px;
+
+  background: ${primaryColor};
+  color: white;
+
   text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.25s;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 320px;
+  }
+`;
+
+export const CardsContainer = styled.div`
+  width: 100%;
+  max-width: 1400px;
+
+  margin: auto;
+
+  display: grid;
+  gap: 24px;
+
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Card = styled.div`
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  background: #1e293b;
+
+  border-radius: 18px;
+
   overflow: hidden;
 
-  margin-bottom: 1.5rem;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.25s;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 
   &:hover {
-    cursor: pointer;
-    background-color: #334155;
-    transform: translateY(-1px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    background: #253449;
+
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
   }
 `;
 
 export const CardFotos = styled.div`
   width: 100%;
-  height: 100%;
-  overflow: visible;
+  height: 240px;
+
+  overflow: hidden;
+
+  background: #0f172a;
 
   .slick-slider,
   .slick-list,
@@ -65,78 +119,72 @@ export const CardFotos = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
+  }
+
+  @media (max-width: 768px) {
+    height: 220px;
   }
 `;
 
 export const CardInfo = styled.div`
-  flex: 1;
   display: flex;
-  width: 100%;
   flex-direction: column;
-  padding: 16px;
-  background-color: #1e293b;
-  &:hover {
-    cursor: pointer;
-    background-color: #334155;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-  }
+
+  gap: 12px;
+
+  padding: 22px;
+
+  flex: 1;
 
   h3 {
     color: white;
+    margin: 0;
+
     font-size: 24px;
-    margin: 30px 10px 10px 10px; //top right  bottom left
+    font-weight: 700;
   }
+
   p {
-    color: white;
-    font-size: 16px;
-    margin: 0px 10px 10px 10px; //top right  bottom left
+    margin: 0;
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+
+    line-height: 1.5;
   }
 `;
 
 export const CardActions = styled.div`
   display: flex;
-  align-items: end;
-  margin: 15px auto;
-  gap: 2rem;
-  color: red;
-  padding: 18px;
+  justify-content: center;
+
+  gap: 16px;
+
+  padding: 18px 22px 22px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 
   a {
-    color: black;
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background: #334155;
+
+    transition: 0.25s;
+
     &:hover {
-      color: aliceblue;
-      transform: scale(1.5);
+      background: ${primaryColor};
+      transform: translateY(-2px);
     }
   }
-`;
-export const CardsContainer = styled.div`
-  display: grid;
-  gap: 1rem;
-
-  width: 100%;
-  padding: 0 12px;
-
-  /* mobile (default) */
-  grid-template-columns: 1fr;
-
-  /* (celulares maiores) */
-  @media (min-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* tablet */
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  /* desktop */
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  max-width: 1400px;
-  margin: 0 auto;
 `;

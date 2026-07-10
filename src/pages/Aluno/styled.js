@@ -1,64 +1,65 @@
 import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import { primaryColor } from "../../config/colors";
 
 export const Title = styled.h1`
   text-align: center;
-
-  color: #f1f5f9;
-
-  margin-top: 20px;
-
-  font-size: 32px;
+  color: #f8fafc;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
 
   @media (max-width: 768px) {
-    font-size: 26px;
+    font-size: 1.7rem;
+    margin-bottom: 30px;
   }
 `;
 
 export const Container = styled.section`
-  width: 90%;
-  min-height: 80%;
-  margin: 20px auto;
-  padding: 60px;
-  border-radius: 30px;
+  width: min(100%, 1000px);
+
+  margin: 30px auto;
+
+  padding: 45px;
+
   background: #0f172a;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 1024px) {
-    width: 85%;
-    padding: 40px;
-  }
+  border-radius: 24px;
 
-  @media (max-width: 768px) {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+  @media (max-width: 900px) {
     width: 95%;
-    padding: 30px 20px;
-    border-radius: 20px;
+    padding: 30px;
   }
 
-  @media (max-width: 480px) {
-    width: 100%;
-    margin: 0;
-    padding: 25px 15px;
-    border-radius: 0;
+  @media (max-width: 600px) {
+    width: calc(100% - 20px);
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    margin: 10px auto;
   }
 `;
 
 export const Form = styled.form`
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
+
   .fields {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 100%;
+
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+
+    gap: 28px;
   }
 
   .field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .field.full {
@@ -66,112 +67,138 @@ export const Form = styled.form`
   }
 
   label {
-    color: #f1f5f9;
-    font-size: 15px;
+    color: #cbd5e1;
+
+    font-size: 14px;
+
     font-weight: 600;
 
-    @media (max-width: 768px) {
-      text-align: center;
-    }
+    letter-spacing: 0.3px;
   }
 
   input {
-    width: 100%;
-    max-width: 420px;
-    height: 48px;
-    padding: 0 14px;
+    height: 52px;
+
+    padding: 0 18px;
+
     border: 1px solid #334155;
-    border-radius: 10px;
+
+    border-radius: 12px;
+
     background: #1e293b;
-    color: #f8fafc;
-    font-size: 16px;
-    transition: 0.2s;
-    align-self: self-start;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    transition: 0.25s;
 
     &::placeholder {
-      color: #94a3b8;
+      color: #64748b;
     }
 
     &:focus {
       outline: none;
+
       border-color: ${primaryColor};
-      box-shadow: 0 0 0 3px rgba(34, 197, 60, 0.15);
-    }
 
-    @media (max-width: 768px) {
-      width: 90%;
-      max-width: 350px;
-      height: 46px;
-      align-self: center;
-    }
-
-    @media (max-width: 480px) {
-      width: 85%;
-      max-width: 320px;
-      font-size: 15px;
-      align-self: center;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
   }
 
   button {
-    width: 220px;
-    height: 48px;
-    margin: 0 auto;
-    border-radius: 10px;
+    align-self: center;
+
+    width: 240px;
+
+    height: 52px;
+
+    border-radius: 12px;
+
     font-size: 16px;
-    transition: 0.2s;
+
+    font-weight: 600;
+
+    transition: 0.25s;
 
     &:hover {
-      filter: brightness(90%);
+      transform: translateY(-2px);
+
+      filter: brightness(0.95);
     }
 
     &:active {
-      transform: scale(0.97);
-    }
-
-    @media (max-width: 768px) {
-      width: 100%;
+      transform: scale(0.98);
     }
   }
 
   @media (max-width: 900px) {
     .fields {
       grid-template-columns: 1fr;
-      gap: 20px;
     }
-  }
 
-  @media (max-width: 480px) {
-    margin-top: 25px;
-    gap: 20px;
-
-    input {
-      height: 46px;
-      font-size: 15px;
+    .field {
+      align-items: center;
     }
 
     label {
+      text-align: center;
+    }
+
+    input {
+      width: min(100%, 420px);
+    }
+
+    button {
+      width: min(100%, 420px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    gap: 25px;
+
+    .fields {
+      gap: 20px;
+    }
+
+    input {
+      height: 48px;
+
       font-size: 14px;
+    }
+
+    button {
+      height: 48px;
     }
   }
 `;
 
 export const FotosGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 0 auto;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+
+  gap: 15px;
+
+  margin-top: 20px;
 
   img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 100%;
 
-    @media (max-width: 480px) {
-      width: 65px;
-      height: 65px;
+    aspect-ratio: 1;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border: 2px solid #334155;
+
+    transition: 0.25s;
+
+    &:hover {
+      transform: scale(1.05);
+
+      border-color: ${primaryColor};
     }
   }
 `;
