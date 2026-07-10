@@ -19,6 +19,12 @@ export const Form = styled.form`
   flex-direction: column;
 
   gap: 30px;
+
+  padding-bottom: 90px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 120px;
+  }
 `;
 
 export const Section = styled.section`
@@ -217,34 +223,37 @@ export const ExercicioGrid = styled.div`
   }
 `;
 
+export const SaveBar = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    position: sticky;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 16px;
+
+    background: #0f172a;
+
+    border-top: 1px solid #334155;
+
+    z-index: 100;
+  }
+`;
+
 export const SaveButton = styled.button`
   width: 260px;
-
   height: 52px;
-
-  margin: 0 auto;
-
   border-radius: 10px;
-
   font-size: 16px;
-
   font-weight: bold;
-
-  transition: 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: scale(0.97);
-  }
 
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
-
 export const CardFotos = styled.div`
   width: 100%;
 

@@ -278,9 +278,9 @@ export default function Treino() {
           </S.ExercicioGrid>
         </S.Section>
 
-        <S.SaveButton type="submit">
-          {id ? "Salvar alterações" : "Criar treino"}
-        </S.SaveButton>
+        <S.SaveBar>
+          <S.SaveButton type="submit">Salvar alterações</S.SaveButton>
+        </S.SaveBar>
       </S.Form>
       <ModalExercicio
         open={modalOpen}
