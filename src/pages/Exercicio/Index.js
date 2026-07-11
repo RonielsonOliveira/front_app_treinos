@@ -30,6 +30,9 @@ export default function Exercicio() {
 
   const [fotos, setFotos] = useState([]);
   const [novasFotos, setNovasFotos] = useState([]);
+  const removerNovaFoto = (index) => {
+    setNovasFotos((prev) => prev.filter((_, i) => i !== index));
+  };
 
   useEffect(() => {
     if (!exercicio) return;
@@ -52,9 +55,21 @@ export default function Exercicio() {
   };
 
   const handleFotoChange = (e) => {
-    setNovasFotos(Array.from(e.target.files));
-  };
+    const arquivosSelecionados = Array.from(e.target.files);
 
+    setNovasFotos((prev) => {
+      const novas = arquivosSelecionados.filter(
+        (arquivo) =>
+          !prev.some(
+            (foto) => foto.name === arquivo.name && foto.size === arquivo.size
+          )
+      );
+
+      return [...prev, ...novas];
+    });
+
+    e.target.value = "";
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -118,7 +133,11 @@ export default function Exercicio() {
           />
         </UploadBox>
         <FotosGrid>
-          <FotosPreview fotos={fotos} novasFotos={novasFotos} />
+          <FotosPreview
+            fotos={fotos}
+            novasFotos={novasFotos}
+            onRemoveNovaFoto={removerNovaFoto}
+          />
         </FotosGrid>
 
         <button type="submit">Salvar</button>

@@ -1,19 +1,25 @@
 import React from "react";
+import { FotoItem, FotoImagem, RemoveButton } from "./styled";
 
-export default function FotosPreview({ fotos, novasFotos }) {
+export default function FotosPreview({
+  fotos = [],
+  novasFotos = [],
+  onRemoveNovaFoto,
+}) {
   return (
     <>
       {fotos.map((foto, idx) => (
-        <img key={idx} src={foto.url} alt={`Foto ${idx}`} />
+        <FotoImagem key={`foto-${idx}`} src={foto.url} alt={`Foto ${idx}`} />
       ))}
 
       {novasFotos.map((file, idx) => (
-        <img
-          key={idx}
-          src={URL.createObjectURL(file)}
-          alt={`Preview ${idx}`}
-          style={{ opacity: 0.6 }}
-        />
+        <FotoItem key={`nova-${idx}`}>
+          <FotoImagem src={URL.createObjectURL(file)} alt={`Preview ${idx}`} />
+
+          <RemoveButton type="button" onClick={() => onRemoveNovaFoto(idx)}>
+            ✕
+          </RemoveButton>
+        </FotoItem>
       ))}
     </>
   );
