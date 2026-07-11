@@ -32,11 +32,19 @@ export default createGlobalStyle`
     height: 100%;
   }
 
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
+  button {
+    cursor: pointer;
+    background: ${primaryColor};
+    border: none;
+    color: #fff;
+    padding:  10px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: all 300ms;
+  }
+  button:hover{
+    filter: brightness(75%);
+  }
 
   a {
     text-decoration: none;
