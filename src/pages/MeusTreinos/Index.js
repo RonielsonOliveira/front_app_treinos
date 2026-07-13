@@ -10,6 +10,7 @@ import { useToggle } from "../../hooks/useToggle";
 import TreinoItem from "../../components/TreinoItem";
 import { ExercicioModal } from "../../components/ExercicioModal";
 import { ModalTreinoConcluido } from "../../components/ModalConcluido";
+import CalendarioSemanal from "../../components/CalendarioSemanal";
 
 export default function MeusTreinos() {
   const { treinos, isLoading } = useMeusTreinos();
@@ -36,15 +37,40 @@ export default function MeusTreinos() {
       return updated;
     });
   };
+  const getDiaSemana = () => {
+    const dia = new Date().getDay();
+
+    if (dia === 0) return 7; // domingo
+
+    return dia;
+  };
+
+  const [diaSelecionado, setDiaSelecionado] = useState(getDiaSemana());
+  const treinosDoDia = treinos.filter(
+    (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
+  );
   return (
     <Container>
       <Loading isLoading={isLoading} />
 
       <Title>Meus Treinos</Title>
+      <CalendarioSemanal
+        diaSelecionado={diaSelecionado}
+        onSelect={setDiaSelecionado}
+      />
+      {treinosDoDia.length === 0 && (
+        <p
+          style={{
+            textAlign: "center",
+            color: "#94a3b8",
+            marginTop: 20,
+          }}
+        >
+          Nenhum treino para este dia.
+        </p>
+      )}
 
-      {treinos.length === 0 && <p>Você ainda não possui treinos.</p>}
-
-      {treinos.map((treino) => (
+      {treinosDoDia.map((treino) => (
         <TreinoItem
           key={treino.id}
           treino={treino}

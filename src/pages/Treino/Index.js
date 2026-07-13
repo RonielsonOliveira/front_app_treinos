@@ -34,6 +34,7 @@ export default function Treino() {
   const [series, setSeries] = useState(3);
 
   const [repeticoes, setRepeticoes] = useState(12);
+  const [diaSemana, setDiaSemana] = useState(1);
   const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
   const removerExercicio = () => {
     setExerciciosSelecionados((prev) =>
@@ -65,7 +66,7 @@ export default function Treino() {
     setNome(treino.nome);
     setDescricao(treino.descricao);
     setAlunoId(treino.aluno_id || "");
-
+    setDiaSemana(treino.dia_semana ?? 1);
     const exerciciosComSeries =
       treino.Exercicios?.map((ex) => ({
         id: ex.id,
@@ -143,11 +144,11 @@ export default function Treino() {
       toast.error("Séries e repetições devem ser maiores que 0");
       return;
     }
-
     const payload = {
       nome,
       descricao,
       aluno_id: alunoId ? Number(alunoId) : null,
+      dia_semana: diaSemana,
       exercicios: exerciciosSelecionados.map((ex) => ({
         id: ex.id,
         numerodeSeries: Number(ex.numerodeSeries),
@@ -220,6 +221,22 @@ export default function Treino() {
                 onChange={(e) => setDescricao(e.target.value)}
                 placeholder="Descrição"
               />
+            </S.Field>
+            <S.Field>
+              <label>Dia do treino</label>
+
+              <S.Select
+                value={diaSemana}
+                onChange={(e) => setDiaSemana(Number(e.target.value))}
+              >
+                <option value={1}>Segunda-feira</option>
+                <option value={2}>Terça-feira</option>
+                <option value={3}>Quarta-feira</option>
+                <option value={4}>Quinta-feira</option>
+                <option value={5}>Sexta-feira</option>
+                <option value={6}>Sábado</option>
+                <option value={7}>Domingo</option>
+              </S.Select>
             </S.Field>
 
             {!alunoOrigem && (

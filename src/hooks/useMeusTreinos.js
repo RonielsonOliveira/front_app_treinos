@@ -11,6 +11,7 @@ export function useMeusTreinos() {
         const { data } = await axios.get("/me/treinos");
 
         setTreinos(data);
+        console.log(data);
         setIsLoading(false);
       } catch {
         toast.error("Erro ao carregar seus treinos");
