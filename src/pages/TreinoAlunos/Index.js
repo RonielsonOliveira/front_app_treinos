@@ -81,7 +81,8 @@ export default function TreinosAluno() {
       </S.Header>
       <CalendarioSemanal
         diaSelecionado={diaSelecionado}
-        onSelect={setDiaSelecionado}
+        onChange={setDiaSelecionado}
+        treinos={treinos}
       />
       {treinos.length === 0 ? (
         <p>Esse aluno ainda não possui treinos.</p>

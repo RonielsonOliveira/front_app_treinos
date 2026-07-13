@@ -11,7 +11,15 @@ const dias = [
   { id: 7, nome: "Dom" },
 ];
 
-export default function CalendarioSemanal({ diaSelecionado, onSelect }) {
+export default function CalendarioSemanal({
+  diaSelecionado,
+  onChange,
+  treinos = [],
+}) {
+  const possuiTreino = (dia) => {
+    return treinos.some((treino) => Number(treino.dia_semana) === Number(dia));
+  };
+
   return (
     <S.Container>
       {dias.map((dia) => (
@@ -19,7 +27,8 @@ export default function CalendarioSemanal({ diaSelecionado, onSelect }) {
           key={dia.id}
           type="button"
           active={dia.id === diaSelecionado}
-          onClick={() => onSelect(dia.id)}
+          possuiTreino={possuiTreino(dia.id)}
+          onClick={() => onChange(dia.id)}
         >
           {dia.nome}
         </S.DayButton>

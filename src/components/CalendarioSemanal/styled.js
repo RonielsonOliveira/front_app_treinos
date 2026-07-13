@@ -1,44 +1,34 @@
-import styled, { css } from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  margin: 25px 0;
-
+  gap: 8px;
+  margin: 20px 0;
   flex-wrap: wrap;
 `;
 
 export const DayButton = styled.button`
-  width: 58px;
-  height: 58px;
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%;
+  border: none;
 
-  border: 2px solid #334155;
+  font-weight: 600;
+  cursor: pointer;
 
-  background: #1e293b;
+  color: #fff;
 
-  color: #cbd5e1;
+  background: ${({ possuiTreino }) => (possuiTreino ? "#166534" : "#991b1b")};
 
-  font-weight: 700;
-  font-size: 15px;
+  opacity: ${({ active }) => (active ? 1 : 0.75)};
 
-  transition: 0.25s;
+  transform: ${({ active }) => (active ? "scale(1.1)" : "scale(1)")};
 
-  ${({ active }) =>
-    active &&
-    css`
-      background: ${primaryColor};
-      border-color: ${primaryColor};
-      color: white;
-    `}
+  transition: all 0.2s ease;
 
   &:hover {
-    border-color: ${primaryColor};
-    color: white;
+    opacity: 1;
   }
 `;

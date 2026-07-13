@@ -56,7 +56,8 @@ export default function MeusTreinos() {
       <Title>Meus Treinos</Title>
       <CalendarioSemanal
         diaSelecionado={diaSelecionado}
-        onSelect={setDiaSelecionado}
+        onChange={setDiaSelecionado}
+        treinos={treinos}
       />
       {treinosDoDia.length === 0 && (
         <p
