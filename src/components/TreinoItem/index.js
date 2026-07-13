@@ -1,8 +1,7 @@
 import React from "react";
 import ExercicioCardAluno from "../ExercicioCardAluno";
 
-import { Header, Info, Arrow, Content, ExerciciosWrapper } from "./styled";
-import { Container } from "../../styles/GlobalStyles";
+import * as S from "./styled";
 
 export default function TreinoItem({
   treino,
@@ -13,29 +12,29 @@ export default function TreinoItem({
   onCheck,
 }) {
   return (
-    <Container>
-      <Header onClick={() => onToggle(treino.id)}>
-        <Info>
+    <S.Container>
+      <S.Header isOpen={isOpen} onClick={() => onToggle(treino.id)}>
+        <S.Info>
           <h3>{treino.nome}</h3>
           <span>{treino.descricao}</span>
-        </Info>
+        </S.Info>
 
-        <Arrow isOpen={isOpen}>▼</Arrow>
-      </Header>
+        <S.Arrow isOpen={isOpen}>▼</S.Arrow>
+      </S.Header>
 
       {isOpen && (
-        <Content>
+        <S.Content>
           {treino.Exercicios.map((ex) => (
             <ExercicioCardAluno
               key={ex.id}
               exercicio={ex}
               checked={checkedExercicios[ex.id] || false}
-              onChange={() => onCheck(ex.id, treino)} 
+              onChange={() => onCheck(ex.id, treino)}
               onClick={() => onSelectExercicio(ex)}
             />
           ))}
-        </Content>
+        </S.Content>
       )}
-    </Container>
+    </S.Container>
   );
 }

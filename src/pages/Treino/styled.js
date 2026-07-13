@@ -2,13 +2,21 @@ import styled from "styled-components";
 import { primaryColor } from "../../config/colors.js";
 
 export const Title = styled.h1`
+  width: 100%;
   text-align: center;
-  color: #f1f5f9;
-  margin: 20px 0 35px;
-  font-size: 32px;
 
-  @media (max-width: 768px) {
-    font-size: 26px;
+  color: #f8fafc;
+
+  margin: 25px 0 40px;
+
+  font-size: clamp(26px, 4vw, 36px);
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+
+  span {
+    color: ${primaryColor};
   }
 `;
 
@@ -18,33 +26,39 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
-  gap: 30px;
+  gap: 28px;
 
-  padding-bottom: 90px;
-
-  @media (max-width: 768px) {
-    padding-bottom: 120px;
-  }
+  padding-bottom: 100px;
 `;
 
 export const Section = styled.section`
-  background: #1e293b;
+  width: 100%;
+
+  background: linear-gradient(145deg, #1e293b, #172033);
 
   border: 1px solid #334155;
 
-  border-radius: 16px;
+  border-radius: 22px;
 
-  padding: 24px;
+  padding: 28px;
 
   display: flex;
   flex-direction: column;
 
-  gap: 24px;
+  gap: 25px;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+  transition: 0.3s;
+
+  &:hover {
+    border-color: #475569;
+  }
 
   @media (max-width: 768px) {
-    padding: 18px;
+    padding: 20px;
+
+    border-radius: 18px;
   }
 `;
 
@@ -55,15 +69,32 @@ export const SectionTitle = styled.h2`
 
   font-weight: 700;
 
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
   margin: 0;
 
-  padding-bottom: 12px;
+  padding-bottom: 15px;
 
   border-bottom: 1px solid #334155;
 
+  &::before {
+    content: "";
+
+    width: 5px;
+
+    height: 24px;
+
+    background: ${primaryColor};
+
+    border-radius: 20px;
+  }
+
   @media (max-width: 768px) {
-    text-align: center;
-    font-size: 20px;
+    font-size: 19px;
   }
 `;
 
@@ -72,7 +103,7 @@ export const Fields = styled.div`
 
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 20px;
+  gap: 22px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -81,44 +112,47 @@ export const Fields = styled.div`
 
 export const Field = styled.div`
   display: flex;
+
   flex-direction: column;
 
-  gap: 8px;
+  gap: 9px;
 
   &.full {
-    grid-column: 1 / -1;
+    grid-column: 1/-1;
   }
 
   label {
-    color: #f8fafc;
+    color: #e2e8f0;
 
-    font-size: 15px;
+    font-size: 14px;
 
-    font-weight: 600;
+    font-weight: 700;
   }
 
   input,
   select {
-    width: 100%;
+    height: 52px;
 
-    height: 48px;
+    padding: 0 16px;
 
-    padding: 0 14px;
-
-    border-radius: 10px;
-
-    border: 1px solid #334155;
+    border-radius: 14px;
 
     background: #0f172a;
+
+    border: 1px solid #334155;
 
     color: #f8fafc;
 
     font-size: 15px;
 
-    transition: 0.2s;
+    transition: 0.25s;
 
     &::placeholder {
-      color: #94a3b8;
+      color: #64748b;
+    }
+
+    &:hover {
+      border-color: #64748b;
     }
 
     &:focus {
@@ -126,30 +160,32 @@ export const Field = styled.div`
 
       border-color: ${primaryColor};
 
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
   }
 `;
 
 export const Search = styled.input`
+  height: 52px;
+
   width: 100%;
 
-  height: 48px;
+  padding: 0 18px;
 
-  padding: 0 16px;
-
-  border-radius: 10px;
-
-  border: 1px solid #334155;
+  border-radius: 14px;
 
   background: #0f172a;
+
+  border: 1px solid #334155;
 
   color: white;
 
   font-size: 15px;
 
+  transition: 0.2s;
+
   &::placeholder {
-    color: #94a3b8;
+    color: #64748b;
   }
 
   &:focus {
@@ -157,38 +193,14 @@ export const Search = styled.input`
 
     border-color: ${primaryColor};
 
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
   }
 `;
 
 export const Select = styled.select`
-  width: 100%;
-
-  height: 48px;
-
-  padding: 0 14px;
-
-  border-radius: 10px;
-
-  border: 1px solid #334155;
-
-  background: #0f172a;
-
-  color: white;
-
-  font-size: 15px;
-
-  appearance: none;
-
   cursor: pointer;
 
-  &:focus {
-    outline: none;
-
-    border-color: ${primaryColor};
-
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-  }
+  appearance: auto;
 `;
 
 export const ExercicioGrid = styled.div`
@@ -196,13 +208,13 @@ export const ExercicioGrid = styled.div`
 
   flex-direction: column;
 
-  gap: 12px;
+  gap: 14px;
 
-  max-height: 500px;
+  max-height: 560px;
 
   overflow-y: auto;
 
-  padding-right: 6px;
+  padding-right: 8px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -210,50 +222,81 @@ export const ExercicioGrid = styled.div`
 
   &::-webkit-scrollbar-track {
     background: #0f172a;
+
     border-radius: 20px;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #475569;
+
     border-radius: 20px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
+    background: ${primaryColor};
   }
 `;
 
 export const SaveBar = styled.div`
   display: flex;
+
   justify-content: center;
+
+  padding-top: 10px;
 
   @media (max-width: 768px) {
     position: sticky;
-    bottom: 0;
 
-    width: 100%;
+    bottom: 10px;
 
-    padding: 16px;
+    background: #020617;
 
-    background: #0f172a;
+    padding: 15px;
 
-    border-top: 1px solid #334155;
+    border-radius: 18px;
 
-    z-index: 100;
+    z-index: 20;
   }
 `;
 
 export const SaveButton = styled.button`
-  width: 260px;
-  height: 52px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  width: 280px;
+
+  height: 56px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: ${primaryColor};
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
+
+  &:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
 
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
+
 export const CardFotos = styled.div`
   width: 100%;
 
@@ -261,7 +304,9 @@ export const CardFotos = styled.div`
 
   overflow: hidden;
 
-  border-radius: 10px;
+  border-radius: 18px;
+
+  background: #0f172a;
 
   .slick-slider,
   .slick-list,
@@ -273,7 +318,31 @@ export const CardFotos = styled.div`
 
   img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
   }
+`;
+
+export const DayBadge = styled.div`
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: ${primaryColor};
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  width: max-content;
 `;

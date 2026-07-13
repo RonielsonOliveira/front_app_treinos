@@ -187,15 +187,22 @@ export default function Treino() {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-
       <Title>
-        {id
-          ? alunoSelecionado
-            ? `Editar treino de ${alunoSelecionado.nome}`
-            : "Editar treino"
-          : alunoSelecionado
-            ? `Novo treino de ${alunoSelecionado.nome}`
-            : "Novo treino"}
+        {id ? (
+          alunoSelecionado ? (
+            <>
+              Editar treino de <span>{alunoSelecionado.nome}</span>
+            </>
+          ) : (
+            "Editar treino"
+          )
+        ) : alunoSelecionado ? (
+          <>
+            Novo treino de <span>{alunoSelecionado.nome}</span>
+          </>
+        ) : (
+          "Novo treino"
+        )}
       </Title>
 
       <S.Form onSubmit={handleSubmit}>

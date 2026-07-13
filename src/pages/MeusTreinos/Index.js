@@ -11,9 +11,10 @@ import TreinoItem from "../../components/TreinoItem";
 import { ExercicioModal } from "../../components/ExercicioModal";
 import { ModalTreinoConcluido } from "../../components/ModalConcluido";
 import CalendarioSemanal from "../../components/CalendarioSemanal";
+import AlunoInfo from "../../components/AlunoInfo";
 
 export default function MeusTreinos() {
-  const { treinos, isLoading } = useMeusTreinos();
+  const { treinos, aluno, isLoading } = useMeusTreinos();
   const { openId, toggle } = useToggle();
   const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
   const [checkedExercicios, setCheckedExercicios] = useState({});
@@ -52,7 +53,7 @@ export default function MeusTreinos() {
   return (
     <Container>
       <Loading isLoading={isLoading} />
-
+      <AlunoInfo aluno={aluno} />
       <Title>Meus Treinos</Title>
       <CalendarioSemanal
         diaSelecionado={diaSelecionado}
