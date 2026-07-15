@@ -194,32 +194,27 @@ export const MobileMenu = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "open",
 })`
   position: fixed;
+
   top: 0;
-  bottom: 0;
+  right: 0;
 
   width: 100%;
-  max-width: 100%;
+  height: 100dvh;
 
-  height: 100vh;
+  z-index: 9999;
 
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(180deg, #111827 0%, #0f172a 40%, #020617 100%);
-
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
-
-  box-shadow:
-    -25px 0 60px rgba(0, 0, 0, 0.55),
-    inset 1px 0 rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, #111827 0%, #0f172a 45%, #020617 100%);
 
   transform: translateX(${({ open }) => (open ? "0" : "100%")});
 
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-
-  z-index: 1000;
+  transition: transform 0.35s ease;
 
   overflow-y: auto;
+
+  padding-bottom: 30px;
 
   scrollbar-width: none;
 
@@ -228,32 +223,37 @@ export const MobileMenu = styled.div.withConfig({
   }
 
   .title-menu {
+    flex-shrink: 0;
+
     padding: 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
 
     background: linear-gradient(135deg, ${primaryColor}, #15803d);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.25);
   }
 
   .title-content {
     display: flex;
+
     flex-direction: column;
   }
 
   .title-content h2 {
-    color: #fff;
+    color: white;
+
     font-size: 22px;
+
     font-weight: 700;
   }
 
   .title-content span {
-    margin-top: 4px;
+    margin-top: 5px;
 
     color: rgba(255, 255, 255, 0.8);
 
@@ -262,53 +262,58 @@ export const MobileMenu = styled.div.withConfig({
 
   .close-menu {
     width: 42px;
+
     height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 
     border-radius: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15);
 
     color: white;
 
     font-size: 22px;
 
     cursor: pointer;
-
-    transition: 0.25s;
-  }
-
-  .close-menu:hover {
-    background: rgba(255, 255, 255, 0.22);
   }
 
   .options {
     display: flex;
+
     flex-direction: column;
 
-    gap: 10px;
+    gap: 12px;
+
+    padding: 25px 20px;
+
+    flex: 1;
   }
 
   .options a {
     display: flex;
-    align-items: center;
-    gap: 16px;
 
-    padding: 15px 18px;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px;
 
     border-radius: 14px;
 
     color: #cbd5e1;
 
     font-size: 16px;
+
     font-weight: 600;
 
-    transition: 0.25s;
+    background: rgba(255, 255, 255, 0.03);
 
-    background: transparent;
+    transition: 0.25s;
   }
 
   .options a:hover {
@@ -319,51 +324,50 @@ export const MobileMenu = styled.div.withConfig({
     transform: translateX(6px);
   }
 
-  .options a:active {
-    transform: scale(0.98);
-  }
-
   .userLoggedWrapper,
   .userNoLoggedWrapper {
     margin-top: auto;
 
+    padding: 20px;
+
     display: flex;
+
     flex-direction: column;
 
     gap: 14px;
 
-    padding-top: 24px;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .status {
     display: flex;
-    align-items: center;
+
     justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
 
     padding: 14px;
 
     border-radius: 12px;
 
-    background: rgba(34, 197, 94, 0.12);
+    background: rgba(34, 197, 94, 0.15);
 
     color: #22c55e;
 
     font-weight: 700;
-    span {
-      margin: 4px;
-    }
   }
 
   .userLoggedWrapper a,
   .userNoLoggedWrapper a {
     display: flex;
+
     align-items: center;
 
     gap: 14px;
 
-    padding: 14px 18px;
+    padding: 14px;
 
     border-radius: 12px;
 

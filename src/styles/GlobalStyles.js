@@ -1,107 +1,58 @@
 import styled, { createGlobalStyle } from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "react-toastify/dist/ReactToastify.css";
-
 import {
   primaryColor,
   primaryDarkColor,
   errorColor,
   successColor,
 } from "../config/colors.js";
-
+import "react-toastify/dist/ReactToastify.css";
 export default createGlobalStyle`
-  *,
-  *::before,
-  *::after {
+  *{
     margin: 0;
     padding: 0;
     outline: none;
     box-sizing: border-box;
   }
 
-  html {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
-  }
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
 
-  body {
-    width: 100%;
-    min-height: 100vh;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    font-family: sans-serif;
-
-    background: #0f172a;
-    color: ${primaryDarkColor};
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  #root {
-    width: 100%;
-    min-height: 100vh;
-
-    overflow-x: hidden;
-  }
-
-  img,
-  svg,
-  video,
-  canvas {
-    display: block;
-    max-width: 100%;
-  }
+body {
+  position: relative;
+  background: #0f172a;
+  font-family: sans-serif;
+  color: ${primaryDarkColor};
+}
 
   button {
     cursor: pointer;
-    border: none;
-
     background: ${primaryColor};
-
+    border: none;
     color: #fff;
-
-    padding: 10px 20px;
-
+    padding:  10px 20px;
     border-radius: 4px;
-
     font-weight: 700;
-
-    transition: all .25s ease;
-
-    &:hover {
-      filter: brightness(.9);
-    }
-
-    &:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
+    transition: all 300ms;
   }
-
-  input,
-  textarea,
-  select,
-  button {
-    font: inherit;
+  button:hover{
+    filter: brightness(75%);
   }
 
   a {
-    color: ${primaryColor};
     text-decoration: none;
+    color: ${primaryColor};
   }
-
-  ul,
-  ol {
+  ul {
     list-style: none;
   }
-
-  .Toastify__toast--success {
+   .Toastify__toast--success {
     background: ${successColor};
     color: #fff;
   }
@@ -110,24 +61,22 @@ export default createGlobalStyle`
     background: ${errorColor};
     color: #fff;
   }
+
 `;
 
 export const Container = styled.section`
   width: 100%;
-  margin: 0 auto;
+  min-height: 100%;
 
   background: #0f172a;
 
-  @media (max-width: 767px) {
-    padding: 16px;
-  }
+  margin: 0;
 
   @media (min-width: 768px) {
     max-width: 900px;
-
+    margin: 20px auto;
     padding: 24px;
-
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
   @media (min-width: 1200px) {
