@@ -8,7 +8,7 @@ export const Title = styled.h1`
 
   color: #f8fafc;
 
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(26px, 4vw, 36px);
 
   font-weight: 800;
 
