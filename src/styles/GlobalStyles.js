@@ -16,21 +16,20 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
 
-  body {
-    font-family: sans-serif;
-    background:#0f172a;
-    color: ${primaryDarkColor};
-  }
-
-  #root {
-    height: 100%;
-  }
+body {
+  position: relative;
+  background: #0f172a;
+  font-family: sans-serif;
+  color: ${primaryDarkColor};
+}
 
   button {
     cursor: pointer;

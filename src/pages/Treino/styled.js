@@ -277,9 +277,6 @@ export const SaveButton = styled.button`
 
   transition: all 0.25s ease;
 
-  box-shadow: ${({ disabled }) =>
-    disabled ? "none" : "0 10px 25px rgba(34,197,94,.25)"};
-
   opacity: ${({ disabled }) => (disabled ? 0.85 : 1)};
 
   &:hover {
