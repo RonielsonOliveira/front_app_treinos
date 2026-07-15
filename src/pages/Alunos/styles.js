@@ -3,7 +3,7 @@ import { primaryColor } from "../../config/colors.js";
 
 export const Container = styled.div`
   padding: 30px;
-  width: 80%;
+  width: 50%;
   margin: 0 auto;
 
   @media (max-width: 1024px) {
@@ -49,7 +49,6 @@ export const Card = styled.div`
   transition: 0.2s;
 
   &:hover {
-    transform: translateY(-2px);
     background: #293548;
   }
 

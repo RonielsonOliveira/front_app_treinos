@@ -28,7 +28,7 @@ export default function Treino() {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [isSaving, setIsSaving] = useState(false);
   const [exercicioAtual, setExercicioAtual] = useState(null);
 
   const [series, setSeries] = useState(3);
@@ -157,6 +157,7 @@ export default function Treino() {
     };
     console.log("payload:", payload);
     try {
+      setIsSaving(true);
       if (id) {
         await updateTreino(id, payload);
 
@@ -302,9 +303,9 @@ export default function Treino() {
           </S.ExercicioGrid>
         </S.Section>
 
-        <S.SaveBar>
-          <S.SaveButton type="submit">Salvar alterações</S.SaveButton>
-        </S.SaveBar>
+        <S.SaveButton type="submit" disabled={isSaving}>
+          {isSaving ? "Salvando..." : "Salvar alterações"}
+        </S.SaveButton>
       </S.Form>
       <ModalExercicio
         open={modalOpen}

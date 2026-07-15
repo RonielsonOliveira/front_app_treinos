@@ -261,35 +261,42 @@ export const SaveBar = styled.div`
 
 export const SaveButton = styled.button`
   width: 280px;
-
   height: 56px;
-
+  margin: 0 auto;
   border: none;
-
   border-radius: 16px;
 
-  background: ${primaryColor};
+  background: ${({ disabled }) => (disabled ? "#64748b" : primaryColor)};
 
   color: white;
 
   font-size: 17px;
-
   font-weight: 800;
 
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
-  transition: 0.25s;
+  transition: all 0.25s ease;
 
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
+  box-shadow: ${({ disabled }) =>
+    disabled ? "none" : "0 10px 25px rgba(34,197,94,.25)"};
+
+  opacity: ${({ disabled }) => (disabled ? 0.85 : 1)};
 
   &:hover {
-    transform: translateY(-3px);
-
-    filter: brightness(1.1);
+    ${({ disabled }) =>
+      !disabled &&
+      `
+        transform: translateY(-3px);
+        filter: brightness(1.1);
+      `}
   }
 
   &:active {
-    transform: scale(0.97);
+    ${({ disabled }) =>
+      !disabled &&
+      `
+        transform: scale(.97);
+      `}
   }
 
   @media (max-width: 768px) {

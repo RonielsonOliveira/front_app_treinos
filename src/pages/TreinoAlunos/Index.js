@@ -11,9 +11,11 @@ import { Title } from "./styled";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalConfirmacao from "../../components/ModalConfirmation";
 import CalendarioSemanal from "../../components/CalendarioSemanal";
+import { ExercicioModal } from "../../components/ExercicioModal";
 export default function TreinosAluno() {
   const { alunoId } = useParams();
   const { openId, toggle } = useToggle();
+  const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
   const [treinos, setTreinos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [treinoExcluir, setTreinoExcluir] = useState(null);
@@ -103,11 +105,10 @@ export default function TreinosAluno() {
               treino={treino}
               isOpen={openId === treino.id}
               onToggle={toggle}
-              onSelectExercicio={() => {}}
+              onSelectExercicio={setExercicioSelecionado}
               checkedExercicios={{}}
               onCheck={() => {}}
-            />
-
+            />{" "}
             {openId === treino.id && (
               <S.Actions>
                 <S.EditButton onClick={() => editarTreino(treino.id)}>
@@ -119,7 +120,10 @@ export default function TreinosAluno() {
                 </S.DeleteButton>
               </S.Actions>
             )}
-
+            <ExercicioModal
+              exercicio={exercicioSelecionado}
+              onClose={() => setExercicioSelecionado(null)}
+            />
             <ModalConfirmacao
               open={!!treinoExcluir}
               titulo="Excluir treino"
