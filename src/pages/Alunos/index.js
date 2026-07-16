@@ -1,50 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { getAlunos } from "../../services/alunosService";
-import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./styles";
+
 import Loading from "../../components/Loading";
-import { useSelector } from "react-redux";
-import { deleteAluno } from "../../services/alunoService";
-import { toast } from "react-toastify";
 import ModalConfirmacao from "../../components/ModalConfirmation";
+
+import useAlunos from "../../hooks/useAlunos";
+
+import { excluirAluno } from "./actions";
+
 export default function Alunos() {
-  const [alunos, setAlunos] = useState([]);
-  const [alunoExcluir, setAlunoExcluir] = useState(null);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const confirmarExclusao = async () => {
-    try {
-      await deleteAluno(alunoExcluir.id);
 
-      setAlunos((prev) => prev.filter((aluno) => aluno.id !== alunoExcluir.id));
+  const { alunos, setAlunos, loading } = useAlunos();
 
-      setAlunoExcluir(null);
-
-      toast.success("Aluno excluído com sucesso!");
-    } catch (error) {
-      console.error(error);
-      toast.error("Erro ao excluir aluno");
-    }
-  };
-  useEffect(() => {
-    async function carregar() {
-      try {
-        const response = await getAlunos();
-        setAlunos(response);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    carregar();
-  }, []);
+  const [alunoExcluir, setAlunoExcluir] = useState(null);
 
   return (
     <S.Container>
       <Loading isLoading={loading} />
+
       <S.Title>Alunos</S.Title>
 
       <S.List>
@@ -82,12 +58,15 @@ export default function Alunos() {
           </S.Card>
         ))}
       </S.List>
+
       <ModalConfirmacao
         open={!!alunoExcluir}
         titulo="Excluir aluno"
         mensagem={`Deseja realmente excluir o aluno "${alunoExcluir?.nome}"? Essa ação não poderá ser desfeita.`}
         onCancel={() => setAlunoExcluir(null)}
-        onConfirm={confirmarExclusao}
+        onConfirm={() =>
+          excluirAluno(alunoExcluir, setAlunos, () => setAlunoExcluir(null))
+        }
       />
     </S.Container>
   );

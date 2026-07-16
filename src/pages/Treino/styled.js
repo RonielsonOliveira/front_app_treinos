@@ -100,9 +100,7 @@ export const SectionTitle = styled.h2`
 
 export const Fields = styled.div`
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 22px;
 
   @media (max-width: 768px) {
