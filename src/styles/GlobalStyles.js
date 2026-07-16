@@ -76,7 +76,7 @@ export const Container = styled.section`
     max-width: 900px;
     margin: 20px auto;
     padding: 24px;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   @media (min-width: 1200px) {

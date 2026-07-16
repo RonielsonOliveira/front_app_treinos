@@ -21,12 +21,12 @@ export const Title = styled.h1`
 `;
 
 export const Form = styled.form`
-  width: 100%;
+  width: 95%;
 
   display: flex;
   flex-direction: column;
-
-  gap: 28px;
+  margin: 0 auto;
+  gap: 18px;
 
   padding-bottom: 100px;
 `;
@@ -38,7 +38,7 @@ export const Section = styled.section`
 
   border: 1px solid #334155;
 
-  border-radius: 22px;
+  border-radius: 4px;
 
   padding: 28px;
 
@@ -58,7 +58,7 @@ export const Section = styled.section`
   @media (max-width: 768px) {
     padding: 20px;
 
-    border-radius: 18px;
+    border-radius: 4px;
   }
 `;
 
@@ -115,7 +115,7 @@ export const Field = styled.div`
 
   flex-direction: column;
 
-  gap: 9px;
+  gap: 8px;
 
   &.full {
     grid-column: 1/-1;
@@ -132,10 +132,10 @@ export const Field = styled.div`
   input,
   select {
     height: 52px;
-
+    width: 100%;
     padding: 0 16px;
 
-    border-radius: 14px;
+    border-radius: 4px;
 
     background: #0f172a;
 
@@ -172,7 +172,7 @@ export const Search = styled.input`
 
   padding: 0 18px;
 
-  border-radius: 14px;
+  border-radius: 12 px;
 
   background: #0f172a;
 
@@ -297,7 +297,7 @@ export const SaveButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
   }
 `;
 

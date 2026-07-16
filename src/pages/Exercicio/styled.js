@@ -3,17 +3,11 @@ import { primaryColor } from "../../config/colors.js";
 
 export const Title = styled.h1`
   text-align: center;
-
-  margin: 10px 0 32px;
-
+  margin: 25px 0 40px;
   color: #f8fafc;
-
   font-size: clamp(26px, 4vw, 36px);
-
   font-weight: 800;
-
   letter-spacing: 0.4px;
-
   @media (max-width: 768px) {
     margin-bottom: 24px;
   }
@@ -35,12 +29,15 @@ export const Form = styled.form`
 
   border: 1px solid #334155;
 
-  border-radius: 22px;
+  border-radius: 4px;
 
   box-shadow:
     0 18px 45px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
+  @media (max-width: 768px) {
+    width: 90%;
+    border-radius: 4px;
+  }
   label {
     width: 100%;
     display: flex;
@@ -64,7 +61,7 @@ export const Form = styled.form`
 
     border: 1px solid #334155;
 
-    border-radius: 14px;
+    border-radius: 4px;
 
     color: #f8fafc;
 
@@ -88,9 +85,9 @@ export const Form = styled.form`
   }
 
   button {
-    width: 100%;
+    width: 50%;
     height: 56px;
-
+    margin: 0 auto;
     margin-top: 8px;
 
     border: none;
@@ -108,8 +105,6 @@ export const Form = styled.form`
     cursor: pointer;
 
     transition: 0.25s;
-
-    box-shadow: 0 12px 25px rgba(34, 197, 94, 0.25);
 
     &:hover {
       transform: translateY(-2px);
@@ -144,7 +139,7 @@ export const UploadBox = styled.label`
 
   border: 2px dashed #334155;
 
-  border-radius: 18px;
+  border-radius: 8px;
 
   cursor: pointer;
 

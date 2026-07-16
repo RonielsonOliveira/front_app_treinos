@@ -2,17 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Form, Title } from "./styled";
-import { Container } from "../../styles/GlobalStyles";
-
 import Loading from "../../components/Loading";
+import { Container } from "../../styles/GlobalStyles";
 
 import useAluno from "../../hooks/useAluno";
 import { createAluno, updateAluno } from "../../services/alunoService";
 
+import {
+  Title,
+  Form,
+  Section,
+  SectionTitle,
+  Fields,
+  Field,
+  SaveBar,
+  SaveButton,
+} from "./styled";
+
 export default function Aluno() {
   const navigate = useNavigate();
   const { id } = useParams();
+
   const initialForm = {
     nome: "",
     sobrenome: "",
@@ -22,17 +32,17 @@ export default function Aluno() {
     altura: "",
     password: "",
   };
+
   const [form, setForm] = useState(initialForm);
+
   const { aluno, isLoading } = useAluno(id);
 
   useEffect(() => {
-    // Criando novo aluno
     if (!id) {
       setForm(initialForm);
       return;
     }
 
-    // Editando aluno
     if (aluno) {
       setForm({
         nome: aluno.nome || "",
@@ -83,7 +93,9 @@ export default function Aluno() {
       altura: form.altura || null,
     };
 
-    if (form.password) payload.password = form.password;
+    if (form.password) {
+      payload.password = form.password;
+    }
 
     try {
       if (id) {
@@ -104,101 +116,139 @@ export default function Aluno() {
     <Container>
       <Loading isLoading={isLoading} />
 
-      <Title>{id ? "Editar aluno" : "Novo aluno"}</Title>
+      <Title>
+        {id ? (
+          <>
+            Editar <span>Aluno</span>
+          </>
+        ) : (
+          <>
+            Novo <span>Aluno</span>
+          </>
+        )}
+      </Title>
 
       <Form onSubmit={handleSubmit}>
-        <div className="fields">
-          <div className="field">
-            <label htmlFor="nome">Nome</label>
-            <input
-              id="nome"
-              name="nome"
-              value={form.nome}
-              onChange={handleChange}
-              placeholder="Nome"
-            />
-          </div>
+        <Section>
+          <SectionTitle>Informações Pessoais</SectionTitle>
 
-          <div className="field">
-            <label htmlFor="sobrenome">Sobrenome</label>
-            <input
-              id="sobrenome"
-              name="sobrenome"
-              value={form.sobrenome}
-              onChange={handleChange}
-              placeholder="Sobrenome"
-            />
-          </div>
+          <Fields>
+            <Field>
+              <label htmlFor="nome">Nome</label>
 
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="new-email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-          </div>
+              <input
+                id="nome"
+                name="nome"
+                value={form.nome}
+                onChange={handleChange}
+                placeholder="Digite o nome"
+              />
+            </Field>
 
-          <div className="field">
-            <label htmlFor="idade">Idade</label>
-            <input
-              id="idade"
-              name="idade"
-              type="number"
-              value={form.idade}
-              onChange={handleChange}
-              placeholder="Idade"
-            />
-          </div>
+            <Field>
+              <label htmlFor="sobrenome">Sobrenome</label>
 
-          <div className="field">
-            <label htmlFor="peso">Peso (kg)</label>
-            <input
-              id="peso"
-              name="peso"
-              type="number"
-              step="0.1"
-              value={form.peso}
-              onChange={handleChange}
-              placeholder="Peso"
-            />
-          </div>
+              <input
+                id="sobrenome"
+                name="sobrenome"
+                value={form.sobrenome}
+                onChange={handleChange}
+                placeholder="Digite o sobrenome"
+              />
+            </Field>
 
-          <div className="field">
-            <label htmlFor="altura">Altura (m)</label>
-            <input
-              id="altura"
-              name="altura"
-              type="number"
-              step="0.01"
-              value={form.altura}
-              onChange={handleChange}
-              placeholder="Altura"
-            />
-          </div>
+            <Field className="full">
+              <label htmlFor="email">Email</label>
 
-          <div className="field">
-            <label htmlFor="password">
-              {id ? "Nova senha (opcional)" : "Senha"}
-            </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="new-email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Digite o email"
+              />
+            </Field>
+          </Fields>
+        </Section>
 
-            <input
-              id="password"
-              name="password"
-              autoComplete="new-password"
-              type="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder={id ? "Nova senha (opcional)" : "Senha"}
-            />
-          </div>
-        </div>
+        <Section>
+          <SectionTitle>Informações Físicas</SectionTitle>
 
-        <button type="submit">Salvar</button>
+          <Fields>
+            <Field>
+              <label htmlFor="idade">Idade</label>
+
+              <input
+                id="idade"
+                name="idade"
+                type="number"
+                value={form.idade}
+                onChange={handleChange}
+                placeholder="Idade"
+              />
+            </Field>
+
+            <Field>
+              <label htmlFor="peso">Peso (kg)</label>
+
+              <input
+                id="peso"
+                name="peso"
+                type="number"
+                step="0.1"
+                value={form.peso}
+                onChange={handleChange}
+                placeholder="Peso"
+              />
+            </Field>
+
+            <Field className="full">
+              <label htmlFor="altura">Altura (m)</label>
+
+              <input
+                id="altura"
+                name="altura"
+                type="number"
+                step="0.01"
+                value={form.altura}
+                onChange={handleChange}
+                placeholder="Altura"
+              />
+            </Field>
+          </Fields>
+        </Section>
+
+        <Section>
+          <SectionTitle>Segurança</SectionTitle>
+
+          <Fields>
+            <Field className="full">
+              <label htmlFor="password">
+                {id ? "Nova senha (opcional)" : "Senha"}
+              </label>
+
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder={
+                  id ? "Digite uma nova senha (opcional)" : "Digite a senha"
+                }
+              />
+            </Field>
+          </Fields>
+        </Section>
+
+        <SaveBar>
+          <SaveButton type="submit">
+            {id ? "Atualizar Aluno" : "Cadastrar Aluno"}
+          </SaveButton>
+        </SaveBar>
       </Form>
     </Container>
   );

@@ -54,12 +54,13 @@ export default function MeusTreinos() {
     <Container>
       <Loading isLoading={isLoading} />
       <AlunoInfo aluno={aluno} />
-      <Title>Meus Treinos</Title>
+
       <CalendarioSemanal
         diaSelecionado={diaSelecionado}
         onChange={setDiaSelecionado}
         treinos={treinos}
       />
+      <Title>Meus Treinos</Title>
       {treinosDoDia.length === 0 && (
         <p
           style={{

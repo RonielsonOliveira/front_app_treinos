@@ -6,7 +6,7 @@ export const Header = styled.div`
   width: 100%;
   max-width: 1400px;
 
-  margin: 0 auto 40px;
+  margin: 25px 0 40px;
 
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@ export const Title = styled.h1`
   color: #f8fafc;
   font-size: 34px;
   font-weight: 700;
-
+  margin: 25px 0 40px;
   flex: 1;
   text-align: center;
 
@@ -75,6 +75,7 @@ export const CardsContainer = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    width: 95%;
   }
 `;
 

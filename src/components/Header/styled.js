@@ -149,9 +149,8 @@ export const MobileMenuButton = styled.button`
   justify-content: center;
 
   border: none;
-  border-radius: 14px;
 
-  background: #1e293b;
+  background: none;
 
   color: white;
 

@@ -2,99 +2,109 @@ import styled from "styled-components";
 import { primaryColor } from "../../config/colors";
 
 export const Title = styled.h1`
+  width: 100%;
   text-align: center;
   color: #f8fafc;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-
-  @media (max-width: 768px) {
-    font-size: 1.7rem;
-    margin-bottom: 30px;
-  }
-`;
-
-export const Container = styled.section`
-  width: min(100%, 1000px);
-
-  margin: 30px auto;
-
-  padding: 45px;
-
-  background: #0f172a;
-
-  border-radius: 24px;
-
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-
-  @media (max-width: 900px) {
-    width: 95%;
-    padding: 30px;
-  }
-
-  @media (max-width: 600px) {
-    width: calc(100% - 20px);
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-    margin: 10px auto;
-  }
+  margin: 25px 0 40px;
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
 `;
 
 export const Form = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 18px;
+  padding-bottom: 40px;
+`;
 
-  .fields {
-    display: grid;
+export const Section = styled.section`
+  width: 95%;
+  background: linear-gradient(145deg, #1e293b, #172033);
+  border: 1px solid #334155;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
 
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
-
-    gap: 28px;
+  &:hover {
+    border-color: #475569;
   }
 
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  @media (max-width: 768px) {
+    padding: 20px;
+    border-radius: 4px;
   }
+`;
 
-  .field.full {
+export const SectionTitle = styled.h2`
+  color: #f8fafc;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #334155;
+
+  &::before {
+    content: "";
+    width: 5px;
+    height: 24px;
+    border-radius: 999px;
+    background: ${primaryColor};
+  }
+  @media (max-width: 768px) {
+    font-size: 19px;
+  }
+`;
+
+export const Fields = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  &.full {
     grid-column: 1 / -1;
   }
 
   label {
-    color: #cbd5e1;
-
+    color: #e2e8f0;
     font-size: 14px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.3px;
+    font-weight: 700;
   }
 
   input {
     height: 52px;
-
-    padding: 0 18px;
-
+    padding: 0 16px;
+    border-radius: 4px;
+    background: #0f172a;
     border: 1px solid #334155;
-
-    border-radius: 12px;
-
-    background: #1e293b;
-
-    color: #fff;
-
+    color: #f8fafc;
     font-size: 15px;
-
     transition: 0.25s;
 
     &::placeholder {
       color: #64748b;
+    }
+
+    &:hover {
+      border-color: #64748b;
     }
 
     &:focus {
@@ -105,100 +115,65 @@ export const Form = styled.form`
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
   }
+`;
 
-  button {
-    align-self: center;
+export const SaveBar = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  @media (max-width: 768px) {
+    position: sticky;
+    bottom: 10px;
+    background: #020617;
+    padding: 15px;
+    border-radius: 18px;
+    z-index: 20;
+  }
+`;
 
-    width: 240px;
+export const SaveButton = styled.button`
+  width: 280px;
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: ${primaryColor};
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  transition: all 0.25s ease;
 
-    height: 52px;
-
-    border-radius: 12px;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    transition: 0.25s;
-
-    &:hover {
-      transform: translateY(-2px);
-
-      filter: brightness(0.95);
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
+  &:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
   }
 
-  @media (max-width: 900px) {
-    .fields {
-      grid-template-columns: 1fr;
-    }
-
-    .field {
-      align-items: center;
-    }
-
-    label {
-      text-align: center;
-    }
-
-    input {
-      width: min(100%, 420px);
-    }
-
-    button {
-      width: min(100%, 420px);
-    }
+  &:active {
+    transform: scale(0.97);
   }
 
-  @media (max-width: 500px) {
-    gap: 25px;
-
-    .fields {
-      gap: 20px;
-    }
-
-    input {
-      height: 48px;
-
-      font-size: 14px;
-    }
-
-    button {
-      height: 48px;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
 export const FotosGrid = styled.div`
   display: grid;
-
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-
-  gap: 15px;
-
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 18px;
 
   img {
     width: 100%;
-
     aspect-ratio: 1;
-
     object-fit: cover;
-
-    border-radius: 12px;
-
+    border-radius: 16px;
     border: 2px solid #334155;
-
+    background: #0f172a;
     transition: 0.25s;
 
     &:hover {
       transform: scale(1.05);
-
       border-color: ${primaryColor};
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
     }
   }
 `;
