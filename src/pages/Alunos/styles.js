@@ -167,3 +167,52 @@ export const EditButton = styled(Button)`
 export const DeleteButton = styled(Button)`
   background: #dc2626;
 `;
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+`;
+
+export const NewButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 170px;
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: ${primaryColor};
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;

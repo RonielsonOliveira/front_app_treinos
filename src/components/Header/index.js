@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { GiWeightLiftingUp } from "react-icons/gi";
 import { CgGym } from "react-icons/cg";
-import { HiUserAdd } from "react-icons/hi";
+import { HiUserAdd, HiUsers } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Nav,
@@ -51,25 +51,20 @@ export default function Header() {
                       <FaHome size={24} />
                       <label>Inicio</label>
                     </Link>
+                    <Link to="/alunos">
+                      <HiUsers size={24} />
+
+                      <label>Gerenciar Alunos</label>
+                    </Link>
 
                     <Link to="/exercicios">
                       <GiWeightLiftingUp size={24} />
                       <label>Gerenciar Exercícios</label>
                     </Link>
 
-                    <Link to="/exercicio">
-                      <CgGym size={24} />
-                      <label>Adicionar Exercício</label>
-                    </Link>
-
                     <Link to="/treino">
                       <GiWeightLiftingUp size={24} />
                       <label>Adicionar Treino</label>
-                    </Link>
-
-                    <Link to="/aluno">
-                      <HiUserAdd size={24} />
-                      <label>Adicionar Aluno</label>
                     </Link>
                   </div>
 

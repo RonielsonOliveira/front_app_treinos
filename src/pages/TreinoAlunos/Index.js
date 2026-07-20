@@ -33,8 +33,6 @@ export default function TreinosAluno() {
         alunoId,
       },
     });
-    // depois:
-    // navigate(`/treino/${id}/edit`);
   };
   const confirmarExclusao = async () => {
     try {

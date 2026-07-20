@@ -19,6 +19,7 @@ import Page404 from "../pages/Page404/index.js";
 import Alunos from "../pages/Alunos/index.js";
 import TreinosAluno from "../pages/TreinoAlunos/Index.js";
 import Home from "../pages/Home/index.js";
+import Dashboard from "../pages/Dashboard/index.js";
 
 export default function AppRoutes() {
   return (
@@ -78,6 +79,11 @@ export default function AppRoutes() {
         exact
         path="/aluno/:id/edit"
         element={<MyRoute component={Aluno} isClosed />}
+      />
+      <Route
+        exact
+        path="/dashboard"
+        element={<MyRoute component={Dashboard} isClosed />}
       />
 
       {/* AUTENTICAÇÃO */}

@@ -15,7 +15,7 @@ export default function Home() {
     }
 
     if (role === "user") {
-      navigate("/alunos", { replace: true });
+      navigate("/dashboard", { replace: true });
       return;
     }
 

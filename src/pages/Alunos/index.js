@@ -21,7 +21,13 @@ export default function Alunos() {
     <S.Container>
       <Loading isLoading={loading} />
 
-      <S.Title>Alunos</S.Title>
+      <S.Header>
+        <S.Title>Alunos</S.Title>
+
+        <S.NewButton onClick={() => navigate("/aluno")}>
+          + Novo Aluno
+        </S.NewButton>
+      </S.Header>
 
       <S.List>
         {alunos.map((aluno) => (
