@@ -14,9 +14,7 @@ export default function Dashboard() {
   return (
     <S.Container>
       <S.Header>
-        <S.Title>
-          Painel do <span>Professor</span>
-        </S.Title>
+        <S.Title>Painel do Professor</S.Title>
 
         <S.SubTitle>Escolha um módulo para começar.</S.SubTitle>
       </S.Header>
