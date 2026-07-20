@@ -52,6 +52,11 @@ export default function Header() {
                       <label>Inicio</label>
                     </Link>
 
+                    <Link to="/exercicios">
+                      <GiWeightLiftingUp size={24} />
+                      <label>Gerenciar Exercícios</label>
+                    </Link>
+
                     <Link to="/exercicio">
                       <CgGym size={24} />
                       <label>Adicionar Exercício</label>
@@ -60,11 +65,6 @@ export default function Header() {
                     <Link to="/treino">
                       <GiWeightLiftingUp size={24} />
                       <label>Adicionar Treino</label>
-                    </Link>
-
-                    <Link to="/exercicios">
-                      <GiWeightLiftingUp size={24} />
-                      <label>Gerenciar Exercícios</label>
                     </Link>
 
                     <Link to="/aluno">
@@ -118,7 +118,6 @@ export default function Header() {
             <div className="title-menu">
               <div className="title-content">
                 <h2>Menu Professor</h2>
-                <span>Painel do Professor</span>
               </div>
 
               <div className="close-menu" onClick={() => setMenuOpen(false)}>
@@ -175,7 +174,6 @@ export default function Header() {
             <div className="title-menu">
               <div className="title-content">
                 <h2>Menu Aluno</h2>
-                <span>Área do Aluno</span>
               </div>
 
               <div className="close-menu" onClick={() => setMenuOpen(false)}>

@@ -1,146 +1,113 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { get } from "lodash";
-
-import { Container } from "../../styles/GlobalStyles";
-import { Form, Title, FotosGrid, UploadBox } from "./styled";
 
 import Loading from "../../components/Loading";
-import FotosPreview from "../../components/FotosPreview";
+import FormInput from "../../components/FormInput";
+import UploadFotos from "../../components/UploadFotos";
 
 import useExercicio from "../../hooks/useExercicio";
+import { useExercicioForm } from "../../hooks/useExercicioForm";
+
+import { exercicioToPayload } from "./mapper";
+import { validateExercicio } from "./validation";
+import { salvarExercicio } from "./actions";
 
 import {
-  createExercicio,
-  updateExercicio,
-  uploadFotos,
-} from "../../services/exercicioService";
+  Container,
+  Title,
+  Form,
+  Section,
+  SectionTitle,
+  SaveBar,
+  SaveButton,
+} from "./styled";
 
 export default function Exercicio() {
   const navigate = useNavigate();
+
   const { id } = useParams();
 
   const { exercicio, isLoading } = useExercicio(id);
 
-  const [form, setForm] = useState({
-    nome: "",
-    descricao: "",
-  });
+  const {
+    form,
+    fotos,
+    novasFotos,
+    handleChange,
+    handleFotoChange,
+    removerNovaFoto,
+    setNovasFotos,
+  } = useExercicioForm(exercicio);
 
-  const [fotos, setFotos] = useState([]);
-  const [novasFotos, setNovasFotos] = useState([]);
-  const removerNovaFoto = (index) => {
-    setNovasFotos((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  useEffect(() => {
-    if (!exercicio) return;
-
-    setForm({
-      nome: exercicio.nome,
-      descricao: exercicio.descricao,
-    });
-
-    setFotos(get(exercicio, "FotoExercicios", []));
-  }, [exercicio]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleFotoChange = (e) => {
-    const arquivosSelecionados = Array.from(e.target.files);
-
-    setNovasFotos((prev) => {
-      const novas = arquivosSelecionados.filter(
-        (arquivo) =>
-          !prev.some(
-            (foto) => foto.name === arquivo.name && foto.size === arquivo.size
-          )
-      );
-
-      return [...prev, ...novas];
-    });
-
-    e.target.value = "";
-  };
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    if (form.nome.length < 3 || form.descricao.length < 3) {
-      toast.error("Nome e descrição precisam ter pelo menos 3 caracteres");
-      return;
-    }
+    if (!validateExercicio(form)) return;
 
-    try {
-      let exercicioId = id;
+    const payload = exercicioToPayload(form);
 
-      if (id) {
-        await updateExercicio(id, form);
-        toast.success("Exercício atualizado!");
-      } else {
-        const data = await createExercicio(form);
-        exercicioId = data.id;
-        navigate(`/exercicio/${exercicioId}/edit`);
-        toast.success("Exercício criado!");
-      }
-
-      if (novasFotos.length > 0) {
-        await uploadFotos(exercicioId, novasFotos);
-
-        toast.success("Fotos enviadas!");
-        setNovasFotos([]);
-      }
-    } catch {
-      toast.error("Erro ao salvar exercício");
-    }
-  };
+    await salvarExercicio({
+      id,
+      payload,
+      novasFotos,
+      navigate,
+      setNovasFotos,
+    });
+  }
 
   return (
     <Container>
       <Loading isLoading={isLoading} />
 
-      <Title>{id ? "Editar exercício" : "Novo exercício"}</Title>
+      <Title>
+        {id ? (
+          <>
+            Editar <span>Exercício</span>
+          </>
+        ) : (
+          <>
+            Novo <span>Exercício</span>
+          </>
+        )}
+      </Title>
 
       <Form onSubmit={handleSubmit}>
-        <input
-          name="nome"
-          value={form.nome}
-          onChange={handleChange}
-          placeholder="Nome"
-        />
+        <Section>
+          <SectionTitle>Informações</SectionTitle>
 
-        <input
-          name="descricao"
-          value={form.descricao}
-          onChange={handleChange}
-          placeholder="Descrição"
-        />
-        <Title>Adicionar Imagens do Exercicio</Title>
-        <UploadBox>
-          <span>+</span>
-          <input
-            type="file"
-            accept="image/png, image/jpeg"
-            multiple
-            onChange={handleFotoChange}
+          <FormInput
+            label="Nome"
+            name="nome"
+            value={form.nome}
+            onChange={handleChange}
+            placeholder="Digite o nome do exercício"
           />
-        </UploadBox>
-        <FotosGrid>
-          <FotosPreview
+
+          <FormInput
+            label="Descrição"
+            name="descricao"
+            value={form.descricao}
+            onChange={handleChange}
+            placeholder="Digite a descrição"
+          />
+        </Section>
+
+        <Section>
+          <SectionTitle>Imagens</SectionTitle>
+
+          <UploadFotos
             fotos={fotos}
             novasFotos={novasFotos}
-            onRemoveNovaFoto={removerNovaFoto}
+            onChange={handleFotoChange}
+            onRemove={removerNovaFoto}
           />
-        </FotosGrid>
+        </Section>
 
-        <button type="submit">Salvar</button>
+        <SaveBar>
+          <SaveButton type="submit">
+            {id ? "Atualizar Exercício" : "Cadastrar Exercício"}
+          </SaveButton>
+        </SaveBar>
       </Form>
     </Container>
   );

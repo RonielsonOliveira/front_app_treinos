@@ -6,114 +6,166 @@ export const Container = styled.section`
   width: 100%;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+  padding: 30px;
 
-  padding: 20px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(34, 197, 94, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 197, 94, 0.08),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
 `;
 
 export const LoginWrapper = styled.div`
-  width: 900px;
-  max-width: 100%;
+  width: min(1100px, 100%);
 
-  min-height: 550px;
+  min-height: 620px;
 
-  display: flex;
-
-  background: #ffffff;
-
-  border-radius: 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
 
   overflow: hidden;
 
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  border-radius: 28px;
 
-  @media (max-width: 768px) {
+  background: rgba(15, 23, 42, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
     min-height: auto;
   }
 `;
 
 export const ImageLogin = styled.div`
-  width: 50%;
-
   position: relative;
 
-  &::after {
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: 0.7s;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
+  }
+
+  &::before {
     content: "";
 
     position: absolute;
     inset: 0;
 
     background: linear-gradient(
-      90deg,
-      rgba(15, 23, 42, 0.2),
-      rgba(15, 23, 42, 0.8)
+      120deg,
+      rgba(2, 6, 23, 0.15),
+      rgba(15, 23, 42, 0.55),
+      rgba(2, 6, 23, 0.85)
     );
+
+    z-index: 1;
   }
 
-  img {
-    width: 100%;
-    height: 100%;
+  &::after {
+    content: "Treinos Personalizados";
 
-    object-fit: cover;
+    position: absolute;
+
+    left: 45px;
+    bottom: 45px;
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    width: 260px;
+
+    line-height: 1.2;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     display: none;
   }
 `;
 
 export const Form = styled.form`
-  width: 50%;
-
-  padding: 50px;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
 
-  gap: 18px;
+  padding: 60px;
 
-  background: #ffffff;
+  gap: 20px;
 
-  @media (max-width: 768px) {
-    width: 100%;
+  background: linear-gradient(180deg, #1e293b, #172033);
 
-    padding: 35px 25px;
+  @media (max-width: 900px) {
+    padding: 45px 30px;
+  }
+  label {
+    color: #e2e8f0;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: -4px;
   }
 
   input,
   select {
     width: 100%;
+    height: 56px;
 
-    height: 52px;
+    padding: 0 18px;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
-    border: 1px solid #d1d5db;
+    border: 1px solid #334155;
 
-    padding: 0 16px;
+    background: #0f172a;
+
+    color: #f8fafc;
 
     font-size: 15px;
 
-    color: #111827;
+    transition: 0.25s;
 
-    background: #f8fafc;
+    &::placeholder {
+      color: #64748b;
+    }
 
-    transition: 0.3s;
+    &:hover {
+      border-color: #475569;
+    }
 
     &:focus {
       outline: none;
 
       border-color: ${primaryColor};
 
-      background: white;
-
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+      transform: translateY(-2px);
     }
   }
 
@@ -123,29 +175,32 @@ export const Form = styled.form`
 
   button {
     width: 100%;
+    height: 58px;
 
-    height: 54px;
+    margin-top: 12px;
 
-    margin-top: 15px;
+    border: none;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
     background: ${primaryColor};
 
     color: white;
 
-    font-size: 16px;
+    font-size: 17px;
 
     font-weight: 700;
 
     letter-spacing: 0.5px;
 
-    transition: 0.3s;
+    cursor: pointer;
+
+    transition: 0.25s;
 
     &:hover {
       transform: translateY(-3px);
 
-      filter: brightness(1.1);
+      filter: brightness(1.08);
     }
 
     &:active {
@@ -155,21 +210,35 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h1`
+  color: #f8fafc;
+
   text-align: center;
 
-  color: #0f172a;
-
-  font-size: 36px;
+  font-size: 42px;
 
   font-weight: 800;
 
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+
+  letter-spacing: -1px;
 
   span {
     color: ${primaryColor};
   }
 
   @media (max-width: 768px) {
-    font-size: 30px;
+    font-size: 34px;
   }
+`;
+
+export const Subtitle = styled.p`
+  color: #94a3b8;
+
+  text-align: center;
+
+  font-size: 15px;
+
+  margin-bottom: 18px;
+
+  line-height: 1.6;
 `;

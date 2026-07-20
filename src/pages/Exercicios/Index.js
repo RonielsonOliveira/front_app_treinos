@@ -1,37 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { Container } from "../../styles/GlobalStyles";
 
-import { Title, Header, CardsContainer } from "./styled";
+import { Header, Title, CardsContainer } from "./styled";
 
 import Loading from "../../components/Loading";
 import ExercicioCard from "../../components/ExerciciosCard";
 
 import useExercicios from "../../hooks/useExercicios";
-import { deleteExercicio } from "../../services/exerciciosService";
 
-import { toast } from "react-toastify";
+import { excluirExercicio } from "./actions";
+import ModalConfirmacao from "../../components/ModalConfirmation";
 
 export default function Exercicios() {
   const { exercicios, setExercicios, isLoading, setIsLoading } =
     useExercicios();
-  const handleDelete = async (id) => {
-    if (!window.confirm("Deseja realmente excluir este exercício?")) return;
+  const confirmarExclusao = async () => {
+    await excluirExercicio(exercicioExcluir.id, setExercicios, setIsLoading);
 
-    try {
-      setIsLoading(true);
-
-      await deleteExercicio(id);
-
-      setExercicios((prev) => prev.filter((ex) => ex.id !== id));
-
-      toast.success("Exercício excluído!");
-    } catch {
-      toast.error("Erro ao excluir exercício");
-    } finally {
-      setIsLoading(false);
-    }
+    setExercicioExcluir(null);
   };
-
+  const [exercicioExcluir, setExercicioExcluir] = useState(null);
   return (
     <Container>
       <Loading isLoading={isLoading} />
@@ -45,10 +34,17 @@ export default function Exercicios() {
           <ExercicioCard
             key={exercicio.id}
             exercicio={exercicio}
-            onDelete={handleDelete}
+            onDelete={() => setExercicioExcluir(exercicio)}
           />
         ))}
       </CardsContainer>
+      <ModalConfirmacao
+        open={!!exercicioExcluir}
+        titulo="Excluir exercício"
+        mensagem={`Deseja realmente excluir o exercício "${exercicioExcluir?.nome}"? Essa ação não poderá ser desfeita.`}
+        onCancel={() => setExercicioExcluir(null)}
+        onConfirm={confirmarExclusao}
+      />
     </Container>
   );
 }

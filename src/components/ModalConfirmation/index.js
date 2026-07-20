@@ -13,7 +13,7 @@ export default function ModalConfirmacao({
   useEffect(() => {
     if (!open) return;
 
-    setTempo(10);
+    setTempo(5);
 
     const timer = setInterval(() => {
       setTempo((prev) => {

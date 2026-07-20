@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { primaryColor } from "../../config/colors";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 90%;
 
   margin: 0 auto 22px;
 

@@ -1,76 +1,79 @@
-import React from "react";
 import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { isEmail } from "validator";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Container, ImageLogin, LoginWrapper, Title } from "./styled";
-import * as actions from "../../store/modules/auth/actions";
-import Loading from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
+
+import Loading from "../../components/Loading";
+import FormInput from "../../components/FormInput";
+
+import { Container, ImageLogin, LoginWrapper, Form, Title } from "./styled";
+
+import * as actions from "../../store/modules/auth/actions";
+
+import { validateLogin } from "./validation";
+import { useLoginForm } from "../../hooks/useLoginForm.js";
 
 import Imagem from "../../utils/Img/professor.jpg";
 
 export default function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const isLoading = useSelector((state) => state.auth.isLoading);
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [role, setRole] = React.useState("user");
-  const navigate = useNavigate();
+  const { form, handleChange } = useLoginForm();
+
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/");
     }
   }, [isLoggedIn, navigate]);
-  function handleSubmit(e) {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isEmail(email)) {
-      toast.error("Email inválido");
-      return;
-    }
-
-    if (password.length < 6) {
-      toast.error("Senha inválida");
-      return;
-    }
+    if (!validateLogin(form)) return;
 
     dispatch(
       actions.loginRequest({
-        email,
-        password,
-        role,
+        ...form,
         prevPath: "/",
       })
     );
-  }
+  };
 
   return (
     <Container>
       <Loading isLoading={isLoading} />
+
       <LoginWrapper>
         <ImageLogin>
-          <img src={Imagem} />
+          <img src={Imagem} alt="Professor" />
         </ImageLogin>
+
         <Form onSubmit={handleSubmit}>
           <Title>Login</Title>
-          <input
+
+          <FormInput
+            label="Email"
+            name="email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={form.email}
+            onChange={handleChange}
             placeholder="Seu email"
           />
 
-          <input
+          <FormInput
+            label="Senha"
+            name="password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={form.password}
+            onChange={handleChange}
             placeholder="Sua senha"
           />
 
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
+          <label>Perfil</label>
+          <select name="role" value={form.role} onChange={handleChange}>
             <option value="user">Professor</option>
             <option value="aluno">Aluno</option>
           </select>

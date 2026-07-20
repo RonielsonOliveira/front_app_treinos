@@ -84,7 +84,7 @@ export default function AppRoutes() {
       <Route
         exact
         path="/register"
-        element={<MyRoute component={Register} />}
+        element={<MyRoute component={Register} isClosed />}
       />
       <Route exact path="/login" element={<MyRoute component={Login} />} />
 

@@ -82,7 +82,7 @@ export const CardsContainer = styled.div`
 export const Card = styled.div`
   background: #1e293b;
 
-  border-radius: 18px;
+  border-radius: 4px;
 
   overflow: hidden;
 

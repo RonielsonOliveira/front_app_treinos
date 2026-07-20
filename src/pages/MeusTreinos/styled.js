@@ -5,7 +5,7 @@ export const Title = styled.h1`
   text-align: center;
   color: #f8fafc;
   font-size: 34px;
-  margin: 20px 0 35px;
+  margin: 10px;
   font-weight: 700;
 
   @media (max-width: 768px) {

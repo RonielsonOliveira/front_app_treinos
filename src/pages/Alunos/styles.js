@@ -44,7 +44,7 @@ export const Card = styled.div`
   background: #1f2937;
   color: #fff;
 
-  border-radius: 12px;
+  border-radius: 4px;
 
   transition: 0.2s;
 
