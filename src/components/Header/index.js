@@ -125,12 +125,6 @@ export default function Header() {
                 <FaHome />
                 <span>Início</span>
               </Link>
-
-              <Link to="/exercicio" onClick={() => setMenuOpen(false)}>
-                <CgGym />
-                <span>Adicionar Exercício</span>
-              </Link>
-
               <Link to="/treino" onClick={() => setMenuOpen(false)}>
                 <GiWeightLiftingUp />
                 <span>Adicionar Treino</span>
@@ -141,9 +135,9 @@ export default function Header() {
                 <span>Gerenciar Exercícios</span>
               </Link>
 
-              <Link to="/aluno" onClick={() => setMenuOpen(false)}>
-                <HiUserAdd />
-                <span>Adicionar Aluno</span>
+              <Link to="/alunos" onClick={() => setMenuOpen(false)}>
+                <HiUsers />
+                <span>Gerenciar Alunos</span>
               </Link>
             </div>
 
