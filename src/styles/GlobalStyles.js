@@ -49,6 +49,9 @@ body {
     text-decoration: none;
     color: ${primaryColor};
   }
+  h1{
+    font-size: 38px;
+  }
   ul {
     list-style: none;
   }

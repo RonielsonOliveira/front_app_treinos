@@ -15,11 +15,6 @@ export const Header = styled.div`
 
 export const Title = styled.h1`
   color: #fff;
-
-  font-size: clamp(32px, 5vw, 46px);
-
-  font-weight: 800;
-
   span {
     color: ${primaryColor};
   }

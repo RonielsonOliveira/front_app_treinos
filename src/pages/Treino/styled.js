@@ -9,10 +9,6 @@ export const Title = styled.h1`
 
   margin: 25px 0 40px;
 
-  font-size: clamp(26px, 4vw, 36px);
-
-  font-weight: 800;
-
   letter-spacing: -0.5px;
 
   span {
