@@ -34,25 +34,25 @@ export const Exercicio = styled.div`
 export const ExercicioSeriesERepeticoes = styled.div``;
 
 export const ImageWrapper = styled.div`
+  position: relative;
+
   width: 100%;
   height: 180px;
+
   background: #0f172a;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
-  svg {
-    opacity: 0.5;
-  }
 `;
-
 export const ExercicioInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,5 +96,40 @@ export const CheckboxWrapper = styled.div`
     width: 22px;
     height: 22px;
     cursor: pointer;
+  }
+`;
+export const VideoButton = styled.button`
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 58px;
+  height: 58px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+
+    background: ${primaryColor};
+  }
+
+  svg {
+    font-size: 24px;
   }
 `;

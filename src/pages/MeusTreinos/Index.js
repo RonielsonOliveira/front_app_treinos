@@ -8,7 +8,7 @@ import Loading from "../../components/Loading";
 import CalendarioSemanal from "../../components/CalendarioSemanal";
 import TreinoItem from "../../components/TreinoItem";
 import AlunoInfo from "../../components/AlunoInfo";
-import { ExercicioModal } from "../../components/ExercicioModal";
+import ExercicioModal from "../../components/ExercicioModal";
 import { ModalTreinoConcluido } from "../../components/ModalConcluido";
 
 import { useMeusTreinos } from "../../hooks/useMeusTreinos";

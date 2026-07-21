@@ -13,12 +13,22 @@ export default function ModalExercicio({
   onRemove,
 }) {
   if (!open || !exercicio) return null;
-
+  const youtubeId = "M7lc1UVf-VE";
   return (
     <S.Overlay>
       <S.Container>
         <img src={exercicio.FotoExercicios[0].url} alt={exercicio.nome} />
-
+        <div style={{ marginTop: 20 }}>
+          <iframe
+            src="https://www.youtube.com/embed/M7lc1UVf-VE"
+            title="Vídeo"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
         <h2>{exercicio.nome}</h2>
 
         <div className="campo">

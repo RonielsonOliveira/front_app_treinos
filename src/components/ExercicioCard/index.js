@@ -1,6 +1,6 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
-
+import { FaPlay } from "react-icons/fa";
 import {
   ExercicioCheck,
   Exercicio,
@@ -11,6 +11,7 @@ import {
   Footer,
   CheckboxWrapper,
   ExercicioSeriesERepeticoes,
+  VideoButton,
 } from "./styled";
 
 export default function ExercicioCard({
@@ -29,6 +30,18 @@ export default function ExercicioCard({
           ) : (
             <FaUserCircle size={80} />
           )}
+
+          <VideoButton
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              console.log("Abrir vídeo");
+            }}
+          >
+            <FaPlay />
+          </VideoButton>
         </ImageWrapper>
 
         <ExercicioInfoWrapper>

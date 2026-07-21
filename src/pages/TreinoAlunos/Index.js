@@ -11,7 +11,7 @@ import { Title } from "./styled";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalConfirmacao from "../../components/ModalConfirmation";
 import CalendarioSemanal from "../../components/CalendarioSemanal";
-import { ExercicioModal } from "../../components/ExercicioModal";
+import ExercicioModal from "../../components/ExercicioModal";
 export default function TreinosAluno() {
   const { alunoId } = useParams();
   const { openId, toggle } = useToggle();

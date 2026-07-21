@@ -5,38 +5,37 @@ export const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
 
-  background: rgba(2, 6, 23, 0.82);
-  backdrop-filter: blur(6px);
-
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 20px;
 
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(8px);
+
   z-index: 999;
 `;
 
 export const ModalContent = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 620px;
 
   background: #1e293b;
 
   border: 1px solid #334155;
-
-  border-radius: 20px;
+  border-radius: 22px;
 
   overflow: hidden;
 
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 
-  animation: modalShow 0.25s ease;
+  animation: modalShow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 
   @keyframes modalShow {
     from {
       opacity: 0;
-      transform: translateY(20px) scale(0.97);
+      transform: translateY(40px) scale(0.96);
     }
 
     to {
@@ -46,9 +45,54 @@ export const ModalContent = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.div`
+export const Tabs = styled.div`
+  display: flex;
+
+  background: #172235;
+
+  border-bottom: 1px solid #334155;
+`;
+
+export const Tab = styled.button`
+  flex: 1;
+
+  height: 56px;
+
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  background: ${({ $active }) =>
+    $active ? "rgba(255,255,255,.04)" : "transparent"};
+
+  color: ${({ $active }) => ($active ? "#fff" : "#94a3b8")};
+
+  border-bottom: 3px solid
+    ${({ $active }) => ($active ? primaryColor : "transparent")};
+
+  transition: 0.25s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: white;
+  }
+
+  svg {
+    font-size: 18px;
+  }
+`;
+
+export const MediaWrapper = styled.div`
   width: 100%;
-  height: 260px;
+  height: 320px;
 
   background: #0f172a;
 
@@ -58,13 +102,20 @@ export const ImageWrapper = styled.div`
 
   overflow: hidden;
 
-  border-bottom: 1px solid #334155;
-
-  img {
+  img,
+  iframe,
+  video {
     width: 100%;
     height: 100%;
+  }
 
+  img {
     object-fit: cover;
+  }
+
+  iframe,
+  video {
+    border: none;
   }
 
   svg {
@@ -78,12 +129,12 @@ export const ImageWrapper = styled.div`
 `;
 
 export const ExercicioInfo = styled.div`
-  padding: 24px;
-
   display: flex;
   flex-direction: column;
 
-  gap: 20px;
+  gap: 22px;
+
+  padding: 24px;
 `;
 
 export const Title = styled.h2`
@@ -94,74 +145,64 @@ export const Title = styled.h2`
   text-align: center;
 
   font-size: 28px;
-
   font-weight: 700;
-
-  line-height: 1.3;
 `;
 
 export const Description = styled.p`
   margin: 0;
 
-  text-align: center;
-
   color: #cbd5e1;
 
-  font-size: 16px;
+  text-align: center;
 
   line-height: 1.6;
-
-  font-style: italic;
 `;
 
 export const ExercicioDados = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
 
-  margin-top: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
 
   .item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+    min-height: 95px;
 
     background: #0f172a;
 
     border: 1px solid #334155;
-
-    border-radius: 12px;
-
-    padding: 16px 18px;
+    border-radius: 14px;
 
     transition: 0.2s;
+  }
 
-    &:hover {
-      border-color: ${primaryColor};
-    }
+  .item:hover {
+    border-color: ${primaryColor};
   }
 
   label {
+    margin-bottom: 8px;
+
     color: #94a3b8;
 
-    font-size: 15px;
-
+    font-size: 14px;
     font-weight: 600;
   }
 
   span {
-    color: #fff;
+    color: white;
 
-    font-size: 24px;
-
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: bold;
   }
 `;
+
 export const Footer = styled.div`
-  display: flex;
-
-  justify-content: center;
-
   padding: 24px;
 
   border-top: 1px solid #334155;
@@ -169,28 +210,42 @@ export const Footer = styled.div`
   background: #172235;
 
   button {
-    width: 220px;
-    height: 48px;
+    width: 100%;
+    height: 50px;
 
-    border-radius: 10px;
+    border: none;
+
+    border-radius: 12px;
+
+    background: ${primaryColor};
+
+    color: white;
 
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
+
+    cursor: pointer;
 
     transition: 0.2s;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: scale(0.97);
-    }
   }
 
-  @media (max-width: 768px) {
-    button {
-      width: 100%;
-    }
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+`;
+export const VideoWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 20px;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
   }
 `;
