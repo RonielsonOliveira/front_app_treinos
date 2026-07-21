@@ -12,7 +12,13 @@ export const Title = styled.h1`
     font-size: 28px;
   }
 `;
-
+export const EmptyMessage = styled.p`
+  text-align: center;
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 24px;
+`;
 export const TreinoTitle = styled.div`
   width: 100%;
 

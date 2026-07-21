@@ -57,6 +57,11 @@ export const Section = styled.section`
     border-radius: 4px;
   }
 `;
+export const Empty = styled.p`
+  color: #94a3b8;
+  text-align: center;
+  padding: 20px;
+`;
 
 export const SectionTitle = styled.h2`
   color: #f8fafc;

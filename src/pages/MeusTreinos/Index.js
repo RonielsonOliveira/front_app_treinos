@@ -1,75 +1,54 @@
-import { React, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { Container } from "../../styles/GlobalStyles";
+
+import { EmptyMessage } from "./styled";
+
 import Loading from "../../components/Loading";
-import { Title, TreinoCard } from "./styled";
+import CalendarioSemanal from "../../components/CalendarioSemanal";
+import TreinoItem from "../../components/TreinoItem";
+import AlunoInfo from "../../components/AlunoInfo";
+import { ExercicioModal } from "../../components/ExercicioModal";
+import { ModalTreinoConcluido } from "../../components/ModalConcluido";
 
 import { useMeusTreinos } from "../../hooks/useMeusTreinos";
 import { useToggle } from "../../hooks/useToggle";
+import { useTreinoConcluido } from "../../hooks/useTreinoConcluido";
 
-import TreinoItem from "../../components/TreinoItem";
-import { ExercicioModal } from "../../components/ExercicioModal";
-import { ModalTreinoConcluido } from "../../components/ModalConcluido";
-import CalendarioSemanal from "../../components/CalendarioSemanal";
-import AlunoInfo from "../../components/AlunoInfo";
+import { getDiaAtual } from "./helpers";
 
 export default function MeusTreinos() {
   const { treinos, aluno, isLoading } = useMeusTreinos();
+
   const { openId, toggle } = useToggle();
+
   const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
-  const [checkedExercicios, setCheckedExercicios] = useState({});
-  const [treinoConcluido, setTreinoConcluido] = useState(false);
-  const handleCheck = (exercicioId, treino) => {
-    setCheckedExercicios((prev) => {
-      const updated = {
-        ...prev,
-        [exercicioId]: !prev[exercicioId],
-      };
-      const closeTreino = () => {
-        toggle(openId);
-      };
-      const todosMarcados = treino.Exercicios.every((ex) => updated[ex.id]);
 
-      if (todosMarcados) {
-        setTreinoConcluido(true);
-        closeTreino();
-      }
+  const [diaSelecionado, setDiaSelecionado] = useState(getDiaAtual());
 
-      return updated;
-    });
-  };
-  const getDiaSemana = () => {
-    const dia = new Date().getDay();
+  const { checkedExercicios, treinoConcluido, handleCheck, fecharModal } =
+    useTreinoConcluido(toggle);
 
-    if (dia === 0) return 7; // domingo
+  const treinosDoDia = useMemo(() => {
+    return treinos.filter(
+      (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
+    );
+  }, [treinos, diaSelecionado]);
 
-    return dia;
-  };
-
-  const [diaSelecionado, setDiaSelecionado] = useState(getDiaSemana());
-  const treinosDoDia = treinos.filter(
-    (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
-  );
   return (
     <Container>
       <Loading isLoading={isLoading} />
+
       <AlunoInfo aluno={aluno} />
+
       <CalendarioSemanal
         diaSelecionado={diaSelecionado}
         onChange={setDiaSelecionado}
         treinos={treinos}
       />
 
-      {treinosDoDia.length === 0 && (
-        <p
-          style={{
-            textAlign: "center",
-            color: "#94a3b8",
-            marginTop: 20,
-          }}
-        >
-          Nenhum treino para este dia.
-        </p>
+      {!treinosDoDia.length && (
+        <EmptyMessage>Nenhum treino para este dia.</EmptyMessage>
       )}
 
       {treinosDoDia.map((treino) => (
@@ -80,7 +59,7 @@ export default function MeusTreinos() {
           onToggle={toggle}
           onSelectExercicio={setExercicioSelecionado}
           checkedExercicios={checkedExercicios}
-          onCheck={handleCheck}
+          onCheck={(idExercicio) => handleCheck(idExercicio, treino, openId)}
         />
       ))}
 
@@ -89,13 +68,7 @@ export default function MeusTreinos() {
         onClose={() => setExercicioSelecionado(null)}
       />
 
-      <ModalTreinoConcluido
-        open={treinoConcluido}
-        onClose={() => {
-          setTreinoConcluido(false);
-          setCheckedExercicios({});
-        }}
-      />
+      <ModalTreinoConcluido open={treinoConcluido} onClose={fecharModal} />
     </Container>
   );
 }
