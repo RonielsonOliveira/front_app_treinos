@@ -31,59 +31,59 @@ export default function AppRoutes() {
       <Route
         exact
         path="/exercicio"
-        element={<MyRoute component={Exercicio} isClosed />}
+        element={<MyRoute component={Exercicio} isClosed professorOnly />}
       />
       <Route
         exact
         path="/exercicios"
-        element={<MyRoute component={Exercicios} isClosed />}
+        element={<MyRoute component={Exercicios} isClosed professorOnly />}
       />
       <Route
         exact
         path="/exercicio/:id/edit"
-        element={<MyRoute component={Exercicio} isClosed />}
+        element={<MyRoute component={Exercicio} isClosed professorOnly />}
       />
 
       {/* TREINOS */}
       <Route
         exact
         path="/treinos"
-        element={<MyRoute component={Treinos} isClosed />}
+        element={<MyRoute component={Treinos} isClosed professorOnly />}
       />
       <Route
         path="/alunos/:alunoId/treinos"
-        element={<MyRoute component={TreinosAluno} isClosed />}
+        element={<MyRoute component={TreinosAluno} isClosed professorOnly />}
       />
       <Route
         exact
         path="/treino"
-        element={<MyRoute component={Treino} isClosed />}
+        element={<MyRoute component={Treino} isClosed professorOnly />}
       />
       <Route
         exact
         path="/treino/:id/edit"
-        element={<MyRoute component={Treino} isClosed />}
+        element={<MyRoute component={Treino} isClosed professorOnly />}
       />
 
       <Route
         exact
         path="/aluno"
-        element={<MyRoute component={Aluno} isClosed />}
+        element={<MyRoute component={Aluno} isClosed professorOnly />}
       />
       <Route
         exact
         path="/alunos"
-        element={<MyRoute component={Alunos} isClosed />}
+        element={<MyRoute component={Alunos} isClosed professorOnly />}
       />
       <Route
         exact
         path="/aluno/:id/edit"
-        element={<MyRoute component={Aluno} isClosed />}
+        element={<MyRoute component={Aluno} isClosed professorOnly />}
       />
       <Route
         exact
         path="/dashboard"
-        element={<MyRoute component={Dashboard} isClosed />}
+        element={<MyRoute component={Dashboard} isClosed professorOnly />}
       />
 
       {/* AUTENTICAÇÃO */}
@@ -98,7 +98,7 @@ export default function AppRoutes() {
       <Route
         exact
         path="/fotos/:id"
-        element={<MyRoute component={Fotos} isClosed />}
+        element={<MyRoute component={Fotos} isClosed professorOnly />}
       />
       <Route
         exact

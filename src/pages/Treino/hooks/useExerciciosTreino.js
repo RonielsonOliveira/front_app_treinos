@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 
-export default function useExerciciosTreino({ exercicios, treino }) {
+export default function useExerciciosTreino({
+  exercicios,
+  treino,
+  treinoModelo,
+}) {
   const [busca, setBusca] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,17 +18,19 @@ export default function useExerciciosTreino({ exercicios, treino }) {
   const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
   const fecharModal = () => setModalOpen(false);
   useEffect(() => {
-    if (!treino) return;
+    const origem = treinoModelo || treino;
+
+    if (!origem) return;
 
     const exerciciosComSeries =
-      treino.Exercicios?.map((ex) => ({
+      origem.Exercicios?.map((ex) => ({
         id: ex.id,
         numerodeSeries: ex.TreinoExercicio?.numerodeSeries ?? 3,
         numerodeRepeticoes: ex.TreinoExercicio?.numerodeRepeticoes ?? 10,
       })) || [];
 
     setExerciciosSelecionados(exerciciosComSeries);
-  }, [treino]);
+  }, [treino, treinoModelo]);
 
   const removerAcentos = (texto) =>
     texto

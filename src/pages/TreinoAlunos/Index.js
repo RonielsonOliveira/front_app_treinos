@@ -1,32 +1,43 @@
-import { useEffect, useState } from "react";
-import { deleteTreino } from "../../services/treinoService";
-import { toast } from "react-toastify";
-import { Container } from "../../styles/GlobalStyles";
-import { getTreinosAluno } from "../../services/alunosService";
-import { useToggle } from "../../hooks/useToggle";
-import * as S from "./styled";
-import Loading from "../../components/Loading";
-import TreinoItem from "../../components/TreinoItem";
-import { Title } from "./styled";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import ModalConfirmacao from "../../components/ModalConfirmation";
+
+import { Container } from "../../styles/GlobalStyles";
+
+import Loading from "../../components/Loading";
 import CalendarioSemanal from "../../components/CalendarioSemanal";
+import ModalConfirmacao from "../../components/ModalConfirmation";
 import ExercicioModal from "../../components/ExercicioModal";
+import TreinoItem from "../../components/TreinoItem";
+
+import { useToggle } from "../../hooks/useToggle";
+import useTreinosAluno from "./hooks/useTreinosAluno";
+
+import * as S from "./styled";
 export default function TreinosAluno() {
   const { alunoId } = useParams();
-  const { openId, toggle } = useToggle();
-  const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
-  const [treinos, setTreinos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [treinoExcluir, setTreinoExcluir] = useState(null);
-  const getDiaSemana = () => {
-    const dia = new Date().getDay();
 
-    return dia === 0 ? 7 : dia;
-  };
-
-  const [diaSelecionado, setDiaSelecionado] = useState(getDiaSemana());
   const navigate = useNavigate();
+
+  const { openId, toggle } = useToggle();
+
+  const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
+
+  const {
+    loading,
+
+    treinos,
+
+    treinosFiltrados,
+
+    treinoExcluir,
+    setTreinoExcluir,
+
+    diaSelecionado,
+    setDiaSelecionado,
+
+    confirmarExclusao,
+  } = useTreinosAluno(alunoId);
+
   const editarTreino = (id) => {
     navigate(`/treino/${id}/edit`, {
       state: {
@@ -34,19 +45,7 @@ export default function TreinosAluno() {
       },
     });
   };
-  const confirmarExclusao = async () => {
-    try {
-      await deleteTreino(treinoExcluir.id);
 
-      setTreinos((prev) => prev.filter((t) => t.id !== treinoExcluir.id));
-
-      setTreinoExcluir(null);
-
-      toast.success("Treino excluído com sucesso!");
-    } catch (err) {
-      toast.error("Erro ao excluir treino.");
-    }
-  };
   const novoTreino = () => {
     navigate("/treino", {
       state: {
@@ -55,22 +54,6 @@ export default function TreinosAluno() {
     });
   };
 
-  useEffect(() => {
-    async function carregar() {
-      try {
-        const response = await getTreinosAluno(alunoId);
-
-        setTreinos(response);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    carregar();
-  }, [alunoId]);
-  const treinosFiltrados = treinos.filter(
-    (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
-  );
   return (
     <Container>
       <Loading isLoading={loading} />

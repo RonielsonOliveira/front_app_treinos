@@ -39,9 +39,9 @@ export default function Dashboard() {
         <DashboardCard
           icon={<FaClipboardList />}
           color="#f59e0b"
-          title="Criar Treinos"
-          description="Monte treinos personalizados para seus alunos."
-          onClick={() => navigate("/treino")}
+          title="Gerenciar Treinos"
+          description="Gerencie e monte treinos personalizados para seus alunos."
+          onClick={() => navigate("/treinos")}
         />
       </S.Grid>
     </S.Container>

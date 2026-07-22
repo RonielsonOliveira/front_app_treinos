@@ -62,9 +62,9 @@ export default function Header() {
                       <label>Gerenciar Exercícios</label>
                     </Link>
 
-                    <Link to="/treino">
+                    <Link to="/treinos">
                       <GiWeightLiftingUp size={24} />
-                      <label>Adicionar Treino</label>
+                      <label>Gerenciar Treinos</label>
                     </Link>
                   </div>
 
@@ -125,9 +125,9 @@ export default function Header() {
                 <FaHome />
                 <span>Início</span>
               </Link>
-              <Link to="/treino" onClick={() => setMenuOpen(false)}>
-                <GiWeightLiftingUp />
-                <span>Adicionar Treino</span>
+              <Link to="/treinos">
+                <GiWeightLiftingUp size={24} />
+                <label>Gerenciar Treinos</label>
               </Link>
 
               <Link to="/exercicios" onClick={() => setMenuOpen(false)}>

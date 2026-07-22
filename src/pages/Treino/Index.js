@@ -22,7 +22,7 @@ export default function Treino() {
   const { id } = useParams();
   const location = useLocation();
   const alunoOrigem = location.state?.alunoId;
-
+  const treinoModelo = location.state?.treinoModelo;
   const { exercicios, alunos, treino, isLoading } = useTreinoData(id);
 
   const [isSaving, setIsSaving] = useState(false);
@@ -46,6 +46,7 @@ export default function Treino() {
   } = useExerciciosTreino({
     exercicios,
     treino,
+    treinoModelo,
   });
   const {
     nome,
@@ -59,6 +60,7 @@ export default function Treino() {
   } = useInformacoesTreino({
     treino,
     alunoOrigem,
+    treinoModelo,
   });
 
   const alunoSelecionado = alunos.find(
