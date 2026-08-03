@@ -41,9 +41,14 @@ export default function ModalConfirmacao({
         <S.Actions>
           <S.CancelButton onClick={onCancel}>Cancelar</S.CancelButton>
 
-          <S.DeleteButton disabled={tempo > 0} onClick={onConfirm}>
-            {tempo > 0 ? `Confirmar (${tempo}s)` : "Confirmar"}
-          </S.DeleteButton>
+          {/*
+  <S.DeleteButton
+    disabled={tempo > 0}
+    onClick={onConfirm}
+  >
+    {tempo > 0 ? `Confirmar (${tempo}s)` : "Confirmar"}
+  </S.DeleteButton>
+  */}
         </S.Actions>
       </S.Container>
     </S.Overlay>

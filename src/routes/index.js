@@ -30,7 +30,7 @@ export default function AppRoutes() {
       {/* EXERCÍCIOS */}
       <Route
         exact
-        path=""
+        path="" // /exercicio
         element={<MyRoute component={Exercicio} isClosed professorOnly />}
       />
       <Route
@@ -67,7 +67,7 @@ export default function AppRoutes() {
 
       <Route
         exact
-        path=""
+        path="" // /aluno
         element={<MyRoute component={Aluno} isClosed professorOnly />}
       />
       <Route
@@ -89,7 +89,7 @@ export default function AppRoutes() {
       {/* AUTENTICAÇÃO */}
       <Route
         exact
-        path=""
+        path="" // /register
         element={<MyRoute component={Register} isClosed />}
       />
       <Route exact path="/login" element={<MyRoute component={Login} />} />
