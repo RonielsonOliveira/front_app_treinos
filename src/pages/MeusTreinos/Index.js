@@ -1,39 +1,39 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react'
 
-import { Container } from "../../styles/GlobalStyles";
+import { Container } from '../../styles/GlobalStyles'
 
-import { EmptyMessage } from "./styled";
+import { EmptyMessage } from './styled'
 
-import Loading from "../../components/Loading";
-import CalendarioSemanal from "../../components/CalendarioSemanal";
-import TreinoItem from "../../components/TreinoItem";
-import AlunoInfo from "../../components/AlunoInfo";
-import ExercicioModal from "../../components/ExercicioModal";
-import { ModalTreinoConcluido } from "../../components/ModalConcluido";
+import Loading from '../../components/Loading'
+import CalendarioSemanal from '../../components/CalendarioSemanal'
+import TreinoItem from '../../components/TreinoItem'
+import AlunoInfo from '../../components/AlunoInfo'
+import ExercicioModal from '../../components/ExercicioModal'
+import { ModalTreinoConcluido } from '../../components/ModalConcluido'
 
-import { useMeusTreinos } from "../../hooks/useMeusTreinos";
-import { useToggle } from "../../hooks/useToggle";
-import { useTreinoConcluido } from "../../hooks/useTreinoConcluido";
+import { useMeusTreinos } from '../../hooks/useMeusTreinos'
+import { useToggle } from '../../hooks/useToggle'
+import { useTreinoConcluido } from '../../hooks/useTreinoConcluido'
 
-import { getDiaAtual } from "./helpers";
+import { getDiaAtual } from './helpers'
 
 export default function MeusTreinos() {
-  const { treinos, aluno, isLoading } = useMeusTreinos();
+  const { treinos, aluno, isLoading } = useMeusTreinos()
 
-  const { openId, toggle } = useToggle();
+  const { openId, toggle } = useToggle()
 
-  const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
+  const [exercicioSelecionado, setExercicioSelecionado] = useState(null)
 
-  const [diaSelecionado, setDiaSelecionado] = useState(getDiaAtual());
+  const [diaSelecionado, setDiaSelecionado] = useState(getDiaAtual())
 
   const { checkedExercicios, treinoConcluido, handleCheck, fecharModal } =
-    useTreinoConcluido(toggle);
+    useTreinoConcluido(toggle)
 
   const treinosDoDia = useMemo(() => {
     return treinos.filter(
       (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
-    );
-  }, [treinos, diaSelecionado]);
+    )
+  }, [treinos, diaSelecionado])
 
   return (
     <Container>
@@ -70,5 +70,5 @@ export default function MeusTreinos() {
 
       <ModalTreinoConcluido open={treinoConcluido} onClose={fecharModal} />
     </Container>
-  );
+  )
 }

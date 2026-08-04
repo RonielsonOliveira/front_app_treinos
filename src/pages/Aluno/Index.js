@@ -1,16 +1,16 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-import Loading from "../../components/Loading";
-import FormInput from "../../components/FormInput";
-import { Container } from "../../styles/GlobalStyles";
+import Loading from '../../components/Loading'
+import FormInput from '../../components/FormInput'
+import { Container } from '../../styles/GlobalStyles'
 
-import useAluno from "../../hooks/useAluno";
-import { useAlunoForm } from "../../hooks/useAlunoForm";
-import { createAluno, updateAluno } from "../../services/alunoService";
-import { validateAluno } from "./validation";
-import { alunoToPayload } from "./mapper";
+import useAluno from '../../hooks/useAluno'
+import { useAlunoForm } from '../../hooks/useAlunoForm'
+import { createAluno, updateAluno } from '../../services/alunoService'
+import { validateAluno } from './validation'
+import { alunoToPayload } from './mapper'
 
 import {
   Title,
@@ -19,28 +19,28 @@ import {
   SectionTitle,
   Fields,
   SaveBar,
-  SaveButton,
-} from "./styled";
+  SaveButton
+} from './styled'
 
 export default function Aluno() {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const { aluno, isLoading } = useAluno(id);
-  const { form, handleChange } = useAlunoForm(aluno);
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const { aluno, isLoading } = useAluno(id)
+  const { form, handleChange } = useAlunoForm(aluno)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateAluno(form, !!id)) return;
-    const payload = alunoToPayload(form);
+    e.preventDefault()
+    if (!validateAluno(form, !!id)) return
+    const payload = alunoToPayload(form)
 
     try {
-      await (id ? updateAluno(id, payload) : createAluno(payload));
-      toast.success(id ? "Aluno atualizado!" : "Aluno criado!");
-      navigate("/alunos");
+      await (id ? updateAluno(id, payload) : createAluno(payload))
+      toast.success(id ? 'Aluno atualizado!' : 'Aluno criado!')
+      navigate('/alunos')
     } catch {
-      toast.error("Erro ao salvar aluno");
+      toast.error('Erro ao salvar aluno')
     }
-  };
+  }
   return (
     <Container>
       <Loading isLoading={isLoading} />
@@ -129,7 +129,7 @@ export default function Aluno() {
           <Fields>
             <FormInput
               className="full"
-              label={id ? "Nova senha (opcional)" : "Senha"}
+              label={id ? 'Nova senha (opcional)' : 'Senha'}
               id="password"
               name="password"
               type="password"
@@ -137,17 +137,17 @@ export default function Aluno() {
               value={form.password}
               onChange={handleChange}
               placeholder={
-                id ? "Digite uma nova senha (opcional)" : "Digite a senha"
+                id ? 'Digite uma nova senha (opcional)' : 'Digite a senha'
               }
             />
           </Fields>
         </Section>
         <SaveBar>
           <SaveButton type="submit">
-            {id ? "Atualizar Aluno" : "Cadastrar Aluno"}
+            {id ? 'Atualizar Aluno' : 'Cadastrar Aluno'}
           </SaveButton>
         </SaveBar>
       </Form>
     </Container>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Container = styled.div`
   width: 90%;
@@ -10,9 +10,9 @@ export const Container = styled.div`
     width: 90%;
     margin: 0 auto 18px;
   }
-`;
+`
 export const Header = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "isOpen",
+  shouldForwardProp: (prop) => prop !== 'isOpen'
 })`
   width: 100%;
 
@@ -28,7 +28,7 @@ export const Header = styled.div.withConfig({
 
   border: 1px solid #334155;
 
-  border-radius: ${({ isOpen }) => (isOpen ? "18px 18px 0 0" : "18px")};
+  border-radius: ${({ isOpen }) => (isOpen ? '18px 18px 0 0' : '18px')};
 
   transition: all 0.25s ease;
 
@@ -51,9 +51,9 @@ export const Header = styled.div.withConfig({
   @media (max-width: 768px) {
     padding: 18px;
 
-    border-radius: ${({ isOpen }) => (isOpen ? "16px 16px 0 0" : "16px")};
+    border-radius: ${({ isOpen }) => (isOpen ? '16px 16px 0 0' : '16px')};
   }
-`;
+`
 
 export const Info = styled.div`
   display: flex;
@@ -103,10 +103,10 @@ export const Info = styled.div`
       font-size: 12px;
     }
   }
-`;
+`
 
 export const Arrow = styled.span.withConfig({
-  shouldForwardProp: (prop) => prop !== "isOpen",
+  shouldForwardProp: (prop) => prop !== 'isOpen'
 })`
   width: 40px;
 
@@ -128,11 +128,11 @@ export const Arrow = styled.span.withConfig({
 
   font-weight: bold;
 
-  color: ${({ isOpen }) => (isOpen ? "#fff" : primaryColor)};
+  color: ${({ isOpen }) => (isOpen ? '#fff' : primaryColor)};
 
-  background: ${({ isOpen }) => (isOpen ? primaryColor : "#0f172a")};
+  background: ${({ isOpen }) => (isOpen ? primaryColor : '#0f172a')};
 
-  transform: rotate(${({ isOpen }) => (isOpen ? "180deg" : "0deg")});
+  transform: rotate(${({ isOpen }) => (isOpen ? '180deg' : '0deg')});
 
   transition: all 0.3s ease;
 
@@ -143,7 +143,7 @@ export const Arrow = styled.span.withConfig({
 
     font-size: 14px;
   }
-`;
+`
 
 export const Content = styled.div`
   background: linear-gradient(145deg, #111827, #0f172a);
@@ -187,7 +187,7 @@ export const Content = styled.div`
 
     gap: 14px;
   }
-`;
+`
 
 export const ExerciciosWrapper = styled.div`
   display: flex;
@@ -195,4 +195,4 @@ export const ExerciciosWrapper = styled.div`
   flex-direction: column;
 
   gap: 14px;
-`;
+`

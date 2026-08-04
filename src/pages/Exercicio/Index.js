@@ -1,16 +1,16 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import Loading from "../../components/Loading";
-import FormInput from "../../components/FormInput";
-import UploadFotos from "../../components/UploadFotos";
+import Loading from '../../components/Loading'
+import FormInput from '../../components/FormInput'
+import UploadFotos from '../../components/UploadFotos'
 
-import useExercicio from "../../hooks/useExercicio";
-import { useExercicioForm } from "../../hooks/useExercicioForm";
+import useExercicio from '../../hooks/useExercicio'
+import { useExercicioForm } from '../../hooks/useExercicioForm'
 
-import { exercicioToPayload } from "./mapper";
-import { validateExercicio } from "./validation";
-import { salvarExercicio } from "./actions";
+import { exercicioToPayload } from './mapper'
+import { validateExercicio } from './validation'
+import { salvarExercicio } from './actions'
 
 import {
   Container,
@@ -19,15 +19,15 @@ import {
   Section,
   SectionTitle,
   SaveBar,
-  SaveButton,
-} from "./styled";
+  SaveButton
+} from './styled'
 
 export default function Exercicio() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const { exercicio, isLoading } = useExercicio(id);
+  const { exercicio, isLoading } = useExercicio(id)
 
   const {
     form,
@@ -36,23 +36,23 @@ export default function Exercicio() {
     handleChange,
     handleFotoChange,
     removerNovaFoto,
-    setNovasFotos,
-  } = useExercicioForm(exercicio);
+    setNovasFotos
+  } = useExercicioForm(exercicio)
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (!validateExercicio(form)) return;
+    if (!validateExercicio(form)) return
 
-    const payload = exercicioToPayload(form);
+    const payload = exercicioToPayload(form)
 
     await salvarExercicio({
       id,
       payload,
       novasFotos,
       navigate,
-      setNovasFotos,
-    });
+      setNovasFotos
+    })
   }
 
   return (
@@ -105,10 +105,10 @@ export default function Exercicio() {
 
         <SaveBar>
           <SaveButton type="submit">
-            {id ? "Atualizar Exercício" : "Cadastrar Exercício"}
+            {id ? 'Atualizar Exercício' : 'Cadastrar Exercício'}
           </SaveButton>
         </SaveBar>
       </Form>
     </Container>
-  );
+  )
 }

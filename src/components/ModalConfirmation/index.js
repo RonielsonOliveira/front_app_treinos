@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from "react";
-import * as S from "./styled";
+import React, { useEffect, useState } from 'react'
+import * as S from './styled'
 
 export default function ModalConfirmacao({
   open,
   titulo,
   mensagem,
   onCancel,
-  onConfirm,
+  onConfirm
 }) {
-  const [tempo, setTempo] = useState(5);
+  const [tempo, setTempo] = useState(5)
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) return
 
-    setTempo(5);
+    setTempo(5)
 
     const timer = setInterval(() => {
       setTempo((prev) => {
         if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
+          clearInterval(timer)
+          return 0
         }
 
-        return prev - 1;
-      });
-    }, 1000);
+        return prev - 1
+      })
+    }, 1000)
 
-    return () => clearInterval(timer);
-  }, [open]);
+    return () => clearInterval(timer)
+  }, [open])
 
-  if (!open) return null;
+  if (!open) return null
 
   return (
     <S.Overlay>
@@ -52,5 +52,5 @@ export default function ModalConfirmacao({
         </S.Actions>
       </S.Container>
     </S.Overlay>
-  );
+  )
 }

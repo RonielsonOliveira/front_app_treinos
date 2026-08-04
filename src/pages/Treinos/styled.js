@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { primaryColor } from '../../config/colors'
 
 export const Header = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const Header = styled.div`
     flex-direction: column;
     gap: 20px;
   }
-`;
+`
 
 export const Title = styled.h1`
   color: #fff;
@@ -27,7 +27,7 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 28px;
   }
-`;
+`
 
 export const NovoAluno = styled(Link)`
   display: flex;
@@ -52,7 +52,7 @@ export const NovoAluno = styled(Link)`
     transform: translateY(-3px);
     filter: brightness(1.08);
   }
-`;
+`
 
 export const CardsContainer = styled.div`
   display: grid;
@@ -60,7 +60,7 @@ export const CardsContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
 
   gap: 26px;
-`;
+`
 
 export const Card = styled.div`
   display: flex;
@@ -88,7 +88,7 @@ export const Card = styled.div`
 
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   }
-`;
+`
 
 export const CardInfo = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ export const CardInfo = styled.div`
   flex: 1;
 
   padding: 24px;
-`;
+`
 
 export const IconWrapper = styled.div`
   width: 74px;
@@ -116,7 +116,7 @@ export const IconWrapper = styled.div`
   color: ${primaryColor};
 
   font-size: 36px;
-`;
+`
 
 export const Nome = styled.h3`
   color: white;
@@ -126,7 +126,7 @@ export const Nome = styled.h3`
   font-size: 24px;
 
   margin-bottom: 12px;
-`;
+`
 
 export const Descricao = styled.p`
   color: #94a3b8;
@@ -144,7 +144,7 @@ export const Descricao = styled.p`
   -webkit-box-orient: vertical;
 
   overflow: hidden;
-`;
+`
 
 export const Divider = styled.div`
   width: 100%;
@@ -153,7 +153,7 @@ export const Divider = styled.div`
   background: #334155;
 
   margin: 18px 0;
-`;
+`
 
 export const SectionTitle = styled.h4`
   color: ${primaryColor};
@@ -165,7 +165,7 @@ export const SectionTitle = styled.h4`
   text-transform: uppercase;
 
   margin-bottom: 14px;
-`;
+`
 
 export const Exercicios = styled.div`
   display: flex;
@@ -175,7 +175,7 @@ export const Exercicios = styled.div`
   gap: 8px;
 
   margin-bottom: 25px;
-`;
+`
 
 export const Exercicio = styled.span`
   background: #0f172a;
@@ -195,7 +195,7 @@ export const Exercicio = styled.span`
   &:hover {
     border-color: ${primaryColor};
   }
-`;
+`
 
 export const CardActions = styled.div`
   display: flex;
@@ -309,7 +309,7 @@ export const CardActions = styled.div`
       }
     }
   }
-`;
+`
 
 export const SearchInput = styled.input`
   width: 100%;
@@ -338,7 +338,7 @@ export const SearchInput = styled.input`
     border-color: ${primaryColor};
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
   }
-`;
+`
 
 export const EmptyMessage = styled.p`
   margin-top: 40px;
@@ -348,7 +348,7 @@ export const EmptyMessage = styled.p`
   color: #94a3b8;
 
   font-size: 16px;
-`;
+`
 
 export const ActionButton = styled(Link)`
   position: relative;
@@ -402,7 +402,7 @@ export const ActionButton = styled(Link)`
   }
 
   &::before {
-    content: "";
+    content: '';
 
     position: absolute;
 
@@ -424,4 +424,4 @@ export const ActionButton = styled(Link)`
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-`;
+`

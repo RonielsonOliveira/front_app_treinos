@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor, primaryDarkColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor, primaryDarkColor } from '../../config/colors.js'
 
 export const ExercicioCheck = styled.div`
   display: block;
@@ -16,7 +16,7 @@ export const ExercicioCheck = styled.div`
   &:active {
     transform: scale(1.02);
   }
-`;
+`
 
 export const Exercicio = styled.div`
   background-color: #1e293b;
@@ -25,8 +25,8 @@ export const Exercicio = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-`;
-export const ExercicioSeriesERepeticoes = styled.div``;
+`
+export const ExercicioSeriesERepeticoes = styled.div``
 
 export const ImageWrapper = styled.div`
   width: 100%;
@@ -46,7 +46,7 @@ export const ImageWrapper = styled.div`
   svg {
     opacity: 0.5;
   }
-`;
+`
 
 export const ExercicioInfoWrapper = styled.div`
   display: flex;
@@ -55,7 +55,7 @@ export const ExercicioInfoWrapper = styled.div`
   flex-direction: row;
   padding: 12px;
   gap: 8px;
-`;
+`
 
 export const ExercicioInfoTitle = styled.h3`
   font-size: 16px;
@@ -64,7 +64,7 @@ export const ExercicioInfoTitle = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-`;
+`
 
 export const ExercicioInfoDetails = styled.p`
   font-size: 13px;
@@ -75,14 +75,14 @@ export const ExercicioInfoDetails = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
+`
 
 export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
-`;
+`
 
 export const CheckboxWrapper = styled.div`
   .checkbox {
@@ -94,4 +94,4 @@ export const CheckboxWrapper = styled.div`
     height: 22px;
     cursor: pointer;
   }
-`;
+`

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
 
 export const Title = styled.h1`
   width: 100%;
@@ -14,7 +14,7 @@ export const Title = styled.h1`
   span {
     color: ${primaryColor};
   }
-`;
+`
 
 export const Form = styled.form`
   width: 95%;
@@ -25,7 +25,7 @@ export const Form = styled.form`
   gap: 18px;
 
   padding-bottom: 100px;
-`;
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -56,12 +56,12 @@ export const Section = styled.section`
 
     border-radius: 4px;
   }
-`;
+`
 export const Empty = styled.p`
   color: #94a3b8;
   text-align: center;
   padding: 20px;
-`;
+`
 
 export const SectionTitle = styled.h2`
   color: #f8fafc;
@@ -83,7 +83,7 @@ export const SectionTitle = styled.h2`
   border-bottom: 1px solid #334155;
 
   &::before {
-    content: "";
+    content: '';
 
     width: 5px;
 
@@ -97,7 +97,7 @@ export const SectionTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 19px;
   }
-`;
+`
 
 export const Fields = styled.div`
   display: grid;
@@ -107,7 +107,7 @@ export const Fields = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`;
+`
 
 export const Field = styled.div`
   display: flex;
@@ -162,7 +162,7 @@ export const Field = styled.div`
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
   }
-`;
+`
 
 export const Search = styled.input`
   height: 52px;
@@ -194,13 +194,13 @@ export const Search = styled.input`
 
     box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
   }
-`;
+`
 
 export const Select = styled.select`
   cursor: pointer;
 
   appearance: auto;
-`;
+`
 
 export const ExercicioGrid = styled.div`
   display: flex;
@@ -234,7 +234,7 @@ export const ExercicioGrid = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${primaryColor};
   }
-`;
+`
 
 export const SaveBar = styled.div`
   display: flex;
@@ -256,7 +256,7 @@ export const SaveBar = styled.div`
 
     z-index: 20;
   }
-`;
+`
 
 export const SaveButton = styled.button`
   width: 280px;
@@ -265,14 +265,14 @@ export const SaveButton = styled.button`
   border: none;
   border-radius: 16px;
 
-  background: ${({ disabled }) => (disabled ? "#64748b" : primaryColor)};
+  background: ${({ disabled }) => (disabled ? '#64748b' : primaryColor)};
 
   color: white;
 
   font-size: 17px;
   font-weight: 800;
 
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
   transition: all 0.25s ease;
 
@@ -298,7 +298,7 @@ export const SaveButton = styled.button`
   @media (max-width: 768px) {
     width: 90%;
   }
-`;
+`
 
 export const CardFotos = styled.div`
   width: 100%;
@@ -326,7 +326,7 @@ export const CardFotos = styled.div`
 
     object-fit: cover;
   }
-`;
+`
 
 export const DayBadge = styled.div`
   display: flex;
@@ -348,4 +348,4 @@ export const DayBadge = styled.div`
   font-weight: 700;
 
   width: max-content;
-`;
+`

@@ -1,5 +1,5 @@
-import React from "react";
-import * as S from "../../styled";
+import React from 'react'
+import * as S from '../../styled'
 
 export default function InformacoesTreino({
   nome,
@@ -11,7 +11,7 @@ export default function InformacoesTreino({
   alunoOrigem,
   alunoId,
   setAlunoId,
-  alunos,
+  alunos
 }) {
   return (
     <S.Section>
@@ -75,5 +75,5 @@ export default function InformacoesTreino({
         )}
       </S.Fields>
     </S.Section>
-  );
+  )
 }

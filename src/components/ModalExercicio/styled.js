@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   align-items: center;
 
   z-index: 999;
-`;
+`
 
 export const Container = styled.div`
   width: 420px;
@@ -90,4 +90,4 @@ export const Container = styled.div`
   .confirm {
     background: ${primaryColor};
   }
-`;
+`

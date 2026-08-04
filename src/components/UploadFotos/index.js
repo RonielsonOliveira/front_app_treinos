@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-import FotosPreview from "../FotosPreview";
+import FotosPreview from '../FotosPreview'
 
-import { UploadBox, FotosGrid } from "../../pages/Exercicio/styled";
+import { UploadBox, FotosGrid } from '../../pages/Exercicio/styled'
 
 export default function UploadFotos({ fotos, novasFotos, onChange, onRemove }) {
   return (
@@ -26,5 +26,5 @@ export default function UploadFotos({ fotos, novasFotos, onChange, onRemove }) {
         />
       </FotosGrid>
     </>
-  );
+  )
 }

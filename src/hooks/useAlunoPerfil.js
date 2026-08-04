@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import axios from "../services/axios";
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import axios from '../services/axios'
 
 export function useAlunoPerfil() {
-  const [aluno, setAluno] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [aluno, setAluno] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     async function loadAluno() {
       try {
-        setIsLoading(true);
+        setIsLoading(true)
 
-        const { data } = await axios.get("/alunos/me");
+        const { data } = await axios.get('/alunos/me')
 
-        setAluno(data);
+        setAluno(data)
       } catch (err) {
-        toast.error("Erro ao carregar dados do aluno");
+        toast.error('Erro ao carregar dados do aluno')
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     }
 
-    loadAluno();
-  }, []);
+    loadAluno()
+  }, [])
 
   return {
     aluno,
-    isLoading,
-  };
+    isLoading
+  }
 }

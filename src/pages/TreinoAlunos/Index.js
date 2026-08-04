@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { Container } from "../../styles/GlobalStyles";
+import { Container } from '../../styles/GlobalStyles'
 
-import Loading from "../../components/Loading";
-import CalendarioSemanal from "../../components/CalendarioSemanal";
-import ModalConfirmacao from "../../components/ModalConfirmation";
-import ExercicioModal from "../../components/ExercicioModal";
-import TreinoItem from "../../components/TreinoItem";
+import Loading from '../../components/Loading'
+import CalendarioSemanal from '../../components/CalendarioSemanal'
+import ModalConfirmacao from '../../components/ModalConfirmation'
+import ExercicioModal from '../../components/ExercicioModal'
+import TreinoItem from '../../components/TreinoItem'
 
-import { useToggle } from "../../hooks/useToggle";
-import useTreinosAluno from "./hooks/useTreinosAluno";
+import { useToggle } from '../../hooks/useToggle'
+import useTreinosAluno from './hooks/useTreinosAluno'
 
-import * as S from "./styled";
+import * as S from './styled'
 export default function TreinosAluno() {
-  const { alunoId } = useParams();
+  const { alunoId } = useParams()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { openId, toggle } = useToggle();
+  const { openId, toggle } = useToggle()
 
-  const [exercicioSelecionado, setExercicioSelecionado] = useState(null);
+  const [exercicioSelecionado, setExercicioSelecionado] = useState(null)
 
   const {
     loading,
@@ -35,24 +35,24 @@ export default function TreinosAluno() {
     diaSelecionado,
     setDiaSelecionado,
 
-    confirmarExclusao,
-  } = useTreinosAluno(alunoId);
+    confirmarExclusao
+  } = useTreinosAluno(alunoId)
 
   const editarTreino = (id) => {
     navigate(`/treino/${id}/edit`, {
       state: {
-        alunoId,
-      },
-    });
-  };
+        alunoId
+      }
+    })
+  }
 
   const novoTreino = () => {
-    navigate("/treino", {
+    navigate('/treino', {
       state: {
-        alunoId,
-      },
-    });
-  };
+        alunoId
+      }
+    })
+  }
 
   return (
     <Container>
@@ -72,9 +72,9 @@ export default function TreinosAluno() {
       ) : treinosFiltrados.length === 0 ? (
         <p
           style={{
-            textAlign: "center",
-            color: "#94a3b8",
-            margin: "30px 0",
+            textAlign: 'center',
+            color: '#94a3b8',
+            margin: '30px 0'
           }}
         >
           Nenhum treino cadastrado para este dia.
@@ -89,7 +89,7 @@ export default function TreinosAluno() {
               onSelectExercicio={setExercicioSelecionado}
               checkedExercicios={{}}
               onCheck={() => {}}
-            />{" "}
+            />{' '}
             {openId === treino.id && (
               <S.Actions>
                 <S.EditButton onClick={() => editarTreino(treino.id)}>
@@ -116,5 +116,5 @@ export default function TreinosAluno() {
         ))
       )}
     </Container>
-  );
+  )
 }

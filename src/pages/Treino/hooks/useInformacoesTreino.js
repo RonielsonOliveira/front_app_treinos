@@ -1,35 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 export default function useInformacoesTreino({
   treino,
   alunoOrigem,
-  treinoModelo,
+  treinoModelo
 }) {
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [alunoId, setAlunoId] = useState(alunoOrigem || "");
-  const [diaSemana, setDiaSemana] = useState(1);
+  const [nome, setNome] = useState('')
+  const [descricao, setDescricao] = useState('')
+  const [alunoId, setAlunoId] = useState(alunoOrigem || '')
+  const [diaSemana, setDiaSemana] = useState(1)
 
   useEffect(() => {
     if (treinoModelo) {
-      setNome(treinoModelo.nome);
-      setDescricao(treinoModelo.descricao);
+      setNome(treinoModelo.nome)
+      setDescricao(treinoModelo.descricao)
 
       // NÃO copia o aluno
-      setAlunoId(alunoOrigem || "");
+      setAlunoId(alunoOrigem || '')
 
-      setDiaSemana(treinoModelo.dia_semana ?? 1);
+      setDiaSemana(treinoModelo.dia_semana ?? 1)
 
-      return;
+      return
     }
 
-    if (!treino) return;
+    if (!treino) return
 
-    setNome(treino.nome);
-    setDescricao(treino.descricao);
-    setAlunoId(treino.aluno_id || alunoOrigem || "");
-    setDiaSemana(treino.dia_semana ?? 1);
-  }, [treino, treinoModelo, alunoOrigem]);
+    setNome(treino.nome)
+    setDescricao(treino.descricao)
+    setAlunoId(treino.aluno_id || alunoOrigem || '')
+    setDiaSemana(treino.dia_semana ?? 1)
+  }, [treino, treinoModelo, alunoOrigem])
 
   return {
     nome,
@@ -42,6 +42,6 @@ export default function useInformacoesTreino({
     setAlunoId,
 
     diaSemana,
-    setDiaSemana,
-  };
+    setDiaSemana
+  }
 }

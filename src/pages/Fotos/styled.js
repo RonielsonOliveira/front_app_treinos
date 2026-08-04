@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
-import * as colors from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
+import * as colors from '../../config/colors.js'
 export const Title = styled.h1`
   text-align: center;
-`;
+`
 
 export const Form = styled.form`
   label {
@@ -26,4 +26,4 @@ export const Form = styled.form`
   input {
     display: none;
   }
-`;
+`

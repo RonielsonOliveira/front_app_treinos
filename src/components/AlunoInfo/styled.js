@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Container = styled.section`
   background: linear-gradient(145deg, #1e293b, #111827);
@@ -21,7 +21,7 @@ export const Container = styled.section`
 
     margin-bottom: 18px;
   }
-`;
+`
 
 export const Header = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ export const Header = styled.div`
 
     margin-bottom: 14px;
   }
-`;
+`
 
 export const Avatar = styled.div`
   width: 52px;
@@ -67,7 +67,7 @@ export const Avatar = styled.div`
 
     font-size: 18px;
   }
-`;
+`
 
 export const Name = styled.h2`
   margin: 0;
@@ -81,7 +81,7 @@ export const Name = styled.h2`
   @media (max-width: 600px) {
     font-size: 16px;
   }
-`;
+`
 
 export const Subtitle = styled.p`
   margin: 4px 0 0;
@@ -93,7 +93,7 @@ export const Subtitle = styled.p`
   @media (max-width: 600px) {
     font-size: 11px;
   }
-`;
+`
 
 export const Grid = styled.div`
   display: grid;
@@ -107,7 +107,7 @@ export const Grid = styled.div`
 
     gap: 8px;
   }
-`;
+`
 
 export const Card = styled.div`
   background: #0f172a;
@@ -151,4 +151,4 @@ export const Card = styled.div`
       font-size: 15px;
     }
   }
-`;
+`

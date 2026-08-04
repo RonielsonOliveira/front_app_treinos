@@ -3,37 +3,37 @@ import {
   FaSignInAlt,
   FaUserAlt,
   FaCircle,
-  FaPowerOff,
-} from "react-icons/fa";
-import React, { useState } from "react";
-import { GiWeightLiftingUp } from "react-icons/gi";
-import { CgGym } from "react-icons/cg";
-import { HiUserAdd, HiUsers } from "react-icons/hi";
-import { Link, useNavigate } from "react-router-dom";
+  FaPowerOff
+} from 'react-icons/fa'
+import React, { useState } from 'react'
+import { GiWeightLiftingUp } from 'react-icons/gi'
+import { CgGym } from 'react-icons/cg'
+import { HiUserAdd, HiUsers } from 'react-icons/hi'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Nav,
   DesktopMenu,
   MobileMenu,
   MobileMenuButton,
-  Overlay,
-} from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../store/modules/auth/actions.js";
+  Overlay
+} from './styled'
+import { useDispatch, useSelector } from 'react-redux'
+import * as actions from '../../store/modules/auth/actions.js'
 export default function Header() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const role = useSelector((state) => state.auth.role);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  const role = useSelector((state) => state.auth.role)
   const handleLogout = () => {
-    dispatch(actions.logout());
-    navigate("/");
-  };
+    dispatch(actions.logout())
+    navigate('/')
+  }
 
   const onLogoutClick = () => {
-    handleLogout();
-    setMenuOpen(false);
-  };
+    handleLogout()
+    setMenuOpen(false)
+  }
   return (
     <>
       <Nav>
@@ -44,7 +44,7 @@ export default function Header() {
         <DesktopMenu>
           {isLoggedIn ? (
             <>
-              {role === "user" ? (
+              {role === 'user' ? (
                 <>
                   <div className="menu">
                     <Link to="/">
@@ -108,7 +108,7 @@ export default function Header() {
       <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
 
       <MobileMenu open={menuOpen}>
-        {role === "user" ? (
+        {role === 'user' ? (
           <>
             <div className="title-menu">
               <div className="title-content">
@@ -192,5 +192,5 @@ export default function Header() {
         )}
       </MobileMenu>
     </>
-  );
+  )
 }

@@ -1,31 +1,30 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Container } from "../../styles/GlobalStyles";
+import { Container } from '../../styles/GlobalStyles'
 
-import { Header, Title, NewButton, CardsContainer } from "./styled";
+import { Header, Title, NewButton, CardsContainer } from './styled'
 
-import Loading from "../../components/Loading";
-import ExercicioCard from "../../components/ExerciciosCard";
-import ModalConfirmacao from "../../components/ModalConfirmation";
+import Loading from '../../components/Loading'
+import ExercicioCard from '../../components/ExerciciosCard'
+import ModalConfirmacao from '../../components/ModalConfirmation'
 
-import useExercicios from "../../hooks/useExercicios";
+import useExercicios from '../../hooks/useExercicios'
 
-import { excluirExercicio } from "./actions";
+import { excluirExercicio } from './actions'
 
 export default function Exercicios() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { exercicios, setExercicios, isLoading, setIsLoading } =
-    useExercicios();
+  const { exercicios, setExercicios, isLoading, setIsLoading } = useExercicios()
 
-  const [exercicioExcluir, setExercicioExcluir] = useState(null);
+  const [exercicioExcluir, setExercicioExcluir] = useState(null)
 
   const confirmarExclusao = async () => {
-    await excluirExercicio(exercicioExcluir.id, setExercicios, setIsLoading);
+    await excluirExercicio(exercicioExcluir.id, setExercicios, setIsLoading)
 
-    setExercicioExcluir(null);
-  };
+    setExercicioExcluir(null)
+  }
 
   return (
     <Container>
@@ -34,7 +33,7 @@ export default function Exercicios() {
       <Header>
         <Title>Exercícios</Title>
 
-        <NewButton onClick={() => navigate("/exercicio")}>
+        <NewButton onClick={() => navigate('/exercicio')}>
           + Novo Exercício
         </NewButton>
       </Header>
@@ -57,5 +56,5 @@ export default function Exercicios() {
         onConfirm={confirmarExclusao}
       />
     </Container>
-  );
+  )
 }

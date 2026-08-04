@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FotoItem = styled.div`
   position: relative;
@@ -14,7 +14,7 @@ export const FotoItem = styled.div`
 
     border-radius: 8px;
   }
-`;
+`
 
 export const FotoImagem = styled.img`
   width: 100%;
@@ -25,7 +25,7 @@ export const FotoImagem = styled.img`
   border-radius: 6px;
 
   opacity: ${({ preview }) => (preview ? 0.8 : 1)};
-`;
+`
 export const RemoveButton = styled.button`
   position: absolute;
 
@@ -60,4 +60,4 @@ export const RemoveButton = styled.button`
   &:hover {
     background: #dc2626;
   }
-`;
+`

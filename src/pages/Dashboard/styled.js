@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Container = styled.section`
   width: min(1200px, 100%);
@@ -10,7 +10,7 @@ export const Container = styled.section`
     margin: 20px auto;
     padding: 12px;
   }
-`;
+`
 
 export const Header = styled.div`
   margin-bottom: 50px;
@@ -19,7 +19,7 @@ export const Header = styled.div`
   @media (max-width: 1000px) {
     margin-bottom: 24px;
   }
-`;
+`
 
 export const Title = styled.h1`
   color: #fff;
@@ -31,7 +31,7 @@ export const Title = styled.h1`
   @media (max-width: 1000px) {
     font-size: 28px;
   }
-`;
+`
 
 export const SubTitle = styled.p`
   margin-top: 15px;
@@ -42,7 +42,7 @@ export const SubTitle = styled.p`
     margin-top: 8px;
     font-size: 15px;
   }
-`;
+`
 
 export const Grid = styled.div`
   display: grid;
@@ -53,4 +53,4 @@ export const Grid = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
-`;
+`

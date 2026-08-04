@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { Overlay, ModalContent } from "./styled";
+import { useEffect } from 'react'
+import { Overlay, ModalContent } from './styled'
 
 export function ModalTreinoConcluido({ open, onClose }) {
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    document.body.style.overflow = open ? 'hidden' : 'auto'
 
     return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+      document.body.style.overflow = 'auto'
+    }
+  }, [open])
 
-  if (!open) return null;
+  if (!open) return null
 
   return (
     <Overlay onClick={onClose}>
@@ -20,5 +20,5 @@ export function ModalTreinoConcluido({ open, onClose }) {
         <button onClick={onClose}>Fechar</button>
       </ModalContent>
     </Overlay>
-  );
+  )
 }

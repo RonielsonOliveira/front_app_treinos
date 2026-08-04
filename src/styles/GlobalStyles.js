@@ -1,13 +1,13 @@
-import styled, { createGlobalStyle } from "styled-components";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import styled, { createGlobalStyle } from 'styled-components'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import {
   primaryColor,
   primaryDarkColor,
   errorColor,
-  successColor,
-} from "../config/colors.js";
-import "react-toastify/dist/ReactToastify.css";
+  successColor
+} from '../config/colors.js'
+import 'react-toastify/dist/ReactToastify.css'
 export default createGlobalStyle`
   *{
     margin: 0;
@@ -65,7 +65,7 @@ body {
     color: #fff;
   }
 
-`;
+`
 
 export const Container = styled.section`
   width: 100%;
@@ -85,4 +85,4 @@ export const Container = styled.section`
   @media (min-width: 1200px) {
     max-width: 1200px;
   }
-`;
+`

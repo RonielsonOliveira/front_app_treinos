@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { primaryColor } from '../../config/colors.js'
 
 export const Nav = styled.nav`
   position: sticky;
@@ -80,7 +80,7 @@ export const Nav = styled.nav`
     height: 64px;
     padding: 0 18px;
   }
-`;
+`
 
 export const DesktopMenu = styled.div`
   display: flex;
@@ -138,7 +138,7 @@ export const DesktopMenu = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-`;
+`
 
 export const MobileMenuButton = styled.button`
   width: 48px;
@@ -172,7 +172,7 @@ export const MobileMenuButton = styled.button`
   @media (min-width: 769px) {
     display: none;
   }
-`;
+`
 export const Overlay = styled.div`
   position: fixed;
   inset: 0;
@@ -182,15 +182,15 @@ export const Overlay = styled.div`
   backdrop-filter: blur(2px);
 
   opacity: ${({ open }) => (open ? 1 : 0)};
-  visibility: ${({ open }) => (open ? "visible" : "hidden")};
+  visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
 
   transition: 0.3s;
 
   z-index: 998;
-`;
+`
 
 export const MobileMenu = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "open",
+  shouldForwardProp: (prop) => prop !== 'open'
 })`
   position: fixed;
 
@@ -207,7 +207,7 @@ export const MobileMenu = styled.div.withConfig({
 
   background: linear-gradient(180deg, #111827 0%, #0f172a 45%, #020617 100%);
 
-  transform: translateX(${({ open }) => (open ? "0" : "100%")});
+  transform: translateX(${({ open }) => (open ? '0' : '100%')});
 
   transition: transform 0.35s ease;
 
@@ -385,7 +385,7 @@ export const MobileMenu = styled.div.withConfig({
   @media (min-width: 769px) {
     display: none;
   }
-`;
+`
 export const Logo = styled(Link)`
   display: flex;
   align-items: center;
@@ -408,4 +408,4 @@ export const Logo = styled(Link)`
     height: 38px;
     object-fit: contain;
   }
-`;
+`

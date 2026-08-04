@@ -1,21 +1,21 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import * as S from "./styles";
+import * as S from './styles'
 
-import Loading from "../../components/Loading";
-import ModalConfirmacao from "../../components/ModalConfirmation";
+import Loading from '../../components/Loading'
+import ModalConfirmacao from '../../components/ModalConfirmation'
 
-import useAlunos from "../../hooks/useAlunos";
+import useAlunos from '../../hooks/useAlunos'
 
-import { excluirAluno } from "./actions";
+import { excluirAluno } from './actions'
 
 export default function Alunos() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { alunos, setAlunos, loading } = useAlunos();
+  const { alunos, setAlunos, loading } = useAlunos()
 
-  const [alunoExcluir, setAlunoExcluir] = useState(null);
+  const [alunoExcluir, setAlunoExcluir] = useState(null)
 
   return (
     <S.Container>
@@ -24,7 +24,7 @@ export default function Alunos() {
       <S.Header>
         <S.Title>Alunos</S.Title>
 
-        <S.NewButton onClick={() => navigate("/aluno")}>
+        <S.NewButton onClick={() => navigate('/aluno')}>
           + Novo Aluno
         </S.NewButton>
       </S.Header>
@@ -75,5 +75,5 @@ export default function Alunos() {
         }
       />
     </S.Container>
-  );
+  )
 }

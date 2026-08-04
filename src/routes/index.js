@@ -1,25 +1,25 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import MyRoute from "./MyRoute.js";
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import MyRoute from './MyRoute.js'
 
-import Login from "../pages/Login/Index.js";
-import Register from "../pages/Register/Index.js";
+import Login from '../pages/Login/Index.js'
+import Register from '../pages/Register/Index.js'
 
-import Exercicio from "../pages/Exercicio/Index.js";
-import Exercicios from "../pages/Exercicios/Index.js";
+import Exercicio from '../pages/Exercicio/Index.js'
+import Exercicios from '../pages/Exercicios/Index.js'
 
-import Treino from "../pages/Treino/Index.js";
-import Treinos from "../pages/Treinos/Index.js";
+import Treino from '../pages/Treino/Index.js'
+import Treinos from '../pages/Treinos/Index.js'
 
-import Aluno from "../pages/Aluno/Index.js";
-import AlunoTreinos from "../pages/MeusTreinos/Index.js";
+import Aluno from '../pages/Aluno/Index.js'
+import AlunoTreinos from '../pages/MeusTreinos/Index.js'
 
-import Fotos from "../pages/Fotos/Index.js";
-import Page404 from "../pages/Page404/index.js";
-import Alunos from "../pages/Alunos/index.js";
-import TreinosAluno from "../pages/TreinoAlunos/Index.js";
-import Home from "../pages/Home/index.js";
-import Dashboard from "../pages/Dashboard/index.js";
+import Fotos from '../pages/Fotos/Index.js'
+import Page404 from '../pages/Page404/index.js'
+import Alunos from '../pages/Alunos/index.js'
+import TreinosAluno from '../pages/TreinoAlunos/Index.js'
+import Home from '../pages/Home/index.js'
+import Dashboard from '../pages/Dashboard/index.js'
 
 export default function AppRoutes() {
   return (
@@ -109,5 +109,5 @@ export default function AppRoutes() {
       {/* 404 */}
       <Route exact path="*" element={<MyRoute component={Page404} />} />
     </Routes>
-  );
+  )
 }

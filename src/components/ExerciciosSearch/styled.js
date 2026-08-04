@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Container = styled.div`
   width: 100%;
   position: relative;
-`;
+`
 
 export const Input = styled.input`
   width: 100%;
@@ -19,7 +19,7 @@ export const Input = styled.input`
   &:focus {
     border-color: ${primaryColor};
   }
-`;
+`
 
 export const Lista = styled.div`
   position: absolute;
@@ -39,7 +39,7 @@ export const Lista = styled.div`
   overflow-y: auto;
 
   z-index: 50;
-`;
+`
 
 export const Item = styled.div`
   padding: 12px 16px;
@@ -53,10 +53,10 @@ export const Item = styled.div`
   &:hover {
     background: ${primaryColor};
   }
-`;
+`
 
 export const Empty = styled.div`
   padding: 16px;
   color: #94a3b8;
   text-align: center;
-`;
+`

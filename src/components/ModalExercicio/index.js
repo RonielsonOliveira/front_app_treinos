@@ -1,4 +1,4 @@
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function ModalExercicio({
   open,
@@ -10,10 +10,10 @@ export default function ModalExercicio({
   onRepeticoesChange,
   onCancel,
   onConfirm,
-  onRemove,
+  onRemove
 }) {
-  if (!open || !exercicio) return null;
-  const youtubeId = "M7lc1UVf-VE";
+  if (!open || !exercicio) return null
+  const youtubeId = 'M7lc1UVf-VE'
   return (
     <S.Overlay>
       <S.Container>
@@ -63,10 +63,10 @@ export default function ModalExercicio({
           )}
 
           <button className="confirm" onClick={onConfirm}>
-            {selecionado ? "Salvar" : "Adicionar"}
+            {selecionado ? 'Salvar' : 'Adicionar'}
           </button>
         </div>
       </S.Container>
     </S.Overlay>
-  );
+  )
 }

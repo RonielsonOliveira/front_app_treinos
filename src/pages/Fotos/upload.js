@@ -1,7 +1,7 @@
-import { get } from "lodash";
-import { toast } from "react-toastify";
+import { get } from 'lodash'
+import { toast } from 'react-toastify'
 
-import { uploadFoto } from "../../services/fotoService";
+import { uploadFoto } from '../../services/fotoService'
 
 export async function enviarFoto({
   file,
@@ -9,33 +9,33 @@ export async function enviarFoto({
   setFotos,
   setIsLoading,
   dispatch,
-  actions,
+  actions
 }) {
-  if (!file) return;
+  if (!file) return
 
-  const preview = URL.createObjectURL(file);
+  const preview = URL.createObjectURL(file)
 
-  setFotos((prev) => [...prev, preview]);
+  setFotos((prev) => [...prev, preview])
 
   try {
-    setIsLoading(true);
+    setIsLoading(true)
 
-    const data = await uploadFoto(id, file);
+    const data = await uploadFoto(id, file)
 
-    const foto = get(data, "foto.url", preview);
+    const foto = get(data, 'foto.url', preview)
 
-    setFotos((prev) => [...prev.slice(0, -1), foto]);
+    setFotos((prev) => [...prev.slice(0, -1), foto])
 
-    toast.success("Foto enviada com sucesso");
+    toast.success('Foto enviada com sucesso')
   } catch (error) {
-    toast.error("Erro ao enviar foto");
+    toast.error('Erro ao enviar foto')
 
-    const status = get(error, "response.status");
+    const status = get(error, 'response.status')
 
     if (status === 401) {
-      dispatch(actions.loginFailure());
+      dispatch(actions.loginFailure())
     }
   } finally {
-    setIsLoading(false);
+    setIsLoading(false)
   }
 }

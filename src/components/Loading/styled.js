@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: fixed;
@@ -15,4 +15,4 @@ export const Container = styled.div`
   color: #fff;
   font-size: 30px;
   font-weight: bold;
-`;
+`

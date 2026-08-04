@@ -1,22 +1,22 @@
-import axios from "./axios";
+import axios from './axios'
 
 export async function getFotosExercicio(id) {
-  const { data } = await axios.get(`/exercicios/${id}`);
+  const { data } = await axios.get(`/exercicios/${id}`)
 
-  return data;
+  return data
 }
 
 export async function uploadFoto(exercicioId, file) {
-  const formData = new FormData();
+  const formData = new FormData()
 
-  formData.append("exercicio_id", exercicioId);
-  formData.append("foto", file);
+  formData.append('exercicio_id', exercicioId)
+  formData.append('foto', file)
 
-  const { data } = await axios.post("/fotos", formData, {
+  const { data } = await axios.post('/fotos', formData, {
     headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+      'Content-Type': 'multipart/form-data'
+    }
+  })
 
-  return data;
+  return data
 }

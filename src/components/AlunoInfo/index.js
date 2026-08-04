@@ -1,24 +1,24 @@
-import React from "react";
-import * as S from "./styled";
-import { useAlunoPerfil } from "../../hooks/useAlunoPerfil";
+import React from 'react'
+import * as S from './styled'
+import { useAlunoPerfil } from '../../hooks/useAlunoPerfil'
 
 export default function AlunoInfo() {
-  const { aluno } = useAlunoPerfil();
+  const { aluno } = useAlunoPerfil()
 
-  if (!aluno) return null;
+  if (!aluno) return null
 
   const calcularIMC = () => {
-    const peso = Number(aluno.peso);
-    const altura = Number(aluno.altura);
+    const peso = Number(aluno.peso)
+    const altura = Number(aluno.altura)
 
     if (!peso || !altura) {
-      return "--";
+      return '--'
     }
 
-    const imc = peso / (altura * altura);
+    const imc = peso / (altura * altura)
 
-    return imc.toFixed(2);
-  };
+    return imc.toFixed(2)
+  }
 
   return (
     <S.Container>
@@ -38,13 +38,13 @@ export default function AlunoInfo() {
         <S.Card>
           <span>Peso</span>
 
-          <strong>{aluno.peso || "--"} kg</strong>
+          <strong>{aluno.peso || '--'} kg</strong>
         </S.Card>
 
         <S.Card>
           <span>Altura</span>
 
-          <strong>{aluno.altura || "--"} m</strong>
+          <strong>{aluno.altura || '--'} m</strong>
         </S.Card>
 
         <S.Card>
@@ -54,5 +54,5 @@ export default function AlunoInfo() {
         </S.Card>
       </S.Grid>
     </S.Container>
-  );
+  )
 }

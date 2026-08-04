@@ -1,43 +1,43 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify'
 
 import {
   createExercicio,
   updateExercicio,
-  uploadFotos,
-} from "../../services/exercicioService";
+  uploadFotos
+} from '../../services/exercicioService'
 
 export async function salvarExercicio({
   id,
   payload,
   novasFotos,
   navigate,
-  setNovasFotos,
+  setNovasFotos
 }) {
   try {
-    let exercicioId = id;
+    let exercicioId = id
 
     if (id) {
-      await updateExercicio(id, payload);
+      await updateExercicio(id, payload)
 
-      toast.success("Exercício atualizado!");
+      toast.success('Exercício atualizado!')
     } else {
-      const data = await createExercicio(payload);
+      const data = await createExercicio(payload)
 
-      exercicioId = data.id;
+      exercicioId = data.id
 
-      toast.success("Exercício criado!");
+      toast.success('Exercício criado!')
 
-      navigate(`/exercicio/${exercicioId}/edit`);
+      navigate(`/exercicio/${exercicioId}/edit`)
     }
 
     if (novasFotos.length) {
-      await uploadFotos(exercicioId, novasFotos);
+      await uploadFotos(exercicioId, novasFotos)
 
-      toast.success("Fotos enviadas!");
+      toast.success('Fotos enviadas!')
 
-      setNovasFotos([]);
+      setNovasFotos([])
     }
   } catch {
-    toast.error("Erro ao salvar exercício");
+    toast.error('Erro ao salvar exercício')
   }
 }

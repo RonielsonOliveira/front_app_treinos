@@ -1,72 +1,72 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react'
 
 export default function useExerciciosTreino({
   exercicios,
   treino,
-  treinoModelo,
+  treinoModelo
 }) {
-  const [busca, setBusca] = useState("");
+  const [busca, setBusca] = useState('')
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
 
-  const [exercicioAtual, setExercicioAtual] = useState(null);
+  const [exercicioAtual, setExercicioAtual] = useState(null)
 
-  const [series, setSeries] = useState(3);
+  const [series, setSeries] = useState(3)
 
-  const [repeticoes, setRepeticoes] = useState(12);
+  const [repeticoes, setRepeticoes] = useState(12)
 
-  const [exerciciosSelecionados, setExerciciosSelecionados] = useState([]);
-  const fecharModal = () => setModalOpen(false);
+  const [exerciciosSelecionados, setExerciciosSelecionados] = useState([])
+  const fecharModal = () => setModalOpen(false)
   useEffect(() => {
-    const origem = treinoModelo || treino;
+    const origem = treinoModelo || treino
 
-    if (!origem) return;
+    if (!origem) return
 
     const exerciciosComSeries =
       origem.Exercicios?.map((ex) => ({
         id: ex.id,
         numerodeSeries: ex.TreinoExercicio?.numerodeSeries ?? 3,
-        numerodeRepeticoes: ex.TreinoExercicio?.numerodeRepeticoes ?? 10,
-      })) || [];
+        numerodeRepeticoes: ex.TreinoExercicio?.numerodeRepeticoes ?? 10
+      })) || []
 
-    setExerciciosSelecionados(exerciciosComSeries);
-  }, [treino, treinoModelo]);
+    setExerciciosSelecionados(exerciciosComSeries)
+  }, [treino, treinoModelo])
 
   const removerAcentos = (texto) =>
     texto
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
 
   const exerciciosMap = useMemo(() => {
-    return Object.fromEntries(exerciciosSelecionados.map((e) => [e.id, e]));
-  }, [exerciciosSelecionados]);
+    return Object.fromEntries(exerciciosSelecionados.map((e) => [e.id, e]))
+  }, [exerciciosSelecionados])
 
   const exerciciosFiltrados = useMemo(() => {
-    if (!busca.trim()) return exercicios;
+    if (!busca.trim()) return exercicios
 
-    const buscaNormalizada = removerAcentos(busca);
+    const buscaNormalizada = removerAcentos(busca)
 
     return exercicios.filter((ex) =>
       removerAcentos(ex.descricao).includes(buscaNormalizada)
-    );
-  }, [busca, exercicios]);
+    )
+  }, [busca, exercicios])
 
   const abrirModal = (exercicio) => {
-    const existente = exerciciosSelecionados.find((e) => e.id === exercicio.id);
+    const existente = exerciciosSelecionados.find((e) => e.id === exercicio.id)
 
-    setExercicioAtual(exercicio);
+    setExercicioAtual(exercicio)
 
-    setSeries(existente?.numerodeSeries || 3);
+    setSeries(existente?.numerodeSeries || 3)
 
-    setRepeticoes(existente?.numerodeRepeticoes || 12);
+    setRepeticoes(existente?.numerodeRepeticoes || 12)
 
-    setModalOpen(true);
-  };
+    setModalOpen(true)
+  }
 
   const confirmarExercicio = () => {
     setExerciciosSelecionados((prev) => {
-      const existe = prev.find((e) => e.id === exercicioAtual.id);
+      const existe = prev.find((e) => e.id === exercicioAtual.id)
 
       if (existe) {
         return prev.map((e) =>
@@ -74,10 +74,10 @@ export default function useExerciciosTreino({
             ? {
                 ...e,
                 numerodeSeries: Number(series),
-                numerodeRepeticoes: Number(repeticoes),
+                numerodeRepeticoes: Number(repeticoes)
               }
             : e
-        );
+        )
       }
 
       return [
@@ -85,21 +85,21 @@ export default function useExerciciosTreino({
         {
           id: exercicioAtual.id,
           numerodeSeries: Number(series),
-          numerodeRepeticoes: Number(repeticoes),
-        },
-      ];
-    });
+          numerodeRepeticoes: Number(repeticoes)
+        }
+      ]
+    })
 
-    setModalOpen(false);
-  };
+    setModalOpen(false)
+  }
 
   const removerExercicio = () => {
     setExerciciosSelecionados((prev) =>
       prev.filter((e) => e.id !== exercicioAtual.id)
-    );
+    )
 
-    setModalOpen(false);
-  };
+    setModalOpen(false)
+  }
 
   return {
     busca,
@@ -126,6 +126,6 @@ export default function useExerciciosTreino({
 
     confirmarExercicio,
 
-    removerExercicio,
-  };
+    removerExercicio
+  }
 }

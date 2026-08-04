@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor, infoColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor, infoColor } from '../../config/colors'
 
 export const Title = styled.h1`
   text-align: center;
@@ -11,14 +11,14 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 28px;
   }
-`;
+`
 export const EmptyMessage = styled.p`
   text-align: center;
   color: #94a3b8;
   font-size: 16px;
   font-weight: 500;
   margin-top: 24px;
-`;
+`
 export const TreinoTitle = styled.div`
   width: 100%;
 
@@ -64,7 +64,7 @@ export const TreinoTitle = styled.div`
       font-size: 20px;
     }
   }
-`;
+`
 
 export const TreinoCard = styled.div`
   display: grid;
@@ -80,7 +80,7 @@ export const TreinoCard = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`;
+`
 
 export const Card = styled.div`
   background: #1e293b;
@@ -105,7 +105,7 @@ export const Card = styled.div`
 
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
   }
-`;
+`
 
 export const ImageSlider = styled.div`
   width: 100%;
@@ -163,7 +163,7 @@ export const ImageSlider = styled.div`
       height: 220px;
     }
   }
-`;
+`
 
 export const Details = styled.div`
   padding: 22px;
@@ -214,7 +214,7 @@ export const Details = styled.div`
       transform: translateX(4px);
     }
   }
-`;
+`
 
 export const Arrow = styled.span`
   color: ${primaryColor};
@@ -223,5 +223,5 @@ export const Arrow = styled.span`
 
   transition: transform 0.3s ease;
 
-  transform: ${({ isOpen }) => (isOpen ? "rotate(180deg)" : "rotate(0deg)")};
-`;
+  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+`

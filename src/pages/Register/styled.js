@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
 
 export const Title = styled.h1`
   text-align: center;
@@ -14,7 +14,7 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 28px;
   }
-`;
+`
 
 export const Subtitle = styled.p`
   text-align: center;
@@ -29,7 +29,7 @@ export const Subtitle = styled.p`
   @media (max-width: 768px) {
     margin-bottom: 28px;
   }
-`;
+`
 
 export const Form = styled.form`
   width: 100%;
@@ -118,4 +118,4 @@ export const Form = styled.form`
       transform: scale(0.98);
     }
   }
-`;
+`

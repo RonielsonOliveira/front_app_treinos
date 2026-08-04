@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { primaryColor } from '../../config/colors'
 
 export const Header = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ export const Header = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`;
+`
 
 export const Title = styled.h1`
   color: #f8fafc;
@@ -31,7 +31,7 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 28px;
   }
-`;
+`
 
 export const NovoAluno = styled(Link)`
   display: flex;
@@ -60,7 +60,7 @@ export const NovoAluno = styled(Link)`
     width: 100%;
     max-width: 320px;
   }
-`;
+`
 
 export const CardsContainer = styled.div`
   width: 100%;
@@ -77,7 +77,7 @@ export const CardsContainer = styled.div`
     grid-template-columns: 1fr;
     width: 95%;
   }
-`;
+`
 
 export const Card = styled.div`
   background: #1e293b;
@@ -98,7 +98,7 @@ export const Card = styled.div`
 
     box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
   }
-`;
+`
 
 export const CardFotos = styled.div`
   width: 100%;
@@ -126,7 +126,7 @@ export const CardFotos = styled.div`
   @media (max-width: 768px) {
     height: 220px;
   }
-`;
+`
 
 export const CardInfo = styled.div`
   display: flex;
@@ -155,7 +155,7 @@ export const CardInfo = styled.div`
 
     line-height: 1.5;
   }
-`;
+`
 
 export const CardActions = styled.div`
   display: flex;
@@ -188,7 +188,7 @@ export const CardActions = styled.div`
       transform: translateY(-2px);
     }
   }
-`;
+`
 export const NewButton = styled.button`
   display: flex;
   align-items: center;
@@ -227,4 +227,4 @@ export const NewButton = styled.button`
     height: 44px;
     font-size: 13px;
   }
-`;
+`

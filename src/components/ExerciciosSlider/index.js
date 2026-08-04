@@ -1,14 +1,14 @@
-import Slider from "react-slick";
+import Slider from 'react-slick'
 export default function ExerciciosSlider({ fotos }) {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+    slidesToScroll: 1
+  }
 
-  if (!fotos?.length) return <p>Sem imagens</p>;
+  if (!fotos?.length) return <p>Sem imagens</p>
 
   return (
     <Slider {...settings}>
@@ -18,5 +18,5 @@ export default function ExerciciosSlider({ fotos }) {
         </div>
       ))}
     </Slider>
-  );
+  )
 }

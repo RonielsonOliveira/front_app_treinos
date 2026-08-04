@@ -1,5 +1,5 @@
-import React from "react";
-import { Title } from "../../styled";
+import React from 'react'
+import { Title } from '../../styled'
 
 export default function TreinoHeader({ id, alunoSelecionado }) {
   return (
@@ -10,15 +10,15 @@ export default function TreinoHeader({ id, alunoSelecionado }) {
             Editar treino de <span>{alunoSelecionado.nome}</span>
           </>
         ) : (
-          "Editar treino"
+          'Editar treino'
         )
       ) : alunoSelecionado ? (
         <>
           Novo treino de <span>{alunoSelecionado.nome}</span>
         </>
       ) : (
-        "Novo treino"
+        'Novo treino'
       )}
     </Title>
-  );
+  )
 }

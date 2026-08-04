@@ -1,14 +1,14 @@
-import React from "react";
-import * as S from "../../styled";
+import React from 'react'
+import * as S from '../../styled'
 
-import ExercicioListItem from "../../../../components/ExercicioListItem";
+import ExercicioListItem from '../../../../components/ExercicioListItem'
 
 export default function ExerciciosTreino({
   busca,
   setBusca,
   exerciciosFiltrados,
   exerciciosMap,
-  abrirModal,
+  abrirModal
 }) {
   return (
     <S.Section>
@@ -37,5 +37,5 @@ export default function ExerciciosTreino({
         )}
       </S.ExercicioGrid>
     </S.Section>
-  );
+  )
 }

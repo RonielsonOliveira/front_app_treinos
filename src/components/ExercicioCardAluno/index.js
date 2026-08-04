@@ -1,5 +1,5 @@
-import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+import React from 'react'
+import { FaUserCircle } from 'react-icons/fa'
 
 import {
   ExercicioCheck,
@@ -8,19 +8,19 @@ import {
   ExercicioInfoWrapper,
   ExercicioInfoTitle,
   Footer,
-  CheckboxWrapper,
-} from "./styled";
+  CheckboxWrapper
+} from './styled'
 
 export default function ExercicioCardAluno({
   exercicio,
   checked,
   onChange,
-  onClick,
+  onClick
 }) {
   return (
     <ExercicioCheck>
       <Exercicio onClick={() => onClick(exercicio)}>
-        {" "}
+        {' '}
         {/* aqui abre modal */}
         <ExercicioInfoWrapper>
           <ExercicioInfoTitle>{exercicio.descricao}</ExercicioInfoTitle>
@@ -33,5 +33,5 @@ export default function ExercicioCardAluno({
         </ExercicioInfoWrapper>
       </Exercicio>
     </ExercicioCheck>
-  );
+  )
 }

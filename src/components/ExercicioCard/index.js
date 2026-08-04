@@ -1,6 +1,6 @@
-import React from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
+import React from 'react'
+import { FaUserCircle } from 'react-icons/fa'
+import { FaPlay } from 'react-icons/fa'
 import {
   ExercicioCheck,
   Exercicio,
@@ -11,16 +11,16 @@ import {
   Footer,
   CheckboxWrapper,
   ExercicioSeriesERepeticoes,
-  VideoButton,
-} from "./styled";
+  VideoButton
+} from './styled'
 
 export default function ExercicioCard({
   exercicio,
   checked,
   onChange,
-  children,
+  children
 }) {
-  console.log(exercicio);
+  console.log(exercicio)
   return (
     <ExercicioCheck>
       <Exercicio>
@@ -34,10 +34,10 @@ export default function ExercicioCard({
           <VideoButton
             type="button"
             onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
+              e.preventDefault()
+              e.stopPropagation()
 
-              console.log("Abrir vídeo");
+              console.log('Abrir vídeo')
             }}
           >
             <FaPlay />
@@ -66,5 +66,5 @@ export default function ExercicioCard({
         </ExercicioInfoWrapper>
       </Exercicio>
     </ExercicioCheck>
-  );
+  )
 }

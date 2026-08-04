@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaUserCircle, FaEdit, FaWindowClose } from "react-icons/fa";
-import Slider from "react-slick";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa'
+import Slider from 'react-slick'
 
 import {
   Card,
   CardFotos,
   CardInfo,
-  CardActions,
-} from "../../pages/Exercicios/styled";
+  CardActions
+} from '../../pages/Exercicios/styled'
 
 export default function ExercicioCard({ exercicio, onDelete }) {
   const sliderSettings = {
@@ -16,8 +16,8 @@ export default function ExercicioCard({ exercicio, onDelete }) {
     infinite: true,
     speed: 300,
     slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+    slidesToScroll: 1
+  }
 
   return (
     <Card>
@@ -57,8 +57,8 @@ export default function ExercicioCard({ exercicio, onDelete }) {
           <Link
             to="#"
             onClick={(e) => {
-              e.preventDefault();
-              onDelete(exercicio.id);
+              e.preventDefault()
+              onDelete(exercicio.id)
             }}
           >
             <FaWindowClose size={26} />
@@ -66,5 +66,5 @@ export default function ExercicioCard({ exercicio, onDelete }) {
         </CardActions>
       </CardInfo>
     </Card>
-  );
+  )
 }

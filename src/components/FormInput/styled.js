@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -59,4 +59,4 @@ export const Wrapper = styled.div`
     padding: 14px 16px;
     resize: vertical;
   }
-`;
+`

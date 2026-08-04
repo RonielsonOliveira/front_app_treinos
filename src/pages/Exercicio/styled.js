@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Container = styled.div`
   width: 95%;
   margin: 0 auto;
   border-radius: 4px;
-`;
+`
 
 export const Title = styled.h1`
   width: 100%;
@@ -25,7 +25,7 @@ export const Title = styled.h1`
   span {
     color: ${primaryColor};
   }
-`;
+`
 
 export const Form = styled.form`
   width: 100%;
@@ -37,7 +37,7 @@ export const Form = styled.form`
   gap: 28px;
 
   padding-bottom: 80px;
-`;
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -73,7 +73,7 @@ export const Section = styled.section`
 
     border-radius: 4px;
   }
-`;
+`
 
 export const SectionTitle = styled.h2`
   color: #f8fafc;
@@ -95,7 +95,7 @@ export const SectionTitle = styled.h2`
   border-bottom: 1px solid #334155;
 
   &::before {
-    content: "";
+    content: '';
 
     width: 5px;
 
@@ -109,7 +109,7 @@ export const SectionTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 19px;
   }
-`;
+`
 
 export const UploadBox = styled.label`
   width: 100%;
@@ -181,7 +181,7 @@ export const UploadBox = styled.label`
       font-size: 34px;
     }
   }
-`;
+`
 
 export const FotosGrid = styled.div`
   display: grid;
@@ -189,7 +189,7 @@ export const FotosGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
 
   gap: 16px;
-`;
+`
 
 export const SaveBar = styled.div`
   display: flex;
@@ -211,7 +211,7 @@ export const SaveBar = styled.div`
 
     z-index: 20;
   }
-`;
+`
 
 export const SaveButton = styled.button`
   width: 280px;
@@ -247,4 +247,4 @@ export const SaveButton = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`

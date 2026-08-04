@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -15,7 +15,7 @@ export const ModalOverlay = styled.div`
   backdrop-filter: blur(8px);
 
   z-index: 999;
-`;
+`
 
 export const ModalContent = styled.div`
   width: 100%;
@@ -43,7 +43,7 @@ export const ModalContent = styled.div`
       transform: translateY(0) scale(1);
     }
   }
-`;
+`
 
 export const Tabs = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ export const Tabs = styled.div`
   background: #172235;
 
   border-bottom: 1px solid #334155;
-`;
+`
 
 export const Tab = styled.button`
   flex: 1;
@@ -71,12 +71,12 @@ export const Tab = styled.button`
   font-weight: 600;
 
   background: ${({ $active }) =>
-    $active ? "rgba(255,255,255,.04)" : "transparent"};
+    $active ? 'rgba(255,255,255,.04)' : 'transparent'};
 
-  color: ${({ $active }) => ($active ? "#fff" : "#94a3b8")};
+  color: ${({ $active }) => ($active ? '#fff' : '#94a3b8')};
 
   border-bottom: 3px solid
-    ${({ $active }) => ($active ? primaryColor : "transparent")};
+    ${({ $active }) => ($active ? primaryColor : 'transparent')};
 
   transition: 0.25s;
 
@@ -88,7 +88,7 @@ export const Tab = styled.button`
   svg {
     font-size: 18px;
   }
-`;
+`
 
 export const MediaWrapper = styled.div`
   width: 100%;
@@ -126,7 +126,7 @@ export const MediaWrapper = styled.div`
   @media (max-width: 768px) {
     height: 220px;
   }
-`;
+`
 
 export const ExercicioInfo = styled.div`
   display: flex;
@@ -135,7 +135,7 @@ export const ExercicioInfo = styled.div`
   gap: 22px;
 
   padding: 24px;
-`;
+`
 
 export const Title = styled.h2`
   margin: 0;
@@ -146,7 +146,7 @@ export const Title = styled.h2`
 
   font-size: 28px;
   font-weight: 700;
-`;
+`
 
 export const Description = styled.p`
   margin: 0;
@@ -156,7 +156,7 @@ export const Description = styled.p`
   text-align: center;
 
   line-height: 1.6;
-`;
+`
 
 export const ExercicioDados = styled.div`
   display: grid;
@@ -200,7 +200,7 @@ export const ExercicioDados = styled.div`
     font-size: 32px;
     font-weight: bold;
   }
-`;
+`
 
 export const Footer = styled.div`
   padding: 24px;
@@ -236,7 +236,7 @@ export const Footer = styled.div`
   button:active {
     transform: scale(0.98);
   }
-`;
+`
 export const VideoWrapper = styled.div`
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -248,4 +248,4 @@ export const VideoWrapper = styled.div`
     border: 0;
     border-radius: 12px;
   }
-`;
+`

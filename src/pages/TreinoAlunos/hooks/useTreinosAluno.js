@@ -1,62 +1,62 @@
-import { useEffect, useMemo, useState } from "react";
-import { toast } from "react-toastify";
+import { useEffect, useMemo, useState } from 'react'
+import { toast } from 'react-toastify'
 
-import { getTreinosAluno } from "../../../services/alunosService";
-import { deleteTreino } from "../../../services/treinoService";
+import { getTreinosAluno } from '../../../services/alunosService'
+import { deleteTreino } from '../../../services/treinoService'
 
 function getDiaSemanaAtual() {
-  const dia = new Date().getDay();
+  const dia = new Date().getDay()
 
-  return dia === 0 ? 7 : dia;
+  return dia === 0 ? 7 : dia
 }
 
 export default function useTreinosAluno(alunoId) {
-  const [treinos, setTreinos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [treinos, setTreinos] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const [treinoExcluir, setTreinoExcluir] = useState(null);
+  const [treinoExcluir, setTreinoExcluir] = useState(null)
 
-  const [diaSelecionado, setDiaSelecionado] = useState(getDiaSemanaAtual());
+  const [diaSelecionado, setDiaSelecionado] = useState(getDiaSemanaAtual())
 
   useEffect(() => {
     async function carregar() {
       try {
-        const response = await getTreinosAluno(alunoId);
+        const response = await getTreinosAluno(alunoId)
 
-        setTreinos(response);
+        setTreinos(response)
       } catch (err) {
-        toast.error("Erro ao carregar treinos.");
+        toast.error('Erro ao carregar treinos.')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
 
-    carregar();
-  }, [alunoId]);
+    carregar()
+  }, [alunoId])
 
   const confirmarExclusao = async () => {
-    if (!treinoExcluir) return;
+    if (!treinoExcluir) return
 
     try {
-      await deleteTreino(treinoExcluir.id);
+      await deleteTreino(treinoExcluir.id)
 
       setTreinos((prev) =>
         prev.filter((treino) => treino.id !== treinoExcluir.id)
-      );
+      )
 
-      setTreinoExcluir(null);
+      setTreinoExcluir(null)
 
-      toast.success("Treino excluído com sucesso!");
+      toast.success('Treino excluído com sucesso!')
     } catch {
-      toast.error("Erro ao excluir treino.");
+      toast.error('Erro ao excluir treino.')
     }
-  };
+  }
 
   const treinosFiltrados = useMemo(() => {
     return treinos.filter(
       (treino) => Number(treino.dia_semana) === Number(diaSelecionado)
-    );
-  }, [treinos, diaSelecionado]);
+    )
+  }, [treinos, diaSelecionado])
 
   return {
     loading,
@@ -71,6 +71,6 @@ export default function useTreinosAluno(alunoId) {
     diaSelecionado,
     setDiaSelecionado,
 
-    confirmarExclusao,
-  };
+    confirmarExclusao
+  }
 }

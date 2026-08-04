@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   align-items: center;
 
   z-index: 9999;
-`;
+`
 
 export const Container = styled.div`
   width: 420px;
@@ -22,16 +22,16 @@ export const Container = styled.div`
   border-radius: 10px;
 
   padding: 25px;
-`;
+`
 
 export const Title = styled.h2`
   margin-bottom: 15px;
-`;
+`
 
 export const Message = styled.p`
   color: #666;
   line-height: 1.6;
-`;
+`
 
 export const Actions = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ export const Actions = styled.div`
   gap: 12px;
 
   margin-top: 30px;
-`;
+`
 
 export const CancelButton = styled.button`
   padding: 10px 18px;
@@ -51,7 +51,7 @@ export const CancelButton = styled.button`
   background: #ddd;
 
   cursor: pointer;
-`;
+`
 export const DeleteButton = styled.button`
   padding: 10px 18px;
 
@@ -76,4 +76,4 @@ export const DeleteButton = styled.button`
     cursor: not-allowed;
     opacity: 0.6;
   }
-`;
+`

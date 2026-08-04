@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
 
 export const Container = styled.section`
   min-height: 100vh;
@@ -23,7 +23,7 @@ export const Container = styled.section`
       transparent 40%
     ),
     linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
-`;
+`
 
 export const LoginWrapper = styled.div`
   width: min(1100px, 100%);
@@ -51,7 +51,7 @@ export const LoginWrapper = styled.div`
     grid-template-columns: 1fr;
     min-height: auto;
   }
-`;
+`
 
 export const ImageLogin = styled.div`
   position: relative;
@@ -71,7 +71,7 @@ export const ImageLogin = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
 
     position: absolute;
     inset: 0;
@@ -87,7 +87,7 @@ export const ImageLogin = styled.div`
   }
 
   &::after {
-    content: "Treinos Personalizados";
+    content: 'Treinos Personalizados';
 
     position: absolute;
 
@@ -110,7 +110,7 @@ export const ImageLogin = styled.div`
   @media (max-width: 900px) {
     display: none;
   }
-`;
+`
 
 export const Form = styled.form`
   display: flex;
@@ -207,7 +207,7 @@ export const Form = styled.form`
       transform: scale(0.98);
     }
   }
-`;
+`
 
 export const Title = styled.h1`
   color: #f8fafc;
@@ -229,7 +229,7 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: 34px;
   }
-`;
+`
 
 export const Subtitle = styled.p`
   color: #94a3b8;
@@ -241,4 +241,4 @@ export const Subtitle = styled.p`
   margin-bottom: 18px;
 
   line-height: 1.6;
-`;
+`

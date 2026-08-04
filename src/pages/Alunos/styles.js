@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
 
 export const Container = styled.div`
   padding: 30px;
@@ -15,7 +15,7 @@ export const Container = styled.div`
     width: 100%;
     padding: 15px;
   }
-`;
+`
 
 export const Title = styled.h1`
   margin-bottom: 30px;
@@ -26,13 +26,13 @@ export const Title = styled.h1`
     font-size: 26px;
     margin-bottom: 20px;
   }
-`;
+`
 
 export const List = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-`;
+`
 
 export const Card = styled.div`
   display: flex;
@@ -60,7 +60,7 @@ export const Card = styled.div`
 
     padding: 20px;
   }
-`;
+`
 
 export const Left = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ export const Left = styled.div`
   gap: 6px;
 
   min-width: 0;
-`;
+`
 
 export const Right = styled.div`
   display: flex;
@@ -78,7 +78,7 @@ export const Right = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 export const Name = styled.h2`
   margin: 0;
@@ -96,7 +96,7 @@ export const Name = styled.h2`
   @media (max-width: 768px) {
     font-size: 18px;
   }
-`;
+`
 
 export const Info = styled.p`
   margin: 0;
@@ -106,7 +106,7 @@ export const Info = styled.p`
   font-size: 14px;
 
   word-break: break-word;
-`;
+`
 
 export const Buttons = styled.div`
   display: flex;
@@ -130,7 +130,7 @@ export const Buttons = styled.div`
 
     gap: 10px;
   }
-`;
+`
 
 export const Button = styled.button`
   padding: 8px 14px;
@@ -154,19 +154,19 @@ export const Button = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 export const TreinosButton = styled(Button)`
   background: #8b5cf6;
-`;
+`
 
 export const EditButton = styled(Button)`
   background: #2563eb;
-`;
+`
 
 export const DeleteButton = styled(Button)`
   background: #dc2626;
-`;
+`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -178,7 +178,7 @@ export const Header = styled.div`
     gap: 16px;
     align-items: stretch;
   }
-`;
+`
 
 export const NewButton = styled.button`
   display: flex;
@@ -215,4 +215,4 @@ export const NewButton = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`

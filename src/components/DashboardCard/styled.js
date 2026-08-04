@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Card = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const Card = styled.div`
 
     border-radius: 14px;
   }
-`;
+`
 
 export const Icon = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ export const Icon = styled.div`
   @media (max-width: 768px) {
     font-size: 34px;
   }
-`;
+`
 
 export const Title = styled.h2`
   color: #fff;
@@ -65,7 +65,7 @@ export const Title = styled.h2`
     font-size: 15px;
     line-height: 1.2;
   }
-`;
+`
 
 export const Description = styled.p`
   color: #94a3b8;
@@ -76,7 +76,7 @@ export const Description = styled.p`
   @media (max-width: 768px) {
     display: none;
   }
-`;
+`
 
 export const Action = styled.div`
   margin-top: 10px;
@@ -89,4 +89,4 @@ export const Action = styled.div`
     margin-top: 0;
     font-size: 12px;
   }
-`;
+`

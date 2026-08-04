@@ -1,18 +1,18 @@
-import { toast } from "react-toastify";
-import { deleteExercicio } from "../../services/exerciciosService";
+import { toast } from 'react-toastify'
+import { deleteExercicio } from '../../services/exerciciosService'
 
 export async function excluirExercicio(id, setExercicios, setIsLoading) {
   try {
-    setIsLoading(true);
+    setIsLoading(true)
 
-    await deleteExercicio(id);
+    await deleteExercicio(id)
 
-    setExercicios((prev) => prev.filter((exercicio) => exercicio.id !== id));
+    setExercicios((prev) => prev.filter((exercicio) => exercicio.id !== id))
 
-    toast.success("Exercício excluído!");
+    toast.success('Exercício excluído!')
   } catch {
-    toast.error("Erro ao excluir exercício");
+    toast.error('Erro ao excluir exercício')
   } finally {
-    setIsLoading(false);
+    setIsLoading(false)
   }
 }

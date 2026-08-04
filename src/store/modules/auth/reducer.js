@@ -1,4 +1,4 @@
-import * as types from "../types.js";
+import * as types from '../types.js'
 
 const initialState = {
   isAuthenticated: false,
@@ -6,16 +6,16 @@ const initialState = {
   user: null,
   role: null,
   isLoading: false,
-  isLoggedIn: false,
-};
+  isLoggedIn: false
+}
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
     case types.LOGIN_REQUEST:
       return {
         ...state,
-        isLoading: true,
-      };
+        isLoading: true
+      }
 
     case types.LOGIN_SUCCESS:
       return {
@@ -25,8 +25,8 @@ export default function auth(state = initialState, action) {
         token: action.payload.token,
         user: action.payload.user,
         role: action.payload.role,
-        isLoggedIn: true,
-      };
+        isLoggedIn: true
+      }
 
     case types.LOGIN_FAILURE:
       return {
@@ -35,21 +35,21 @@ export default function auth(state = initialState, action) {
         isAuthenticated: false,
         token: null,
         user: null,
-        role: null,
-      };
+        role: null
+      }
 
     case types.LOGOUT:
       return {
-        ...initialState,
-      };
+        ...initialState
+      }
 
     case types.CLEAR_LOGIN_SUCCESS:
       return {
         ...state,
-        isLoggedIn: false,
-      };
+        isLoggedIn: false
+      }
 
     default:
-      return state;
+      return state
   }
 }

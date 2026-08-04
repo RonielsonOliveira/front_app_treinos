@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 export const Title = styled.h1`
   width: 100%;
@@ -9,7 +9,7 @@ export const Title = styled.h1`
   font-size: clamp(26px, 4vw, 36px);
   font-weight: 800;
   letter-spacing: -0.5px;
-`;
+`
 
 export const Form = styled.form`
   width: 100%;
@@ -17,7 +17,7 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 18px;
   padding-bottom: 40px;
-`;
+`
 
 export const Section = styled.section`
   width: 95%;
@@ -40,7 +40,7 @@ export const Section = styled.section`
     padding: 20px;
     border-radius: 4px;
   }
-`;
+`
 
 export const SectionTitle = styled.h2`
   color: #f8fafc;
@@ -53,7 +53,7 @@ export const SectionTitle = styled.h2`
   border-bottom: 1px solid #334155;
 
   &::before {
-    content: "";
+    content: '';
     width: 5px;
     height: 24px;
     border-radius: 999px;
@@ -62,7 +62,7 @@ export const SectionTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 19px;
   }
-`;
+`
 
 export const Fields = styled.div`
   display: grid;
@@ -72,7 +72,7 @@ export const Fields = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`;
+`
 
 export const Field = styled.div`
   display: flex;
@@ -115,7 +115,7 @@ export const Field = styled.div`
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
     }
   }
-`;
+`
 
 export const SaveBar = styled.div`
   display: flex;
@@ -129,7 +129,7 @@ export const SaveBar = styled.div`
     border-radius: 18px;
     z-index: 20;
   }
-`;
+`
 
 export const SaveButton = styled.button`
   width: 280px;
@@ -154,7 +154,7 @@ export const SaveButton = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 export const FotosGrid = styled.div`
   display: grid;
@@ -176,4 +176,4 @@ export const FotosGrid = styled.div`
       box-shadow: 0 10px 25px rgba(34, 197, 94, 0.25);
     }
   }
-`;
+`

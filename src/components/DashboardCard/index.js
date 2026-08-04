@@ -1,11 +1,11 @@
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function DashboardCard({
   icon,
   title,
   description,
   color,
-  onClick,
+  onClick
 }) {
   return (
     <S.Card color={color} onClick={onClick}>
@@ -17,5 +17,5 @@ export default function DashboardCard({
 
       <S.Action>Acessar →</S.Action>
     </S.Card>
-  );
+  )
 }

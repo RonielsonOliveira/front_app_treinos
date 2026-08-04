@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Overlay = styled.div`
   position: fixed;
@@ -22,7 +22,7 @@ export const Overlay = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 export const ModalContent = styled.div`
   background: #1e293b;
@@ -85,4 +85,4 @@ export const ModalContent = styled.div`
       transform: scale(0.97);
     }
   }
-`;
+`

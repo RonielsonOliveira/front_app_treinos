@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FaImage, FaPlayCircle, FaUserCircle } from "react-icons/fa";
+import { useState } from 'react'
+import { FaImage, FaPlayCircle, FaUserCircle } from 'react-icons/fa'
 
 import {
   ModalOverlay,
@@ -12,33 +12,33 @@ import {
   Description,
   ExercicioDados,
   Footer,
-  VideoWrapper,
-} from "./styled";
+  VideoWrapper
+} from './styled'
 
-const VIDEO_URL_EXEMPLO = "https://www.youtube.com/embed/F4Q1g2z8MWM";
+const VIDEO_URL_EXEMPLO = 'https://www.youtube.com/embed/F4Q1g2z8MWM'
 
 export default function ExercicioModal({ exercicio, onClose }) {
-  const [aba, setAba] = useState("foto");
+  const [aba, setAba] = useState('foto')
 
-  if (!exercicio) return null;
+  if (!exercicio) return null
 
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <Tabs>
-          <Tab $active={aba === "foto"} onClick={() => setAba("foto")}>
+          <Tab $active={aba === 'foto'} onClick={() => setAba('foto')}>
             <FaImage />
             Foto
           </Tab>
 
-          <Tab $active={aba === "video"} onClick={() => setAba("video")}>
+          <Tab $active={aba === 'video'} onClick={() => setAba('video')}>
             <FaPlayCircle />
             Vídeo
           </Tab>
         </Tabs>
 
         <MediaWrapper>
-          {aba === "foto" ? (
+          {aba === 'foto' ? (
             exercicio.FotoExercicios?.[0] ? (
               <img src={exercicio.FotoExercicios[0].url} alt={exercicio.nome} />
             ) : (
@@ -68,14 +68,14 @@ export default function ExercicioModal({ exercicio, onClose }) {
             <div className="item">
               <label>Séries</label>
 
-              <span>{exercicio.TreinoExercicio?.numerodeSeries ?? "-"}</span>
+              <span>{exercicio.TreinoExercicio?.numerodeSeries ?? '-'}</span>
             </div>
 
             <div className="item">
               <label>Repetições</label>
 
               <span>
-                {exercicio.TreinoExercicio?.numerodeRepeticoes ?? "-"}
+                {exercicio.TreinoExercicio?.numerodeRepeticoes ?? '-'}
               </span>
             </div>
           </ExercicioDados>
@@ -86,5 +86,5 @@ export default function ExercicioModal({ exercicio, onClose }) {
         </Footer>
       </ModalContent>
     </ModalOverlay>
-  );
+  )
 }

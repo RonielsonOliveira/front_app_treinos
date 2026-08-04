@@ -1,89 +1,89 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaEdit, FaWindowClose, FaDumbbell, FaCopy } from "react-icons/fa";
-import { toast } from "react-toastify";
+import React, { useEffect, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaEdit, FaWindowClose, FaDumbbell, FaCopy } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
-import { Container } from "../../styles/GlobalStyles";
-import Loading from "../../components/Loading";
+import { Container } from '../../styles/GlobalStyles'
+import Loading from '../../components/Loading'
 
-import axios from "../../services/axios";
+import axios from '../../services/axios'
 
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function Treinos() {
-  const [treinos, setTreinos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [busca, setBusca] = useState("");
+  const [treinos, setTreinos] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [busca, setBusca] = useState('')
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getData() {
       try {
-        setIsLoading(true);
+        setIsLoading(true)
 
-        const { data } = await axios.get("/treinos");
+        const { data } = await axios.get('/treinos')
 
-        setTreinos(data);
+        setTreinos(data)
       } catch {
-        toast.error("Erro ao carregar treinos");
+        toast.error('Erro ao carregar treinos')
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     }
 
-    getData();
-  }, []);
+    getData()
+  }, [])
 
-  const removerAcentos = (texto = "") =>
+  const removerAcentos = (texto = '') =>
     texto
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
 
   const treinosFiltrados = useMemo(() => {
-    if (!busca.trim()) return treinos;
+    if (!busca.trim()) return treinos
 
-    const buscaNormalizada = removerAcentos(busca);
+    const buscaNormalizada = removerAcentos(busca)
 
     return treinos.filter((treino) => {
       const encontrouTreino =
         removerAcentos(treino.nome).includes(buscaNormalizada) ||
-        removerAcentos(treino.descricao).includes(buscaNormalizada);
+        removerAcentos(treino.descricao).includes(buscaNormalizada)
 
       const encontrouExercicio = treino.Exercicios?.some((ex) =>
         removerAcentos(ex.descricao).includes(buscaNormalizada)
-      );
+      )
 
-      return encontrouTreino || encontrouExercicio;
-    });
-  }, [busca, treinos]);
+      return encontrouTreino || encontrouExercicio
+    })
+  }, [busca, treinos])
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Deseja realmente excluir este treino?")) return;
+    if (!window.confirm('Deseja realmente excluir este treino?')) return
 
     try {
-      setIsLoading(true);
+      setIsLoading(true)
 
-      await axios.delete(`/treinos/${id}`);
+      await axios.delete(`/treinos/${id}`)
 
-      setTreinos((prev) => prev.filter((t) => t.id !== id));
+      setTreinos((prev) => prev.filter((t) => t.id !== id))
 
-      toast.success("Treino excluído com sucesso!");
+      toast.success('Treino excluído com sucesso!')
     } catch {
-      toast.error("Erro ao excluir treino");
+      toast.error('Erro ao excluir treino')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const duplicarTreino = (treino) => {
-    navigate("/treino", {
+    navigate('/treino', {
       state: {
-        treinoModelo: treino,
-      },
-    });
-  };
+        treinoModelo: treino
+      }
+    })
+  }
 
   return (
     <Container>
@@ -139,8 +139,8 @@ export default function Treinos() {
                 <Link
                   to="#"
                   onClick={(e) => {
-                    e.preventDefault();
-                    duplicarTreino(treino);
+                    e.preventDefault()
+                    duplicarTreino(treino)
                   }}
                 >
                   <FaCopy size={18} />
@@ -150,8 +150,8 @@ export default function Treinos() {
                 <Link
                   to="#"
                   onClick={(e) => {
-                    e.preventDefault();
-                    handleDelete(treino.id);
+                    e.preventDefault()
+                    handleDelete(treino.id)
                   }}
                 >
                   <FaWindowClose size={20} />
@@ -167,5 +167,5 @@ export default function Treinos() {
         <S.EmptyMessage>Nenhum treino encontrado.</S.EmptyMessage>
       )}
     </Container>
-  );
+  )
 }

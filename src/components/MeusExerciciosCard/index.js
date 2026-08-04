@@ -1,6 +1,6 @@
-import React from "react";
-import { Card, Details, ImageSlider } from "../../pages/MeusTreinos/styled";
-import ExercicioSlider from "../ExercicioSlider";
+import React from 'react'
+import { Card, Details, ImageSlider } from '../../pages/MeusTreinos/styled'
+import ExercicioSlider from '../ExercicioSlider'
 
 export default function ExercicioCard({ exercicio }) {
   return (
@@ -25,5 +25,5 @@ export default function ExercicioCard({ exercicio }) {
         </li>
       </Details>
     </Card>
-  );
+  )
 }

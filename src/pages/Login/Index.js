@@ -1,46 +1,46 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import Loading from "../../components/Loading";
-import FormInput from "../../components/FormInput";
+import Loading from '../../components/Loading'
+import FormInput from '../../components/FormInput'
 
-import { Container, ImageLogin, LoginWrapper, Form, Title } from "./styled";
+import { Container, ImageLogin, LoginWrapper, Form, Title } from './styled'
 
-import * as actions from "../../store/modules/auth/actions";
+import * as actions from '../../store/modules/auth/actions'
 
-import { validateLogin } from "./validation";
-import { useLoginForm } from "../../hooks/useLoginForm.js";
+import { validateLogin } from './validation'
+import { useLoginForm } from '../../hooks/useLoginForm.js'
 
-import Imagem from "../../utils/Img/professor.jpg";
+import Imagem from '../../utils/Img/professor.jpg'
 
 export default function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  const isLoading = useSelector((state) => state.auth.isLoading)
 
-  const { form, handleChange } = useLoginForm();
+  const { form, handleChange } = useLoginForm()
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/");
+      navigate('/')
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (!validateLogin(form)) return;
+    if (!validateLogin(form)) return
 
     dispatch(
       actions.loginRequest({
         ...form,
-        prevPath: "/",
+        prevPath: '/'
       })
-    );
-  };
+    )
+  }
 
   return (
     <Container>
@@ -82,5 +82,5 @@ export default function Login() {
         </Form>
       </LoginWrapper>
     </Container>
-  );
+  )
 }

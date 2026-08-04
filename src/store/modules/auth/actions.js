@@ -1,69 +1,69 @@
-import * as types from "../types.js";
+import * as types from '../types.js'
 
 export function loginRequest(payload) {
   return {
     type: types.LOGIN_REQUEST,
-    payload,
-  };
+    payload
+  }
 }
 
 export function loginSuccess(payload) {
   return {
     type: types.LOGIN_SUCCESS,
-    payload,
-  };
+    payload
+  }
 }
 
 export function loginFailure() {
   return {
-    type: types.LOGIN_FAILURE,
-  };
+    type: types.LOGIN_FAILURE
+  }
 }
 
 export function logout() {
   return {
-    type: types.LOGOUT,
-  };
+    type: types.LOGOUT
+  }
 }
 
 export function clearLoginSuccess() {
   return {
-    type: types.CLEAR_LOGIN_SUCCESS,
-  };
+    type: types.CLEAR_LOGIN_SUCCESS
+  }
 }
 
 export function registerRequest(payload) {
   return {
     type: types.REGISTER_REQUEST,
-    payload,
-  };
+    payload
+  }
 }
 
 export function registerSuccess() {
   return {
-    type: types.REGISTER_SUCCESS,
-  };
+    type: types.REGISTER_SUCCESS
+  }
 }
 export function registerUpdatedSuccess(payload) {
   return {
     type: types.REGISTER_UPDATED_SUCCESS,
-    payload,
-  };
+    payload
+  }
 }
 export function registerCreatedSuccess(payload) {
   return {
     type: types.REGISTER_CREATED_SUCCESS,
-    payload,
-  };
+    payload
+  }
 }
 export function registerFailure(payload) {
   return {
     type: types.REGISTER_FAILURE,
-    payload,
-  };
+    payload
+  }
 }
 export function clearRegisterSuccess() {
   return {
-    type: types.CLEAR_REGISTER_SUCCESS,
-  };
+    type: types.CLEAR_REGISTER_SUCCESS
+  }
 }

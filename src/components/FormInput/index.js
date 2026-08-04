@@ -1,13 +1,13 @@
-import React from "react";
-import { Wrapper } from "./styled";
+import React from 'react'
+import { Wrapper } from './styled'
 
 export default function FormInput({
   label,
   className,
-  as = "input",
+  as = 'input',
   ...props
 }) {
-  const Component = as;
+  const Component = as
 
   return (
     <Wrapper className={className}>
@@ -15,5 +15,5 @@ export default function FormInput({
 
       <Component {...props} />
     </Wrapper>
-  );
+  )
 }

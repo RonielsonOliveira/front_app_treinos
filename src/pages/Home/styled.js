@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { primaryColor } from "../../config/colors.js";
+import styled from 'styled-components'
+import { primaryColor } from '../../config/colors.js'
 
 export const Title = styled.h1`
   background: ${primaryColor};
@@ -13,8 +13,8 @@ export const Title = styled.h1`
     margin-left: 15px;
     color: aqua;
   }
-`;
+`
 
 export const Paragrafo = styled.p`
   font-size: 80px;
-`;
+`

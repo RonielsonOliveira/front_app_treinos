@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-import { HiUsers } from "react-icons/hi";
-import { GiWeightLiftingUp } from "react-icons/gi";
-import { FaClipboardList } from "react-icons/fa";
+import { HiUsers } from 'react-icons/hi'
+import { GiWeightLiftingUp } from 'react-icons/gi'
+import { FaClipboardList } from 'react-icons/fa'
 
-import DashboardCard from "../../components/DashboardCard";
+import DashboardCard from '../../components/DashboardCard'
 
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function Dashboard() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <S.Container>
@@ -25,7 +25,7 @@ export default function Dashboard() {
           color="#22c55e"
           title="Gerenciar Alunos"
           description="Cadastre, edite e acompanhe todos os alunos."
-          onClick={() => navigate("/alunos")}
+          onClick={() => navigate('/alunos')}
         />
 
         <DashboardCard
@@ -33,7 +33,7 @@ export default function Dashboard() {
           color="#3b82f6"
           title="Gerenciar Exercícios"
           description="Cadastre e organize todos os exercícios."
-          onClick={() => navigate("/exercicios")}
+          onClick={() => navigate('/exercicios')}
         />
 
         <DashboardCard
@@ -41,9 +41,9 @@ export default function Dashboard() {
           color="#f59e0b"
           title="Gerenciar Treinos"
           description="Gerencie e monte treinos personalizados para seus alunos."
-          onClick={() => navigate("/treinos")}
+          onClick={() => navigate('/treinos')}
         />
       </S.Grid>
     </S.Container>
-  );
+  )
 }

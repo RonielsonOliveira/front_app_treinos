@@ -1,7 +1,7 @@
-import React from "react";
-import ExercicioCardAluno from "../ExercicioCardAluno";
+import React from 'react'
+import ExercicioCardAluno from '../ExercicioCardAluno'
 
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function TreinoItem({
   treino,
@@ -9,7 +9,7 @@ export default function TreinoItem({
   onToggle,
   onSelectExercicio,
   checkedExercicios = {},
-  onCheck,
+  onCheck
 }) {
   return (
     <S.Container>
@@ -36,5 +36,5 @@ export default function TreinoItem({
         </S.Content>
       )}
     </S.Container>
-  );
+  )
 }

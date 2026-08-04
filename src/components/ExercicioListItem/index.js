@@ -1,4 +1,4 @@
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function ExercicioListItem({ exercicio, selecionado, onClick }) {
   return (
@@ -11,5 +11,5 @@ export default function ExercicioListItem({ exercicio, selecionado, onClick }) {
         {selecionado && <span>✔ Selecionado</span>}
       </div>
     </S.Container>
-  );
+  )
 }

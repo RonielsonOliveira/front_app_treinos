@@ -1,10 +1,10 @@
-import React from "react";
-import { FotoItem, FotoImagem, RemoveButton } from "./styled";
+import React from 'react'
+import { FotoItem, FotoImagem, RemoveButton } from './styled'
 
 export default function FotosPreview({
   fotos = [],
   novasFotos = [],
-  onRemoveNovaFoto,
+  onRemoveNovaFoto
 }) {
   return (
     <>
@@ -22,5 +22,5 @@ export default function FotosPreview({
         </FotoItem>
       ))}
     </>
-  );
+  )
 }

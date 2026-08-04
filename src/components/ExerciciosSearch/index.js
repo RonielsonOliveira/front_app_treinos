@@ -1,16 +1,16 @@
-import { useMemo, useState } from "react";
-import * as S from "./styled";
+import { useMemo, useState } from 'react'
+import * as S from './styled'
 
 export default function ExercicioSearch({ exercicios, onSelect }) {
-  const [busca, setBusca] = useState("");
+  const [busca, setBusca] = useState('')
 
   const resultados = useMemo(() => {
-    if (!busca.trim()) return [];
+    if (!busca.trim()) return []
 
     return exercicios.filter((exercicio) =>
       exercicio.descricao.toLowerCase().includes(busca.toLowerCase())
-    );
-  }, [busca, exercicios]);
+    )
+  }, [busca, exercicios])
 
   return (
     <S.Container>
@@ -30,8 +30,8 @@ export default function ExercicioSearch({ exercicios, onSelect }) {
             <S.Item
               key={item.id}
               onClick={() => {
-                onSelect(item);
-                setBusca("");
+                onSelect(item)
+                setBusca('')
               }}
             >
               {item.nome}
@@ -40,5 +40,5 @@ export default function ExercicioSearch({ exercicios, onSelect }) {
         </S.Lista>
       )}
     </S.Container>
-  );
+  )
 }

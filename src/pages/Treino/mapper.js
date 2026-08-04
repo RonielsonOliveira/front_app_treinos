@@ -3,7 +3,7 @@ export function mapTreinoPayload({
   descricao,
   alunoId,
   diaSemana,
-  exerciciosSelecionados,
+  exerciciosSelecionados
 }) {
   return {
     nome,
@@ -13,7 +13,7 @@ export function mapTreinoPayload({
     exercicios: exerciciosSelecionados.map((ex) => ({
       id: ex.id,
       numerodeSeries: Number(ex.numerodeSeries),
-      numerodeRepeticoes: Number(ex.numerodeRepeticoes),
-    })),
-  };
+      numerodeRepeticoes: Number(ex.numerodeRepeticoes)
+    }))
+  }
 }

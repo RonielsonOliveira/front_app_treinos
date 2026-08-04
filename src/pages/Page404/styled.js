@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { primaryColor } from "../../config/colors";
+import styled, { keyframes } from 'styled-components'
+import { primaryColor } from '../../config/colors'
 
 const float = keyframes`
   0%{
@@ -13,7 +13,7 @@ const float = keyframes`
   100%{
     transform:translateY(0);
   }
-`;
+`
 
 export const Content = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ export const Content = styled.div`
     margin: 30px auto;
     padding: 40px 25px;
   }
-`;
+`
 
 export const Code = styled.h1`
   font-size: clamp(90px, 18vw, 170px);
@@ -51,7 +51,7 @@ export const Code = styled.h1`
   color: ${primaryColor};
 
   animation: ${float} 3s ease-in-out infinite;
-`;
+`
 
 export const Title = styled.h2`
   margin-top: 20px;
@@ -61,7 +61,7 @@ export const Title = styled.h2`
   font-size: clamp(26px, 4vw, 38px);
 
   font-weight: 800;
-`;
+`
 
 export const Description = styled.p`
   max-width: 520px;
@@ -73,7 +73,7 @@ export const Description = styled.p`
   font-size: 16px;
 
   line-height: 1.8;
-`;
+`
 
 export const Buttons = styled.div`
   display: flex;
@@ -87,7 +87,7 @@ export const Buttons = styled.div`
 
     flex-direction: column;
   }
-`;
+`
 
 const Button = styled.button`
   display: flex;
@@ -127,7 +127,7 @@ const Button = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 export const PrimaryButton = styled(Button)`
   background: ${primaryColor};
@@ -139,7 +139,7 @@ export const PrimaryButton = styled(Button)`
   &:hover {
     filter: brightness(1.08);
   }
-`;
+`
 
 export const SecondaryButton = styled(Button)`
   background: transparent;
@@ -152,4 +152,4 @@ export const SecondaryButton = styled(Button)`
     border-color: ${primaryColor};
     color: ${primaryColor};
   }
-`;
+`

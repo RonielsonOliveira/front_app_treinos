@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import { FaHome, FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'
+import { FaHome, FaArrowLeft } from 'react-icons/fa'
 
-import { Container } from "../../styles/GlobalStyles";
+import { Container } from '../../styles/GlobalStyles'
 
-import * as S from "./styled";
+import * as S from './styled'
 
 export default function Page404() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <Container>
@@ -21,7 +21,7 @@ export default function Page404() {
         </S.Description>
 
         <S.Buttons>
-          <S.PrimaryButton onClick={() => navigate("/")}>
+          <S.PrimaryButton onClick={() => navigate('/')}>
             <FaHome />
             Página Inicial
           </S.PrimaryButton>
@@ -33,5 +33,5 @@ export default function Page404() {
         </S.Buttons>
       </S.Content>
     </Container>
-  );
+  )
 }

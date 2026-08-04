@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import * as S from "./styled";
-import { Container } from "../../styles/GlobalStyles";
+import * as S from './styled'
+import { Container } from '../../styles/GlobalStyles'
 
-import useTreinoData from "../../hooks/useTreinoData";
-import useExerciciosTreino from "./hooks/useExerciciosTreino";
-import useInformacoesTreino from "./hooks/useInformacoesTreino";
+import useTreinoData from '../../hooks/useTreinoData'
+import useExerciciosTreino from './hooks/useExerciciosTreino'
+import useInformacoesTreino from './hooks/useInformacoesTreino'
 
-import { salvarTreino } from "./actions";
-import { mapTreinoPayload } from "./mapper";
-import { validateTreino } from "./validation";
+import { salvarTreino } from './actions'
+import { mapTreinoPayload } from './mapper'
+import { validateTreino } from './validation'
 
-import Loading from "../../components/Loading";
-import ModalExercicio from "../../components/ModalExercicio";
-import ExerciciosTreino from "./components/ExerciciosTreino";
-import InformacoesTreino from "./components/InformacoesTreino";
-import TreinoHeader from "./components/TreinoHeader";
+import Loading from '../../components/Loading'
+import ModalExercicio from '../../components/ModalExercicio'
+import ExerciciosTreino from './components/ExerciciosTreino'
+import InformacoesTreino from './components/InformacoesTreino'
+import TreinoHeader from './components/TreinoHeader'
 export default function Treino() {
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const location = useLocation();
-  const alunoOrigem = location.state?.alunoId;
-  const treinoModelo = location.state?.treinoModelo;
-  const { exercicios, alunos, treino, isLoading } = useTreinoData(id);
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const location = useLocation()
+  const alunoOrigem = location.state?.alunoId
+  const treinoModelo = location.state?.treinoModelo
+  const { exercicios, alunos, treino, isLoading } = useTreinoData(id)
 
-  const [isSaving, setIsSaving] = useState(false);
+  const [isSaving, setIsSaving] = useState(false)
 
   const {
     busca,
@@ -42,12 +42,12 @@ export default function Treino() {
     abrirModal,
     fecharModal,
     confirmarExercicio,
-    removerExercicio,
+    removerExercicio
   } = useExerciciosTreino({
     exercicios,
     treino,
-    treinoModelo,
-  });
+    treinoModelo
+  })
   const {
     nome,
     setNome,
@@ -56,41 +56,41 @@ export default function Treino() {
     alunoId,
     setAlunoId,
     diaSemana,
-    setDiaSemana,
+    setDiaSemana
   } = useInformacoesTreino({
     treino,
     alunoOrigem,
-    treinoModelo,
-  });
+    treinoModelo
+  })
 
   const alunoSelecionado = alunos.find(
     (aluno) => Number(aluno.id) === Number(alunoId)
-  );
+  )
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const valid = validateTreino({
       nome,
       descricao,
       alunoId,
       alunoOrigem,
-      exerciciosSelecionados,
-    });
-    if (!valid) return;
+      exerciciosSelecionados
+    })
+    if (!valid) return
     const payload = mapTreinoPayload({
       nome,
       descricao,
       alunoId,
       diaSemana,
-      exerciciosSelecionados,
-    });
+      exerciciosSelecionados
+    })
     await salvarTreino({
       id,
       payload,
       alunoOrigem,
       navigate,
-      setIsSaving,
-    });
-  };
+      setIsSaving
+    })
+  }
   return (
     <Container>
       <Loading isLoading={isLoading} />
@@ -117,7 +117,7 @@ export default function Treino() {
           abrirModal={abrirModal}
         />
         <S.SaveButton type="submit" disabled={isSaving}>
-          {isSaving ? "Salvando..." : "Salvar alterações"}
+          {isSaving ? 'Salvando...' : 'Salvar alterações'}
         </S.SaveButton>
       </S.Form>
       <ModalExercicio
@@ -133,5 +133,5 @@ export default function Treino() {
         onRemove={removerExercicio}
       />
     </Container>
-  );
+  )
 }
